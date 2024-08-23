@@ -1,0 +1,29 @@
+.bubblegum-sans-regular {
+    font-family: "Bubblegum Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+body {
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+.narvar {
+    background-color: #ff8000;
+    color: #FFF;
+
+    border-radius: 20px;
+    margin: 13px 7px;
+    text-align: center;
+}
+.titulo{
+    font-family: "Bubblegum Sans", sans-serif;
+    margin: 0px;
+    border: 0px;
+    font-size: 4.3rem;
+}
+.logo{
+    margin: 0;
+    position: absolute;
+
+}
