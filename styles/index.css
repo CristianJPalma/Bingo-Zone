@@ -1,9 +1,10 @@
 body {
-    background-image: url("/imgs/background.jpeg");
+    background-image: url("/imgs/background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    height: 100vb;
-    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    background-position: center center;
     line-height: 1.6;
     margin: 0;
     padding: 0;
@@ -23,11 +24,11 @@ bubblegum-sans-regular {
     margin: 20px 7px;
     text-align: center;
 }
-img{
+.logo{
     position: absolute;
-    border: 0px;
-    right: 20px;
-    height: 100px;
+    height: 130px;
+    top: 0%;
+    right: 30px;
 }
 .titulo{
     font-family: "Bubblegum Sans", sans-serif;
