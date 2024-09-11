@@ -1,3 +1,4 @@
+
 body {
     background-image: url("/imgs/background.jpg");
     background-size: cover;
@@ -10,31 +11,75 @@ body {
     padding: 0;
     color: #FFF;
     font-family: "Bubblegum Sans", sans-serif;
-}
-bubblegum-sans-regular {
-    font-family: "Bubblegum Sans", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-.narvar {
-    background-color: #ff8000;
-    color: #FFF;
-    border: solid 2px ;
-    border-radius: 20px;
-    margin: 20px 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
+.intro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    background-image: url("/imgs/Codecrafters.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    animation: intro 10s forwards;
+    z-index: 10;
+}
+
+@keyframes intro {
+    0% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.content {
+    opacity: 0;
+    animation: contenido 1s forwards 1s;
+}
+
+@keyframes contenido {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 .logo{
-    position: absolute;
-    height: 130px;
-    top: 0%;
-    right: 30px;
+    height: 25rem;
+    margin-bottom: 70px;
 }
-.titulo{
-    font-family: "Bubblegum Sans", sans-serif;
-    margin: 0px;
-    border: 0px;
-    font-size: 4.3rem;
-
+.text{
+    animation: texto 2s infinite;
 }
-
+@keyframes texto{
+    0%{
+        color: rgb(255, 255, 255);
+    }
+    25%{
+        color: #ffffff8c;
+    }
+    50%{
+        color: #ffffff17;
+    }
+    75%{
+        color: rgba(255, 255, 255, 0.5);
+    }
+    100%{
+        color: #FFF;
+    }
+}
+a{
+    text-decoration: none;
+}

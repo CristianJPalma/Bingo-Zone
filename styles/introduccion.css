@@ -1,0 +1,40 @@
+body {
+    background-image: url("/imgs/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    background-position: center center;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #FFF;
+    font-family: "Bubblegum Sans", sans-serif;
+}
+bubblegum-sans-regular {
+    font-family: "Bubblegum Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+.narvar {
+    background-color: #ff8000;
+    color: #FFF;
+    border: solid 2px ;
+    border-radius: 20px;
+    margin: 20px 7px;
+    text-align: center;
+}
+.logo{
+    position: absolute;
+    height: 130px;
+    top: 0%;
+    right: 30px;
+}
+.titulo{
+    font-family: "Bubblegum Sans", sans-serif;
+    margin: 0px;
+    border: 0px;
+    font-size: 4.3rem;
+
+}
+
