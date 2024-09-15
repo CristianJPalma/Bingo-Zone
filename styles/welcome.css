@@ -1,0 +1,68 @@
+body {
+    background-image: url("/imgs/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    background-position: center center;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #FFF;
+    font-family: "Bubblegum Sans", sans-serif;
+    cursor: url('/imgs/cursores/puntero-click.cur'),auto;
+}
+bubblegum-sans-regular {
+    font-family: "Bubblegum Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+.narvar {
+    background-color: #ff8000;
+    color: #FFF;
+    border: solid 2px ;
+    border-radius: 20px;
+    margin: 20px 7px;
+    text-align: center;
+}
+.logo{
+    position: absolute;
+    height: 130px;
+    top: 0%;
+    left: 30px;
+
+}
+.titulo{
+    font-family: "Bubblegum Sans", sans-serif;
+    margin: 0px;
+    border: 0px;
+    font-size: 4.3rem;
+}
+@media (width < 570px){
+    .logo{
+        position: absolute;
+        height: 130px;
+        top: 0%;
+        left: 3px;
+    
+    }
+    .titulo{
+        font-family: "Bubblegum Sans", sans-serif;
+        font-size: 4.3rem;
+        margin-left: 50px;
+    }
+}
+@media (width < 490px){
+    .logo{
+        position: absolute;
+        height: 130px;
+        top: 0%;
+        left: 3px;
+    
+    }
+    .titulo{
+        font-family: "Bubblegum Sans", sans-serif;
+        font-size: 3.8rem;
+        margin-left: 90px;
+    }
+}
