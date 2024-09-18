@@ -10,13 +10,23 @@ body {
     padding: 0;
     color: #FFF;
     font-family: "Bubblegum Sans", sans-serif;
-    cursor: url('/imgs/cursores/puntero-click.cur'),auto;
+    cursor: url('/imgs/cursores//puntero-normal.cur'),auto;
+}
+a{
+    cursor: url('/imgs/cursores/puntero-click.cur'),pointer;  
 }
 bubblegum-sans-regular {
     font-family: "Bubblegum Sans", sans-serif;
     font-weight: 400;
     font-style: normal;
   }
+  .logo{
+    position: absolute;
+    height: 130px;
+    top: 0%;
+    left: 30px;
+
+}
 .narvar {
     background-color: #ff8000;
     color: #FFF;
@@ -25,19 +35,60 @@ bubblegum-sans-regular {
     margin: 20px 7px;
     text-align: center;
 }
-.logo{
-    position: absolute;
-    height: 130px;
-    top: 0%;
-    left: 30px;
-
-}
 .titulo{
     font-family: "Bubblegum Sans", sans-serif;
     margin: 0px;
     border: 0px;
     font-size: 4.3rem;
 }
+.content {
+    display: none;
+    opacity: 0;
+    transition: opacity 1s ease;
+    text-align: center;
+}
+.content.show {
+    display: block;
+    opacity: 1;
+}
+.hidden {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+.content {
+    display: none;
+    opacity: 0;
+    transition: opacity 1s ease;
+    text-align: center;
+}
+.content.show {
+    display: block;
+    opacity: 1;
+}
+.hidden {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.capi-saludo{
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    width: 30rem;
+}
+.globo-texto{
+    position: absolute;
+    top: 20%;
+    left: 37%;
+    width: 20rem;
+}
+
+
+
+
+
+
+
 @media (width < 570px){
     .logo{
         position: absolute;

@@ -1,0 +1,22 @@
+body {
+    background-image: url("/imgs/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    background-position: center center;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #FFF;
+    font-family: "Bubblegum Sans", sans-serif;
+    cursor: url('/imgs/cursores//puntero-normal.cur'),auto;
+}
+.register{
+    float: right;
+    margin-top: 50px;
+    margin-right: 80px;
+    border: solid 1px;
+    width: 40rem;
+    height: auto;
+}
