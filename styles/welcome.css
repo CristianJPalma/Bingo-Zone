@@ -72,17 +72,49 @@ bubblegum-sans-regular {
 
 .capi-saludo{
     position: absolute;
-    top: 30%;
-    left: 10%;
-    width: 30rem;
+    top:50%;
+    bottom: 0;
+    right: 55%;
+    width: 27%;
+    height: auto;
+
 }
 .globo-texto{
     position: absolute;
-    top: 20%;
-    left: 37%;
-    width: 20rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 28%;
+    height: auto;
 }
-
+.mensaje{
+    color: black;
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 28%;
+    height: auto;
+    font-size: 3.8rem;
+}
+#btn, #btn-1, #btn-2{
+    position: absolute;
+    top: 80%;
+    left: 80%;
+    font-size: 2.5rem;
+    animation: texto 3s infinite;
+}
+@keyframes texto{
+    0% {
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 
 
 
