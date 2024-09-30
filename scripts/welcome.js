@@ -26,3 +26,13 @@
                 content3.classList.add('show');
             }, 1000);
         });
+           // Tercer boton
+           document.getElementById('btn-2').addEventListener('click', () => {
+            const content2 = document.getElementById('content3');
+            const content3 = document.getElementById('content4');
+            content2.classList.add('hidden');
+            setTimeout(() => {
+                content2.style.display = 'none';
+                content3.classList.add('show');
+            }, 1000);
+        });
