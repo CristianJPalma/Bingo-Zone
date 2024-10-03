@@ -14,9 +14,33 @@ body {
 }
 .register{
     float: right;
-    margin-top: 50px;
-    margin-right: 80px;
+    margin-top: 100px;
+    margin-right: 100px;
     border: solid 1px;
-    width: 40rem;
+    width:400px;
     height: auto;
+    display: grid auto;
+    text-align: center;
+}
+.marco{
+    background-color: #ff8000;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px rgb(255, 255, 255);
+    
+}
+.nada{
+    display: none;
+}
+.espacio{
+    margin-top: 10px;
+    width: 500px;
+    height: 30px;
+    width: 328px;
+}
+.espacio2{
+    margin-top: 10px;
+    width: 500px;
+    height: 30px;
+    width: 328px;
 }
