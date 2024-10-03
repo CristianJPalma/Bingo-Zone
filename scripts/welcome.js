@@ -1,7 +1,7 @@
         // Mostramos el primer contenido después de 2 segundos
         setTimeout(() => {
             document.getElementById('content1').classList.add('show');
-        }, 2000);
+        }, 1000);
 
         // Al hacer clic en el botón, ocultamos el primer contenido y mostramos el segundo
         document.getElementById('btn').addEventListener('click', () => {
@@ -14,7 +14,7 @@
 
                 // Mostrar segundo contenido
                 content2.classList.add('show');
-            }, 1000);
+            }, 500);
         });
         // Segundo boton
         document.getElementById('btn-1').addEventListener('click', () => {
@@ -24,15 +24,25 @@
             setTimeout(() => {
                 content2.style.display = 'none';
                 content3.classList.add('show');
-            }, 1000);
+            }, 500);
         });
            // Tercer boton
            document.getElementById('btn-2').addEventListener('click', () => {
-            const content2 = document.getElementById('content3');
-            const content3 = document.getElementById('content4');
-            content2.classList.add('hidden');
+            const content3 = document.getElementById('content3');
+            const content4 = document.getElementById('content4');
+            content3.classList.add('hidden');
             setTimeout(() => {
-                content2.style.display = 'none';
-                content3.classList.add('show');
-            }, 1000);
+                content3.style.display = 'none';
+                content4.classList.add('show');
+            }, 500);
+        });
+           // Cuarto boton
+           document.getElementById('btn-3').addEventListener('click', () => {
+            const content4 = document.getElementById('content4');
+            const content5 = document.getElementById('content5');
+            content4.classList.add('hidden');
+            setTimeout(() => {
+                content4.style.display = 'none';
+                content5.classList.add('show');
+            }, 500);
         });
