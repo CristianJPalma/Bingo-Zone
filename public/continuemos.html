@@ -11,16 +11,25 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/imgs/faviconos/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/imgs/faviconos/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/imgs/faviconos/favicon-32x32.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Bingo Zone</title>
 </head>
 <body>
+  <div id="loader" class="carga">
+    <h1  class="texto">Cargando...</h1>
+    <h2 class="texto-2">¡Gana BingoCoins y compra estilos de cartones!</h2>
+  <div class="loader">
+    <div class="progress"></div>
+  </div>
+</div>
+  <div id="content" class="content" style="display:none;">
     <img class="logo" src="/imgs/logos/BingoZone.png" alt="Bingo Zone">
     <div class="narvar">
         <h1 class="titulo">Bingo Zone</h1>
     </div>
-    <img  class="globo-texto" src="/imgs/capi/globo-de-textos.png" alt="Globo-De-Texto">
+    <div id="content1">
+    <img  class="globo-texto" src="/imgs/capi/edad-globo.png" alt="Globo-De-Texto">
     <img  class="capi-pregunta" src="/imgs/capi/capi-pregunta.png" alt="Globo-De-Texto">
-    <h1 class="mensaje">¿Cuál es tu<br>edad?</h1>
     <form class="edad">
         <h1 class="text-edad">Mi edad es:</h1>
         <div class="form-check">
@@ -41,5 +50,30 @@
               <h4 class="text-input"> Más de 30 años</h4>
             </label>
         </div>
+        <span class="material-symbols-outlined black">info</span><h3 class="info">No afectará la experiencia del juego.</h3>
+    </form>
+<button class="btn-continuar" id="btn">Continuar</button>
+</div>
+
+
+
+
+
+<div id="content2" class="content">
+  <img class="capi-idea" src="/imgs/capi/capi-idea.png" alt="">
+  <div class="experiencia">
+    <div class="hover-container">
+      <div class="hover-content">
+        <span class="material-symbols-outlined tuto">info</span> <h3 class="texto-info-1">Se activara el tutorial automáticamente</h3>
+      </div>
+      <button id="btn-1" class="">No tengo experiencia</button> <br>
+    </div>
+    <div class="hover-container">
+      <div class="hover-content">
+        <span class="material-symbols-outlined tuto">info</span> <h3 class="texto-info-2">Te llevará al menú de iniciar sesión</h3>
+    </div>
+    <button id="btn-2" >Tengo experiencia</button>
+  </div>
+<script src="/scripts/continuemos.js"></script>
 </body>
 </html>

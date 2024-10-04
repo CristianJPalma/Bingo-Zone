@@ -11,6 +11,7 @@ body {
     color: #FFF;
     font-family: "Bubblegum Sans", sans-serif;
     cursor: url('/imgs/cursores//puntero-normal.cur'),auto;
+    overflow: hidden;
 }
 a{
     cursor: url('/imgs/cursores/puntero-click.cur'),pointer;  
@@ -20,7 +21,47 @@ bubblegum-sans-regular {
     font-weight: 400;
     font-style: normal;
   }
-  .logo{
+  .loader {
+    position: fixed;
+    top: 40%;
+    left: 10%;
+    width: 80%;
+    height: 5%;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+.progress {
+    position: absolute;
+    height: 100%;
+    background-color: #ff8000;
+    width: 0;
+    animation: loading 3s linear forwards;
+    border-radius: 20px;
+    border: 6px solid;
+}
+.carga{
+    text-align: center;
+}
+.texto{
+    margin-top: 12%;
+    margin-bottom: 140px;
+    font-size: 5rem;
+}
+
+@keyframes loading {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+.content {
+    text-align: center;
+    margin-top: 20px;
+}
+.logo{
     position: absolute;
     height: 130px;
     top: 0%;
@@ -48,7 +89,6 @@ bubblegum-sans-regular {
     left: 10%;
     max-width: 350px;
     height: auto;
-    transform: scaleX(-1);
 }
 .capi-pregunta{
     position: fixed;
@@ -58,25 +98,16 @@ bubblegum-sans-regular {
     width: 400px;
     height: auto;
 }
-.mensaje{
-    text-align: center;
-    color: black;
-    position: fixed;
-    top: 30%;
-    left: 14%;
-    font-size: 3.8rem;
-}
 .edad{
     background-color: #ff8000;
     width: 450px;
-    height: 250px;
+    height: 290px;
     float: right;
-    margin-top: 50px;
-    margin-right: 100px;
+    margin-top: 6%;
+    margin-right: 15%;
     border-radius: 40px;
-}
-.text-edad{
-    text-align: center;
+    border: solid;
+    box-shadow: 0px 0px 7px mintcream;
 }
 .form-check{
     margin-top: 20px;
@@ -87,8 +118,102 @@ bubblegum-sans-regular {
     height: 1.5em;
 }
 .text-input{
-    margin-left: 30px;
+    margin-left: 0px;
+}
+.btn-continuar{
+    border-color: #FFF;
+    color: #FFF;
+    background-color: #ff8000;
+    width: 250px;
+    position: absolute;
+    top: 80%;
+    left: 80%;
+    font-size: 2.5rem;
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px mintcream;
+}
+.btn-continuar:hover{
+    background-color: #ca6500;
+}
+.content{
+    display:none;
+}
+.content.show {
+    display: block;
+    opacity: 1;
+}
+.capi-idea{
+    position: absolute;
+    top: 30%;
+    left: 20%;
 }
 input{
     cursor: url('/imgs/cursores/puntero-click.cur'),pointer;   
+}
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 40
+  }
+  .black{
+    color: black;
+    float: left;
+    margin-left: 90px;
+    margin-top: 20px;
+    
+  }
+  .info{
+    color: black;
+    margin-left: 5px;
+    margin-top: 22px;
+    float: left;
+    font-size: 1rem;
+  }
+  .tuto{
+    margin-top: 10px;
+    float: left;
+  }
+  .experiencia{
+    float:right;
+    padding: 20px;
+    margin-right: 100px;
+    margin-top: 50px;
+    width: 350px;
+    height: 400px;
+    border-radius: 40px;
+    background-color:#ff8000;
+    text-align: center;
+    align-self:center;
+  }
+  .texto-info-1{
+    font-size: 1.5rem;
+  }
+  .texto-info-2{
+    margin-top: 12px;
+    font-size: 1.5rem;
+  }
+  #btn-1, #btn-2{
+    background-color: #2232D9;
+    font-size: 2rem;
+    color: white;
+    width: 250px;
+    height: 100px;
+    border-radius: 30px;
+  }
+  #btn-1:hover{
+    background-color: #0f1986;
+  }
+  #btn-2:hover{
+    background-color: #0f1986;
+  }
+  .hover-content {
+    color: transparent;
+
+}
+
+.hover-container:hover .hover-content{
+    display: block;
+    color: white;
 }
