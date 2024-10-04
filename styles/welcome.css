@@ -11,6 +11,7 @@ body {
     color: #FFF;
     font-family: "Bubblegum Sans", sans-serif;
     cursor: url('/imgs/cursores//puntero-normal.cur'),auto;
+    overflow: hidden;
 }
 a{
     cursor: url('/imgs/cursores/puntero-click.cur'),pointer;  

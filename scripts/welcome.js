@@ -14,7 +14,7 @@
 
                 // Mostrar segundo contenido
                 content2.classList.add('show');
-            }, 500);
+            }, 200);
         });
         // Segundo boton
         document.getElementById('btn-1').addEventListener('click', () => {
@@ -24,7 +24,7 @@
             setTimeout(() => {
                 content2.style.display = 'none';
                 content3.classList.add('show');
-            }, 500);
+            }, 200);
         });
            // Tercer boton
            document.getElementById('btn-2').addEventListener('click', () => {
@@ -34,7 +34,7 @@
             setTimeout(() => {
                 content3.style.display = 'none';
                 content4.classList.add('show');
-            }, 500);
+            }, 200);
         });
            // Cuarto boton
            document.getElementById('btn-3').addEventListener('click', () => {
@@ -44,5 +44,5 @@
             setTimeout(() => {
                 content4.style.display = 'none';
                 content5.classList.add('show');
-            }, 500);
+            }, 200);
         });
