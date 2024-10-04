@@ -1,0 +1,94 @@
+body {
+    background-image: url("/imgs/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    background-position: center center;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #FFF;
+    font-family: "Bubblegum Sans", sans-serif;
+    cursor: url('/imgs/cursores//puntero-normal.cur'),auto;
+}
+a{
+    cursor: url('/imgs/cursores/puntero-click.cur'),pointer;  
+}
+bubblegum-sans-regular {
+    font-family: "Bubblegum Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .logo{
+    position: absolute;
+    height: 130px;
+    top: 0%;
+    left: 30px;
+
+}
+.narvar {
+    background-color: #ff8000;
+    color: #FFF;
+    border: solid 2px ;
+    border-radius: 20px;
+    margin: 20px 7px;
+    text-align: center;
+}
+.titulo{
+    font-family: "Bubblegum Sans", sans-serif;
+    margin: 0px;
+    border: 0px;
+    font-size: 4.3rem;
+}
+
+.globo-texto{
+    position: fixed;
+    top: 20%;
+    left: 10%;
+    max-width: 350px;
+    height: auto;
+    transform: scaleX(-1);
+}
+.capi-pregunta{
+    position: fixed;
+    top:50%;
+    bottom: 0;
+    left: 25%;
+    width: 400px;
+    height: auto;
+}
+.mensaje{
+    text-align: center;
+    color: black;
+    position: fixed;
+    top: 30%;
+    left: 14%;
+    font-size: 3.8rem;
+}
+.edad{
+    background-color: #ff8000;
+    width: 450px;
+    height: 250px;
+    float: right;
+    margin-top: 50px;
+    margin-right: 100px;
+    border-radius: 40px;
+}
+.text-edad{
+    text-align: center;
+}
+.form-check{
+    margin-top: 20px;
+    margin-left: 50px;
+}
+.form-check-input{
+    width: 1.5em;
+    height: 1.5em;
+}
+.text-input{
+    margin-left: 30px;
+}
+input{
+    cursor: url('/imgs/cursores/puntero-click.cur'),pointer;   
+}

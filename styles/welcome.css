@@ -14,6 +14,7 @@ body {
 }
 a{
     cursor: url('/imgs/cursores/puntero-click.cur'),pointer;  
+    text-decoration: none;
 }
 bubblegum-sans-regular {
     font-family: "Bubblegum Sans", sans-serif;
@@ -75,8 +76,7 @@ bubblegum-sans-regular {
     top:50%;
     bottom: 0;
     right: 55%;
-    width: 27%;
-    height: auto;
+    width: 400px;
 
 }
 .globo-texto{
@@ -84,8 +84,8 @@ bubblegum-sans-regular {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 28%;
-    height: auto;
+    max-width: 400px;
+ 
 }
 .mensaje{
     color: black;
@@ -97,13 +97,16 @@ bubblegum-sans-regular {
     height: auto;
     font-size: 3.8rem;
 }
-#btn, #btn-1, #btn-2{
+#btn, #btn-1, #btn-2, #btn-3, #btn-4{
+    color: #FFF;
     position: absolute;
     top: 80%;
     left: 80%;
     font-size: 2.5rem;
-    animation: texto 3s infinite;
+    animation: texto 2.5s infinite;
+    text-decoration: none;
 }
+
 @keyframes texto{
     0% {
         opacity: 1;
