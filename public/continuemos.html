@@ -15,52 +15,67 @@
     <title>Bingo Zone</title>
 </head>
 <body>
-  <div id="loader" class="carga">
-    <h1  class="texto">Cargando...</h1>
-    <h2 class="texto-2">¡Gana BingoCoins y compra estilos de cartones!</h2>
+  <div id="loader" class="carga container">
+    <img class="logo-carga" src="/imgs/logos/BingoZone.png" alt="Bingo Zone">
+    <p class="top-text">Cargando...</p>
   <div class="loader">
     <div class="progress"></div>
   </div>
+  <p class="bottom-text">¡Al iniciar sesión podras disfrutar la experiencia completa!</p>
+  <img src="/imgs/capi/capi-baño.png" alt="capi-baño" class="bottom-image">
 </div>
   <div id="content" class="content" style="display:none;">
     <img class="logo" src="/imgs/logos/BingoZone.png" alt="Bingo Zone">
     <div class="narvar">
         <h1 class="titulo">Bingo Zone</h1>
     </div>
+
+
     <div id="content1">
     <img  class="globo-texto" src="/imgs/capi/edad-globo.png" alt="Globo-De-Texto">
     <img  class="capi-pregunta" src="/imgs/capi/capi-pregunta.png" alt="Globo-De-Texto">
-    <form class="edad">
-        <h1 class="text-edad">Mi edad es:</h1>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-            <label class="form-check-label" for="flexRadioDefault1">
+
+
+    <form class="edad p-3" id="myForm" novalidate>
+      <h1 class="text-edad">Mi edad es:</h1>
+      
+      <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="opcion1" value="opcion1" required>
+          <label class="form-check-label" for="opcion1">
               <h4 class="text-input">Menos de 18 años</h4>
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-            <label class="form-check-label" for="flexRadioDefault2">
+          </label>
+      </div>
+      
+      <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="opcion2" value="opcion2" required>
+          <label class="form-check-label" for="opcion2">
               <h4 class="text-input">Entre 18 y 25 años</h4>
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
-            <label class="form-check-label" for="flexRadioDefault2">
-              <h4 class="text-input"> Más de 30 años</h4>
-            </label>
-        </div>
-        <span class="material-symbols-outlined black">info</span><h3 class="info">No afectará la experiencia del juego.</h3>
+          </label>
+      </div>
+      
+      <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="opcion3" value="opcion3" required>
+          <label class="form-check-label" for="opcion3">
+              <h4 class="text-input">Más de 30 años</h4>
+          </label>
+      </div>
+
+      <span class="material-symbols-outlined black">info</span>
+      <h3 class="info">No afectará la experiencia del juego.</h3>
+      <p id="error-message" class="mensaje-error" style="display: none;">
+        <br> Por favor selecciona una opción.
+      </p>
+      <div>
+          <button class="btn-continuar" type="submit" id="btn">Continuar</button>
+      </div>
     </form>
-<button class="btn-continuar" id="btn">Continuar</button>
 </div>
 
 
 
 
-
+<!-- Contenido 2, experiencia -->
 <div id="content2" class="content">
-  <img class="capi-idea" src="/imgs/capi/capi-idea.png" alt="">
   <div class="experiencia">
     <div class="hover-container">
       <div class="hover-content">
@@ -74,6 +89,10 @@
     </div>
     <button id="btn-2" >Tengo experiencia</button>
   </div>
+  <img class="capi" id="img1" src="/imgs/capi/capi-idea.png" alt="">
+  <img class="capi content2" id="img2" src="/imgs/capi/capi-bebe.png" alt="">
+  <img class="capi content2" id="img3" src="/imgs/capi/capi-fuerte.png" alt="">
 <script src="/scripts/continuemos.js"></script>
+<script src="/bootstrap/js/bootstrap.js"></script>
 </body>
 </html>

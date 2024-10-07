@@ -1,5 +1,6 @@
 body {
     background-image: url("/imgs/background.jpg");
+    background-color: black;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -21,34 +22,48 @@ bubblegum-sans-regular {
     font-weight: 400;
     font-style: normal;
   }
-  .loader {
-    position: fixed;
-    top: 40%;
-    left: 10%;
-    width: 80%;
-    height: 5%;
+
+  .logo-carga{
+    position: absolute;
+    height: 200px;
+    top: 0%;
+    right: 30px;
+}
+.loader {
+    width: 90%;
+    height: 5vh;
     background-color: #fff;
     border-radius: 20px;
+    margin: 20px 0;
 }
-
 .progress {
-    position: absolute;
     height: 100%;
     background-color: #ff8000;
     width: 0;
     animation: loading 3s linear forwards;
     border-radius: 20px;
-    border: 6px solid;
+    border: 3px solid;
 }
-.carga{
-    text-align: center;
-}
-.texto{
-    margin-top: 12%;
-    margin-bottom: 140px;
-    font-size: 5rem;
+.top-text {
+    font-size: 3.8rem;
+    margin-bottom: 1px;
 }
 
+.bottom-text {
+    font-size: 1.5rem;
+    margin-top: 1px;          
+}
+
+.container {
+    justify-content: flex-start;
+    padding-bottom: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;   
+    height: 100vh;             
+    text-align: center;
+}
 @keyframes loading {
     0% {
         width: 0;
@@ -56,6 +71,16 @@ bubblegum-sans-regular {
     100% {
         width: 100%;
     }
+}
+.bottom-image {
+    position: fixed;
+    bottom: 10px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30%;  
+    max-width: 300px;
+    min-width: 150px; 
+    height: auto;             
 }
 .content {
     text-align: center;
@@ -66,7 +91,6 @@ bubblegum-sans-regular {
     height: 130px;
     top: 0%;
     left: 30px;
-
 }
 .narvar {
     background-color: #ff8000;
@@ -101,16 +125,16 @@ bubblegum-sans-regular {
 .edad{
     background-color: #ff8000;
     width: 450px;
-    height: 290px;
+    height: 300px;
     float: right;
-    margin-top: 6%;
+    margin-top: 4%;
     margin-right: 15%;
     border-radius: 40px;
     border: solid;
     box-shadow: 0px 0px 7px mintcream;
 }
 .form-check{
-    margin-top: 20px;
+    margin-top: 14px;
     margin-left: 50px;
 }
 .form-check-input{
@@ -135,21 +159,15 @@ bubblegum-sans-regular {
 .btn-continuar:hover{
     background-color: #ca6500;
 }
-.content{
-    display:none;
-}
-.content.show {
-    display: block;
-    opacity: 1;
-}
-.capi-idea{
-    position: absolute;
-    top: 30%;
-    left: 20%;
+.mensaje-error{
+    font-size: 1.4rem;
+    margin-top: 1px;
+    color: #ff1b02;;
 }
 input{
     cursor: url('/imgs/cursores/puntero-click.cur'),pointer;   
 }
+
 .material-symbols-outlined {
     font-variation-settings:
     'FILL' 0,
@@ -161,18 +179,42 @@ input{
     color: black;
     float: left;
     margin-left: 90px;
-    margin-top: 20px;
-    
   }
   .info{
     color: black;
     margin-left: 5px;
-    margin-top: 22px;
+    margin-top: 5px;
     float: left;
     font-size: 1rem;
-  }
+}
+.content{
+    display:none;
+}
+.content.show {
+    display: block;
+    opacity: 1;
+}
+.capi{
+    position: absolute;
+    top: 30%;
+    left: 20%;
+}
+.content2{
+    display: none;
+    opacity: 0;
+    transition: opacity 1s ease;
+    text-align: center;
+}
+.content2.show {
+    display: block;
+    opacity: 1;
+}
+.hidden {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
   .tuto{
-    margin-top: 10px;
+      margin-top: 10px;
     float: left;
   }
   .experiencia{

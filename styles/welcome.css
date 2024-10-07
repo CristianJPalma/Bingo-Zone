@@ -1,9 +1,10 @@
 body {
     background-image: url("/imgs/background.jpg");
+    background-color: black;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    min-height: 100vh;
+    height: 100vh;
     background-position: center center;
     line-height: 1.6;
     margin: 0;
@@ -42,20 +43,6 @@ bubblegum-sans-regular {
     margin: 0px;
     border: 0px;
     font-size: 4.3rem;
-}
-.content {
-    display: none;
-    opacity: 0;
-    transition: opacity 1s ease;
-    text-align: center;
-}
-.content.show {
-    display: block;
-    opacity: 1;
-}
-.hidden {
-    opacity: 0;
-    transition: opacity 1s ease;
 }
 .content {
     display: none;
