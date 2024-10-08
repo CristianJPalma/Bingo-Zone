@@ -7,7 +7,7 @@ window.addEventListener('load', function() {
     setTimeout(() => {
         loader.style.display = 'none'; // Oculta el loader
         content.style.display = 'block'; // Muestra el contenido
-    }, 4000); // Duración de la animación
+    }, 3000); // Duración de la animación
 });
 
 // Validación del formulario y cambio de contenido
@@ -107,4 +107,13 @@ document.getElementById('content2').addEventListener('mouseover', () => {
   img3.style.display = 'none';
   img1.classList.remove('hidden');
   img1.style.display = 'block';
+});
+document.getElementById('btn-2').addEventListener('click', () => {
+  const content2 = document.getElementById('content2');
+  const content3 = document.getElementById('content3');
+  content2.classList.add('hidden');
+  setTimeout(() => {
+      content2.style.display = 'none';
+      content3.classList.add('show');
+  }, 200);
 });

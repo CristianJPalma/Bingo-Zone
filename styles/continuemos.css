@@ -228,6 +228,8 @@ input{
     background-color:#ff8000;
     text-align: center;
     align-self:center;
+    border: solid;
+    box-shadow: 0px 0px 10px mintcream;
   }
   .texto-info-1{
     font-size: 1.5rem;
@@ -254,8 +256,65 @@ input{
     color: transparent;
 
 }
-
 .hover-container:hover .hover-content{
     display: block;
     color: white;
+}
+
+
+/* contenido 3 */
+.iniciar {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 420px;
+    background-color: #ffffff5e;
+    border-radius: 30px;
+}
+
+.iniciar-sesion,
+.registrarse {
+    border: none;
+    color: #FFF;
+    background-color: #ff8000;
+    width: 250px;
+    font-size: 2.5rem;
+    border-radius: 30px;
+    margin-top: 40px;
+
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.3), -3px -3px 5px rgba(255, 255, 255, 0.432);
+}
+
+.iniciar-sesion:hover,
+.registrarse:hover {
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), -2px -2px 4px rgba(255, 255, 255, 0.3);
+}
+
+.invitado {
+    display: block;
+    margin-top: 30px;
+    color: white;
+    font-size: 2rem;
+    text-decoration: none;
+}
+
+.invitado:hover {
+    text-decoration: underline;
+}
+
+.info-inicio{
+    color: white;
+    margin-top: 7px;
+    float: left;
+    margin-left: 90px;
+    height: 35px;
+    width: 35px;
+}
+.texto-inicio{
+    font-size: 1rem;
+    margin-top: 30px;
+    margin-right: 0px;
+    text-align: left;
 }
