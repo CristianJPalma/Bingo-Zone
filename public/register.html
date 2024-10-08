@@ -16,19 +16,23 @@
 </head>
 
 <body>
-    <div class="register marco">
-        <h2>Registrarse</h2>
-        <input class="espacio2" type="text" placeholder="Nombre *">
-        <input class="espacio2" type="text" placeholder="Apellido*">
-        <input class="espacio" type="text" placeholder="Nombre en pantalla *">
-        <input class="espacio" type="text" placeholder="Correo electrónico *">
-        <input class="espacio" type="password" placeholder="Contraseña *">
-        <img class="logo" rel="icon" type="image/png" sizes="32x32" src="/imgs/iconos/cromo.png">
-        <img class="logo" rel="icon" type="image/png" sizes="32x32" src="/imgs/iconos/facebook.png">
-        <img class="logo" rel="icon" type="image/png" sizes="32x32" src="/imgs/iconos/discordia.png">
-        <button class="boton">Continuar</button>
-        <input class="verificado" type="checkbox" class="verificado">Terminos y condiciones
-    </div>
+    <form class="register marco">
+        <h1>Registrarse</h1>
+        <input class="espacio2" type="text" name="nombre" placeholder="Nombre *">
+        <input class="espacio2" type="text" name="apelido" placeholder="Apellido*">
+        <input class="espacio" type="text" name="name-user" placeholder="Nombre en pantalla *">
+        <input class="espacio" type="email" name="correo" placeholder="Correo electrónico *">
+        <input class="espacio" type="password" name="contraseña" placeholder="Contraseña *">
+        <img class="logo"src="/imgs/iconos/simbolo-de-google.png">
+        <img class="logo derecha"src="/imgs/iconos/facebook.png">
+        <img class="logo derecha"src="/imgs/iconos/discordia.png">
+        <div style="margin-top: 10px">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <a href="" style="color: white;">Terminos y condiiones </a>
+        </div>
+        <button class="boton" type="submit" name="register">Continuar</button>
+        <a href="/public/login.html" class="cuenta">¡Ya tengo cuenta!</a>
+    </form>
     <div class="imagen 1">
         <img class="imagen1" rel="icon" type="image/png" sizes="32x32" src="/imgs/logos/BingoZone.png">
     </div>
@@ -36,5 +40,4 @@
         <img class="imagen2" rel="icon" type="image/png" sizes="120x120" src="/imgs/capi/lupa.png">
     </div>
 </body>
-
 </html>

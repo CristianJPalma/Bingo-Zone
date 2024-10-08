@@ -16,7 +16,7 @@ body {
 
 .register {
     float: right;
-    margin-top: 100px;
+    margin-top: 50px;
     margin-right: 100px;
     border: solid 1px;
     width: 400px;
@@ -26,47 +26,62 @@ body {
 
 .marco {
     background-color: #ff8000;
-    padding: 20px;
+    padding: 10px;
     border-radius: 20px;
     box-shadow: 0px 0px 20px rgb(255, 255, 255);
 }
-
 .espacio {
+    border: solid 1px;
+    border-radius: 10px;
     margin-top: 10px;
     width: 330px;
-    height: 30px;
+    height: 45px;
 }
 
-.espacio2 {
-    margin-top: 10px;
-    width: 164px;
-    height: 30px;
+.espacio2{
+    border: solid 1px;
+    border-radius: 10px;
+    margin-top: 1px;
+    margin-left: 3px;
+    margin-right: 3px;
+    width: 160px;
+    height: 45px;
 }
+input::placeholder {
+    color: rgb(114, 113, 113);
+    font-size: 1.2rem;
 
+  }
 .logo {
     margin-top: 20px;
-    width: 80px;
-    height: 80px;
-    margin-left: 20px;
+    width: 60px;
+    border: solid 1px ;
+    background-color: white;
+    border-radius: 30px;
 }
-
+.derecha{
+    margin-left: 60px
+}
+.terminos{
+    color: #FFF;
+}
 .boton {
+    color: white;
+    font-size: 2rem;
     margin-top: 20px;
-    width: 300px;
-    height: 80px;
+    width: 230px;
+    height: 60px;
     background-color: #2323ff;
     border: 2px solid #ffffff;
     border-radius: 60px;
     box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.348);
 }
-
-.verificado {
-    margin-top: 20px;
-    width: 80px;
-    height: 20px;
-    margin-left: 20px;
+.cuenta{
+    color: white;
+    display: flex;
+    font-size: 1.2rem;
+    margin-left: 130px;
 }
-
 .imagen1 {
     margin-top: 50px;
     width: 200px;
@@ -80,84 +95,5 @@ body {
     width: 500px;
     height: 500px;
     margin-left: 300px;
-}
-
-/* Media query para pantallas pequeñas (móviles) */
-@media (max-width: 600px) {
-    .register {
-        float: none;
-        /* Centrar el formulario */
-        margin: 20px auto;
-        /* Margen automático para centrar */
-        width: 90%;
-        /* Ancho del formulario */
-    }
-
-    .espacio,
-    .espacio2 {
-        width: 90%;
-        /* Hacer que los inputs ocupen el 90% del ancho */
-    }
-
-    .boton {
-        width: 90%;
-        /* Botón ocupa el 90% del ancho */
-    }
-
-    .logo {
-        width: 50px;
-        /* Ajustar el tamaño de los logos */
-        height: 50px;
-    }
-
-    .imagen1,
-    .imagen2 {
-        width: 80%;
-        /* Hacer que las imágenes se adapten */
-        height: auto;
-        /* Mantener la proporción */
-        margin-left: auto;
-        /* Centrar imagen */
-        margin-right: auto;
-    }
-}
-
-/* Media query para pantallas medianas (tabletas) */
-@media (min-width: 601px) and (max-width: 1024px) {
-    .register {
-        float: none;
-        /* Centrar el formulario */
-        margin: 50px auto;
-        /* Margen automático para centrar */
-        width: 70%;
-        /* Ancho del formulario */
-    }
-
-    .espacio,
-    .espacio2 {
-        width: 70%;
-        /* Hacer que los inputs ocupen el 70% del ancho */
-    }
-
-    .boton {
-        width: 70%;
-        /* Botón ocupa el 70% del ancho */
-    }
-
-    .logo {
-        width: 70px;
-        /* Ajustar el tamaño de los logos */
-        height: 70px;
-    }
-
-    .imagen1,
-    .imagen2 {
-        width: 60px;
-        /* Hacer que las imágenes se adapten */
-        height: auto;
-        /* Mantener la proporción */
-        margin-left: auto;
-        /* Centrar imagen */
-        margin-right: auto;
-    }
+    transform: scaleX(-1);
 }
