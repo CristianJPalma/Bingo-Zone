@@ -15,52 +15,67 @@
     <title>Bingo Zone</title>
 </head>
 <body>
-  <div id="loader" class="carga">
-    <h1  class="texto">Cargando...</h1>
-    <h2 class="texto-2">¡Gana BingoCoins y compra estilos de cartones!</h2>
+  <div id="loader" class="carga container">
+    <img class="logo-carga" src="/imgs/logos/BingoZone.png" alt="Bingo Zone">
+    <p class="top-text">Cargando...</p>
   <div class="loader">
     <div class="progress"></div>
   </div>
+  <p class="bottom-text">¡Al iniciar sesión podras disfrutar la experiencia completa!</p>
+  <img src="/imgs/capi/capi-baño.png" alt="capi-baño" class="bottom-image">
 </div>
   <div id="content" class="content" style="display:none;">
     <img class="logo" src="/imgs/logos/BingoZone.png" alt="Bingo Zone">
     <div class="narvar">
         <h1 class="titulo">Bingo Zone</h1>
     </div>
+
+
     <div id="content1">
     <img  class="globo-texto" src="/imgs/capi/edad-globo.png" alt="Globo-De-Texto">
     <img  class="capi-pregunta" src="/imgs/capi/capi-pregunta.png" alt="Globo-De-Texto">
-    <form class="edad">
-        <h1 class="text-edad">Mi edad es:</h1>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-            <label class="form-check-label" for="flexRadioDefault1">
+
+
+    <form class="edad p-3" id="myForm" novalidate>
+      <h1 class="text-edad">Mi edad es:</h1>
+      
+      <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="opcion1" value="opcion1" required>
+          <label class="form-check-label" for="opcion1">
               <h4 class="text-input">Menos de 18 años</h4>
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-            <label class="form-check-label" for="flexRadioDefault2">
+          </label>
+      </div>
+      
+      <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="opcion2" value="opcion2" required>
+          <label class="form-check-label" for="opcion2">
               <h4 class="text-input">Entre 18 y 25 años</h4>
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
-            <label class="form-check-label" for="flexRadioDefault2">
-              <h4 class="text-input"> Más de 30 años</h4>
-            </label>
-        </div>
-        <span class="material-symbols-outlined black">info</span><h3 class="info">No afectará la experiencia del juego.</h3>
+          </label>
+      </div>
+      
+      <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="opcion3" value="opcion3" required>
+          <label class="form-check-label" for="opcion3">
+              <h4 class="text-input">Más de 30 años</h4>
+          </label>
+      </div>
+
+      <span class="material-symbols-outlined black">info</span>
+      <h3 class="info">No afectará la experiencia del juego.</h3>
+      <p id="error-message" class="mensaje-error" style="display: none;">
+        <br> Por favor selecciona una opción.
+      </p>
+      <div>
+          <button class="btn-continuar" type="submit" id="btn">Continuar</button>
+      </div>
     </form>
-<button class="btn-continuar" id="btn">Continuar</button>
 </div>
 
 
 
 
-
+<!-- Contenido 2, experiencia -->
 <div id="content2" class="content">
-  <img class="capi-idea" src="/imgs/capi/capi-idea.png" alt="">
   <div class="experiencia">
     <div class="hover-container">
       <div class="hover-content">
@@ -71,9 +86,25 @@
     <div class="hover-container">
       <div class="hover-content">
         <span class="material-symbols-outlined tuto">info</span> <h3 class="texto-info-2">Te llevará al menú de iniciar sesión</h3>
+      </div>
+      <button id="btn-2" >Tengo experiencia</button>
     </div>
-    <button id="btn-2" >Tengo experiencia</button>
+    <img class="capi" id="img1" src="/imgs/capi/capi-idea.png" alt="">
+    <img class="capi content2" id="img2" src="/imgs/capi/capi-bebe.png" alt="">
+    <img class="capi content2" id="img3" src="/imgs/capi/capi-fuerte.png" alt="">
   </div>
+</div>
+<!-- contenido 3, registro, sesión, invitado -->
+<div id="content3" class="content iniciar" >
+  <button class="iniciar-sesion">Iniciar sesión</button>
+  <a href="/public/register.html"><button class="registrarse" >Registrarse</button></a>
+  <a href="" class="invitado">Invitado</a>
+  <div class="info-invitado">
+    <svg xmlns="http://www.w3.org/2000/svg" class="info-inicio" height="40px" viewBox="0 -960 960 960" width="40px" fill="#e8eaed"><path d="M448.67-280h66.66v-240h-66.66v240Zm31.32-316q15.01 0 25.18-9.97 10.16-9.96 10.16-24.7 0-15.3-10.15-25.65-10.16-10.35-25.17-10.35-15.01 0-25.18 10.35-10.16 10.35-10.16 25.65 0 14.74 10.15 24.7 10.16 9.97 25.17 9.97Zm.19 516q-82.83 0-155.67-31.5-72.84-31.5-127.18-85.83Q143-251.67 111.5-324.56T80-480.33q0-82.88 31.5-155.78Q143-709 197.33-763q54.34-54 127.23-85.5T480.33-880q82.88 0 155.78 31.5Q709-817 763-763t85.5 127Q880-563 880-480.18q0 82.83-31.5 155.67Q817-251.67 763-197.46q-54 54.21-127 85.84Q563-80 480.18-80Zm.15-66.67q139 0 236-97.33t97-236.33q0-139-96.87-236-96.88-97-236.46-97-138.67 0-236 96.87-97.33 96.88-97.33 236.46 0 138.67 97.33 236 97.33 97.33 236.33 97.33ZM480-480Z"/></svg>
+    <p class="texto-inicio">Iniciar como invitado <br> limita algunas funciones</p>
+  </div>
+</div>
 <script src="/scripts/continuemos.js"></script>
+<script src="/bootstrap/js/bootstrap.js"></script>
 </body>
 </html>
