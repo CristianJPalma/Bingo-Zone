@@ -12,6 +12,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/imgs/faviconos/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/imgs/faviconos/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/imgs/faviconos/favicon-32x32.png">
+    <script src="/scripts/musica.js"></script>
     <title>Registrarse</title>
 </head>
 
@@ -30,7 +31,7 @@
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <a href="" style="color: white;">Terminos y condiiones </a>
         </div>
-        <button class="boton" type="submit" name="register">Continuar</button>
+        <a href="menu.html" style="text-decoration: none;" class="boton" type="submit" name="register">Continuar</a>
         <a href="/public/login.html" class="cuenta">¡Ya tengo cuenta!</a>
     </form>
     <div class="imagen 1">
@@ -39,5 +40,10 @@
     <div class="imagen 2">
         <img class="imagen2" rel="icon" type="image/png" sizes="120x120" src="/imgs/capi/lupa.png">
     </div>
+    <audio id="background-music"  autoplay loop>
+        <source src="/audios/musica2.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+    <input type="range" style="display: none;" id="volume" min="0" max="1" step="0.01" value="0.5">
 </body>
 </html>
