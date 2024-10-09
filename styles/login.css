@@ -1,0 +1,99 @@
+body {
+    background-image: url("/imgs/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    background-position: center center;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #FFF;
+    font-family: "Bubblegum Sans", sans-serif;
+    cursor: url('/imgs/cursores/puntero-normal.cur'), auto;
+    overflow: hidden;
+}
+
+.register {
+    margin-top: 100px;
+    margin-left: 150px;
+    border: solid 1px;
+    width: 400px;
+    height: auto;
+    text-align: center;
+    margin: center;
+}
+
+.marco {
+    background-color: #ff8000;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px rgb(255, 255, 255);
+}
+.espacio {
+    border: solid 1px;
+    border-radius: 10px;
+    margin-top: 30px;
+    width: 330px;
+    height: 45px;
+}
+input::placeholder {
+    color: rgb(114, 113, 113);
+    font-size: 1.2rem;
+
+  }
+.logo {
+    margin-top: 20px;
+    width: 60px;
+    border: solid 1px ;
+    background-color: white;
+    border-radius: 30px;
+}
+.derecha{
+    margin-left: 60px
+}
+.terminos{
+    color: #FFF;
+}
+.boton {
+    color: white;
+    font-size: 2rem;
+    margin-top: 20px;
+    width: 230px;
+    height: 60px;
+    background-color: #2323ff;
+    border: 2px solid #ffffff;
+    border-radius: 60px;
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.348);
+}
+.cuenta{
+    color: white;
+    display: flex;
+    font-size: 1.2rem;
+    margin-left: 120px;
+    margin-top: 5px;
+}
+.imagen1 {
+    margin-top: -550px;
+    margin-right: 100px;
+    width: 200px;
+    height: 200px;
+    margin-left: 100px;
+    float: right;
+}
+
+.imagen2 {
+    margin-top: -500px;
+    margin-left: 650px ;
+    width: 500px;
+    height: 500px;
+    position: fixed;
+    transform: scaleX(1);
+}
+.cuenta2{
+    color: white;
+    display: flex;
+    font-size: 1.2rem;
+    margin-left: 200px;
+    margin-top: 5px;
+}
