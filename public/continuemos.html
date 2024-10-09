@@ -12,6 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/imgs/faviconos/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/imgs/faviconos/favicon-32x32.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="/scripts/musica.js"></script>
     <title>Bingo Zone</title>
 </head>
 <body>
@@ -104,6 +105,11 @@
     <p class="texto-inicio">Iniciar como invitado <br> limita algunas funciones</p>
   </div>
 </div>
+<audio id="background-music"  autoplay loop>
+  <source src="/audios/musica2.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<input type="range" style="display: none;" id="volume" min="0" max="1" step="0.01" value="0.5">
 <script src="/scripts/continuemos.js"></script>
 <script src="/bootstrap/js/bootstrap.js"></script>
 </body>

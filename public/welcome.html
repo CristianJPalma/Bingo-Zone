@@ -11,9 +11,10 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/imgs/faviconos/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/imgs/faviconos/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/imgs/faviconos/favicon-32x32.png">
+    <script src="/scripts/musica.js"></script>
     <title>Bingo Zone</title>
 </head>
-<body>
+<body id="music">
     <img class="logo" src="/imgs/logos/BingoZone.png" alt="Bingo Zone">
     <div class="narvar">
         <h1 class="titulo">Bingo Zone</h1>
@@ -54,6 +55,17 @@
         <h1 class="mensaje">¡VAMOS A<br>ELLO!</h1>
         <a href="./continuemos.html" class="node" id="btn-4">Continuar</a>
     </div>
+    <audio id="background-music"  autoplay loop>
+        <source src="/audios/musica2.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+    <input type="range" style="display: none;" id="volume" min="0" max="1" step="0.01" value="0.5">
+<script>
+    document.getElementById('music').addEventListener('mouseover','click', function() {
+    var audio = document.getElementById('background-music');
+    audio.play();
+});
+</script>
 <script src="/scripts/welcome.js"></script>
 </body>
 </html>
