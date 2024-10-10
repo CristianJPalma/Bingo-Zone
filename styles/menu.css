@@ -1,0 +1,110 @@
+body {
+    background-image: url("../imgs/background.jpg");
+    background-color: black;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    background-position: center center;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #FFF;
+    font-family: "Bubblegum Sans", sans-serif;
+    cursor: url('../imgs/cursores//puntero-normal.cur'),auto;
+    overflow: hidden;
+}
+a{
+    cursor: url('../imgs/cursores/puntero-click.cur'),pointer;  
+    text-decoration: none;
+}
+bubblegum-sans-regular {
+    font-family: "Bubblegum Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .logo{
+    position: absolute;
+    height: 130px;
+    top: 0%;
+    left: 30px;
+
+}
+.narvar {
+    background-color: #ff8000;
+    color: #FFF;
+    border: solid 2px ;
+    border-radius: 20px;
+    margin: 20px 7px;
+    text-align: center;
+}
+.titulo{
+    font-family: "Bubblegum Sans", sans-serif;
+    margin: 0px;
+    border: 0px;
+    font-size: 4.3rem;
+}
+.imagenPerfil{
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    border: solid 4px #ffffff;
+    border-radius: 50%;
+}
+.iconoMusical{
+    width: 500px;
+}
+.bttCuenta{
+    background-color: #ffffff4b;
+    border: solid 2px #ffffff;
+    float: left;
+    margin-top: 30px;
+    margin-left: 200px;
+    border-radius: 8px;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    color: #FFF;
+    font-size:xx-large;
+}
+.bttTienda{
+    background-color: #ffffff4b;
+    border: solid 2px #ffffff;
+    border-radius: 8px;
+    float: right;
+    margin-top: 30px;
+    margin-right: 200px;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    color: #FFF;
+    font-size:xx-large;
+}
+.crearSala{
+    background-color: #ff8000;
+    border: solid 2px #ffffff;
+    float: left;
+    margin-bottom: 3000px;
+    margin-left: 200px;
+    border-radius: 8px;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    color: #FFF;
+    font-size:xx-large;
+}
+.unirse{
+    background-color: #ff8000;
+    border: solid 2px #ffffff;
+    border-radius: 8px;
+    float: right;
+    margin-bottom: 3000px;
+    margin-right: 200px;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    color: #FFF;
+    font-size:xx-large;
+}
