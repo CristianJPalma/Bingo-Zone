@@ -1,5 +1,6 @@
 body {
-    background-image: url("/imgs/background.jpg");
+    background-image: url("../imgs/background.jpg");
+    background-color: black;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -10,7 +11,7 @@ body {
     padding: 0;
     color: #FFF;
     font-family: "Bubblegum Sans", sans-serif;
-    cursor: url('/imgs/cursores/puntero-normal.cur'), auto;
+    cursor: url('../imgs/cursores/puntero-normal.cur'), auto;
     overflow: hidden;
 }
 
