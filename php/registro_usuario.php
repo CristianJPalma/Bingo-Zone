@@ -11,13 +11,26 @@ $contraseña = $_POST['contraseña'];
 $query = "INSERT INTO usuario(nombre, apellido, nombre_pantalla, correo, contraseña) 
         VALUES('$nombre', '$apellido', '$nombre_pantalla', '$correo', '$contraseña')";
 
+//verificar correo
+$verificar_correo = mysqli_query($conexion, "SELECT * FROM usuario WHERE correo='$correo' ");
+
+if(mysqli_num_rows($verificar_correo) > 0){
+    echo '
+        <script>
+            alert("Este correo ya está registrado");
+            window.location = "../public/register.html";
+        </script>
+    ';
+    exit();
+}
+
 $ejecutar = mysqli_query($conexion, $query);
 
 if($ejecutar){
     echo '
     <script>
     alert("Usuario registrado exitosamente")
-        window.location = "../public/login.html";
+        window.location = "../public/menu.html";
     </script>
     ';
 }else{

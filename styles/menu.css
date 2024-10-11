@@ -11,40 +11,46 @@ body {
     padding: 0;
     color: #FFF;
     font-family: "Bubblegum Sans", sans-serif;
-    cursor: url('../imgs/cursores//puntero-normal.cur'),auto;
+    cursor: url('../imgs/cursores//puntero-normal.cur'), auto;
     overflow: hidden;
 }
-a{
-    cursor: url('../imgs/cursores/puntero-click.cur'),pointer;  
+
+a {
+    cursor: url('../imgs/cursores/puntero-click.cur'), pointer;
     text-decoration: none;
 }
+
 bubblegum-sans-regular {
     font-family: "Bubblegum Sans", sans-serif;
     font-weight: 400;
     font-style: normal;
-  }
-  .logo{
+}
+
+.logo {
     position: absolute;
     height: 130px;
     top: 0%;
     left: 30px;
 
 }
+
 .narvar {
     background-color: #ff8000;
     color: #FFF;
-    border: solid 2px ;
+    border: solid 2px;
     border-radius: 20px;
     margin: 20px 7px;
     text-align: center;
 }
-.titulo{
+
+.titulo {
     font-family: "Bubblegum Sans", sans-serif;
     margin: 0px;
     border: 0px;
     font-size: 4.3rem;
 }
-.imagenPerfil{
+
+.imagenPerfil {
     position: absolute;
     top: 43%;
     left: 50%;
@@ -53,10 +59,12 @@ bubblegum-sans-regular {
     border: solid 4px #ffffff;
     border-radius: 50%;
 }
-.iconoMusical{
+
+.iconoMusical {
     width: 500px;
 }
-.bttCuenta{
+
+.bttCuenta {
     background-color: #ffffff4b;
     border: solid 2px #ffffff;
     float: left;
@@ -67,9 +75,10 @@ bubblegum-sans-regular {
     height: 50px;
     text-align: center;
     color: #FFF;
-    font-size:xx-large;
+    font-size: xx-large;
 }
-.bttTienda{
+
+.bttTienda {
     background-color: #ffffff4b;
     border: solid 2px #ffffff;
     border-radius: 8px;
@@ -80,9 +89,10 @@ bubblegum-sans-regular {
     height: 50px;
     text-align: center;
     color: #FFF;
-    font-size:xx-large;
+    font-size: xx-large;
 }
-.crearSala{
+
+.crearSala {
     background-color: #ff8000;
     border: solid 2px #ffffff;
     color: #FFF;
@@ -90,12 +100,13 @@ bubblegum-sans-regular {
     font-size: xx-large;
     border-radius: 8px;
     position: fixed;
-    bottom: 150px;
-    left: 500px ;
+    bottom: 100px;
+    left: 250px;
     width: 350px;
     height: 60px;
 }
-.unirse{
+
+.unirse {
     background-color: #ff8000;
     border: solid 2px #ffffff;
     color: #FFF;
@@ -103,19 +114,21 @@ bubblegum-sans-regular {
     font-size: xx-large;
     border-radius: 8px;
     position: fixed;
-    bottom: 150px;
-    right: 500px;
+    bottom: 100px;
+    right: 250px;
     width: 350px;
     height: 60px;
 }
-.regalo{
+
+.regalo {
     position: fixed;
-    bottom: 300px;
-    right: 600px;
+    bottom: 200px;
+    right: 20%;
     width: 100px;
     height: 100px;
 }
-.marginBaja{
+
+.marginBaja {
     background-color: #ffffff7a;
     text-align: center;
     font-size: xx-large;
@@ -124,7 +137,8 @@ bubblegum-sans-regular {
     width: 100%;
     height: 60px;
 }
-.miusic{
+
+.miusic {
     border: solid 4px #000;
     border-radius: 80px;
     text-align: center;
@@ -133,4 +147,11 @@ bubblegum-sans-regular {
     width: 60px;
     height: 60px;
     right: 20px;
+}
+.contacto{
+    position: fixed;
+    color: #FFF;
+    font-size: xx-large;
+    bottom: 0%;
+    left: 30px;
 }
