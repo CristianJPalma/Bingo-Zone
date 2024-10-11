@@ -46,16 +46,16 @@ bubblegum-sans-regular {
 }
 .texto1{
     text-align: center;
-    font-size:5rem;
+    font-size:3rem;
 }
 .marcoP{
     position: absolute;
     background-color: #ffffff8a;
-    top: 60%;
+    top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 1000px;
-    height: 700px;
+    height: 70vh;
     border-radius: 40px;
     text-align: center;
 }
@@ -80,7 +80,7 @@ bubblegum-sans-regular {
 .cosos {
     display: flex;
     gap: 220px;
-    justify-content: center; /* Centra horizontalmente */
+    justify-content: center;
     font-size: 2rem;
-    margin-top: 50px; /* Cambiado de top a margin-top */ /* Esto se puede ajustar según sea necesario */
+    margin-top:20px;
 }
