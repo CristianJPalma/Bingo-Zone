@@ -17,11 +17,11 @@
 </head>
 
 <body>
-    <form class="register marco">
+    <form action="../php/registro_usuario.php" method="POST" class="register marco">
         <h1>Registrarse</h1>
         <input class="espacio2" type="text" name="nombre" placeholder="Nombre *">
-        <input class="espacio2" type="text" name="apelido" placeholder="Apellido*">
-        <input class="espacio" type="text" name="name-user" placeholder="Nombre en pantalla *">
+        <input class="espacio2" type="text" name="apellido" placeholder="Apellido*">
+        <input class="espacio" type="text" name="nombre_pantalla" placeholder="Nombre en pantalla *">
         <input class="espacio" type="email" name="correo" placeholder="Correo electrónico *">
         <input class="espacio" type="password" name="contraseña" placeholder="Contraseña *">
         <img class="logo"src="../imgs/iconos/simbolo-de-google.png">
@@ -31,7 +31,7 @@
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <a href="" style="color: white;">Terminos y condiiones </a>
         </div>
-        <a href="menu.html" style="text-decoration: none;" class="boton" type="submit" name="register">Continuar</a>
+        <button href="menu.html" style="text-decoration: none;" class="boton" type="submit" name="register">Continuar</button>
         <a href="../public/login.html" class="cuenta">¡Ya tengo cuenta!</a>
     </form>
     <div class="imagen 1">
