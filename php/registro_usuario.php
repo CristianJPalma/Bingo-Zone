@@ -2,43 +2,41 @@
 
 include 'conexion.php';
 
-$nombre = $_POST['nombre'];
-$apellido = $_POST['apellido'];
-$nombre_pantalla = $_POST['nombre_pantalla'];
-$correo = $_POST['correo'];
-$contraseña = $_POST['contraseña'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+    $nombre_pantalla = $_POST['nombre_pantalla'];
+    $correo = $_POST['correo'];
+    $contraseña = $_POST['contraseña'];
 
-$query = "INSERT INTO usuario(nombre, apellido, nombre_pantalla, correo, contraseña) 
-        VALUES('$nombre', '$apellido', '$nombre_pantalla', '$correo', '$contraseña')";
+    // encriptar la contraseña (pensaba que era mas largo)
+    $contraseña = hash('sha512', $contraseña);
 
-//verificar correo
-$verificar_correo = mysqli_query($conexion, "SELECT * FROM usuario WHERE correo='$correo' ");
 
-if(mysqli_num_rows($verificar_correo) > 0){
-    echo '
-        <script>
-            alert("Este correo ya está registrado");
-            window.location = "../public/register.html";
-        </script>
-    ';
-    exit();
-}
+    // Verificar si el correo ya está registrado
+    $verificar_correo = mysqli_query($conexion, "SELECT * FROM usuario WHERE correo='$correo'");
 
-$ejecutar = mysqli_query($conexion, $query);
+    if (mysqli_num_rows($verificar_correo) > 0) {
+        // Redirigir con un parámetro que indique el error
+        header("Location: ../public/register.html?error=correo");
+        exit();
+    } else {
+        // Insertar el registro en la base de datos
+        $query = "INSERT INTO usuario(nombre, apellido, nombre_pantalla, correo, contraseña) 
+                VALUES('$nombre', '$apellido', '$nombre_pantalla', '$correo', '$contraseña')";
 
-if($ejecutar){
-    echo '
-    <script>
-    alert("Usuario registrado exitosamente")
-        window.location = "../public/menu.html";
-    </script>
-    ';
-}else{
-    echo '
-    <script>
-    alert("error")
-    window.location = "../public/error.html";
-    </script>
-    ';
+        $ejecutar = mysqli_query($conexion, $query);
+
+        if ($ejecutar) {
+            // Redirigir con un parámetro que indique el éxito
+            header("Location: ../public/register.html?status=exito");
+            exit();
+        } else {
+            // Redirigir con un parámetro que indique un error
+            header("Location: ../public/register.html?error=registro");
+            exit();
+        }
+    }
+
 }
 mysqli_close($conexion);

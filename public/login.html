@@ -11,13 +11,17 @@
     <link rel="apple-touch-icon" sizes="180x180" href="../imgs/faviconos/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../imgs/faviconos/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../imgs/faviconos/favicon-32x32.png">
-    <title>login</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Inicio de sesión</title>
 </head>
 <body>
     <form class="register marco">
         <h1>Inicia sesión</h1>
-        <input class="espacio" type="email" name="correo" placeholder="Correo electrónico *">
-        <input class="espacio" type="password" name="contraseña" placeholder="Contraseña *">
+        <input class="espacio" type="email" name="correo" placeholder="Correo electrónico *" required>
+        <div class="container">
+            <input class="espacio" id="contraseña" type="password" name="contraseña" placeholder="Contraseña *" required>
+            <i class='bx bx-show-alt'></i>
+        </div>
         <a href="" class="cuenta2">Olvidé mi contraseña</a>
         <img class="logo"src="../imgs/iconos/simbolo-de-google.png">
         <img class="logo derecha"src="../imgs/iconos/facebook.png">
@@ -27,11 +31,13 @@
         <button class="boton" type="submit" name="register">Continuar</button>
         <a href="../public/register.html" class="cuenta">¡No tengo cuenta!</a>
     </form>
+    
     <div class="imagen 1">
         <img class="imagen1" rel="icon" type="image/png" sizes="32x32" src="../imgs/logos/BingoZone.png">
     </div>
     <div class="imagen 2">
         <img class="imagen2" rel="icon" type="image/png" sizes="120x120" src="../imgs/capi/lupa.png">
     </div>
+    <script src="../scripts/login.js"></script>
 </body>
 </html>

@@ -6,30 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../styles/register.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="180x180" href="../imgs/faviconos/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../imgs/faviconos/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../imgs/faviconos/favicon-32x32.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="../scripts/musica.js"></script>
     <title>Registrarse</title>
 </head>
 
 <body>
-    <form action="../php/registro_usuario.php" method="POST" class="register marco">
+    <form id="registroForm" action="../php/registro_usuario.php" method="POST" class="register marco">
         <h1>Registrarse</h1>
-        <input class="espacio2" type="text" name="nombre" placeholder="Nombre *">
-        <input class="espacio2" type="text" name="apellido" placeholder="Apellido*">
-        <input class="espacio" type="text" name="nombre_pantalla" placeholder="Nombre en pantalla *">
-        <input class="espacio" type="email" name="correo" placeholder="Correo electrónico *">
-        <input class="espacio" type="password" name="contraseña" placeholder="Contraseña *">
-        <img class="logo"src="../imgs/iconos/simbolo-de-google.png">
+        <div id="mensaje"></div>
+        <input class="espacio2" type="text" name="nombre" placeholder="Nombre *" required>
+        <input class="espacio2" type="text" name="apellido" placeholder="Apellido*" required>
+        <input class="espacio" type="text" name="nombre_pantalla" placeholder="Nombre en pantalla *" required>
+        <input class="espacio" type="email" name="correo" placeholder="Correo electrónico *" required>
+        <div class="container">
+            <input class="espacio" id="contraseña" type="password" name="contraseña" placeholder="Contraseña *" required>
+            <i class='bx bx-show-alt'></i>
+        </div>
+        <img class="logo derecha"src="../imgs/iconos/simbolo-de-google.png">
         <img class="logo derecha"src="../imgs/iconos/facebook.png">
         <img class="logo derecha"src="../imgs/iconos/discordia.png">
         <div style="margin-top: 10px">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <a href="" style="color: white;">Terminos y condiiones </a>
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+            <a href="" style="color: white;">Aceptar terminos y condiiones </a>
         </div>
         <button href="menu.html" style="text-decoration: none;" class="boton" type="submit" name="register">Continuar</button>
         <a href="../public/login.html" class="cuenta">¡Ya tengo cuenta!</a>
@@ -45,5 +48,6 @@
         Tu navegador no soporta el elemento de audio.
     </audio>
     <input type="range" style="display: none;" id="volume" min="0" max="1" step="0.01" value="0.5">
+    <script src="../scripts/register.js"></script>
 </body>
 </html>
