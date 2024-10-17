@@ -12,6 +12,7 @@ body {
     color: #FFF;
     font-family: "Bubblegum Sans", sans-serif;
     cursor: url('../imgs/cursores//puntero-normal.cur'), auto;
+
 }
 
 a {
@@ -26,19 +27,19 @@ bubblegum-sans-regular {
 }
 
 .narvar {
+    background-color: #ff8000;
+    border-radius: 20px;
+    border: solid 3px white;
     position: relative;
     display: flex;
     justify-content: center;
-    background-color: #ff8000;
-    border: solid 2px;
-    border-radius: 20px;
-    padding: 7px;
-    margin: 20px 20px 20px;
+    padding: 1%;
+    margin: 10px 10px 10px;
 }
 
 .narvar h1 {
     color: white;
-    font-size: 4rem;
+    font-size: 5rem;
     margin: 0;
 }
 
@@ -46,7 +47,7 @@ bubblegum-sans-regular {
 .logo {
     position: absolute;
     top: -30px; /* Adjust this value to control how much the image overlaps */
-    width: 150px; /* Control the width of the logo */
+    max-width: 200px; /* Control the width of the logo */
     height: auto;
     left: 15%;
     transform: translateX(-50%);
@@ -57,19 +58,21 @@ bubblegum-sans-regular {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    max-width: 90%;
-    margin: 40px auto 0px auto;
+    max-width: 100%;
+    margin: 2% auto auto auto;
 }
 
 .top-buttons button {
     background-color: #ffffff4b;
     border: solid 2px #ffffff;
     border-radius: 8px;
+    font-size: 2.5rem;
+    margin: 0px;
+    padding: 0.6% 6%;
     color: white;
-    padding: 15px 90px;
     cursor: pointer;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .top-buttons button:hover {
@@ -78,16 +81,15 @@ bubblegum-sans-regular {
 
 /* Main content */
 .centro {
+    margin-top: 2%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 0px;
-    padding: 0 20px;
-}
 
+}
 .centro img {
     width: 100%;
-    max-width: 250px;
+    max-width: 350px;
     background-color: #ffffffa8;
     border: solid 4px #ffffff;
     border-radius: 50%;
@@ -95,6 +97,7 @@ bubblegum-sans-regular {
 }
 
 .centro #cambiar {
+    display: none;
     margin-top: 10px;
     padding: 10px 20px;
     background-color: #555;
@@ -107,9 +110,12 @@ bubblegum-sans-regular {
     background-color: #777;
 }
 
-.centro h4 {
-    margin-top: 10px;
-    text-align: center;
+.centro h1{
+    font-size: 6rem;
+    margin: 0; /* Elimina el margen superior e inferior */
+    padding: 0; /* Elimina cualquier padding */
+    text-align: center; /* Si necesitas centrar el texto */
+
 }
 
 /* Bottom butts */
@@ -117,18 +123,22 @@ bubblegum-sans-regular {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    max-width: 500px;
-    margin: 40px auto;
+    max-width: 60%;
+    margin: 0px auto auto auto;
 }
 
 .bottom-buttons button {
-    padding: 10px 20px;
+    margin-top: 5%;
     border: none;
     cursor: pointer;
-    background-color: #555;
+    background-color: #ff8000;
+    font-size: 3rem;
+    width: 35%;
+    padding: 1.5% 7%;
+    border-radius: 8px;
     color: white;
-}
 
+}
 .bottom-buttons button:hover {
     background-color: #777;
 }
@@ -136,27 +146,273 @@ bubblegum-sans-regular {
 /* Hotbar */
 .marginBaja {
     width: 100%;
+    height: 7vh;
     background-color: #ffffff7a;
-    padding: 10px;
+    position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: white;
-    margin-top: auto;
+    bottom: 0px;
 }
 
 .marginBaja .contacto {
     margin-left: 20px;
+    font-size: 2.5rem;
 }
 
 .marginBaja .miusic {
     margin-right: 20px;
-    width: 40px;
-    height: 40px;
+    max-width: 60px;
 }
-/* Responsive Design */
-@media (max-width: 768px) {
-    .top-buttons, .bottom-buttons {
-        flex-direction: row;
+/* Estilo de la barra de desplazamiento */
+::-webkit-scrollbar {
+    width: 15px;
+    height: 12px;
+}
+
+/* Estilo de la pista (background) de la barra */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color de la pista */
+    border-radius: 10px;
+}
+
+/* Estilo del "dedo" o "thumb" que se desplaza */
+::-webkit-scrollbar-thumb {
+    background-color: #ff8000;
+    border-radius: 10px;
+    border: 3px solid #f1f1f1;
+}
+
+/* Cambiar el color del thumb al pasar el cursor sobre él */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #c76401;
+}
+
+/* Opcional: Cambiar el estilo del thumb cuando está activo */
+::-webkit-scrollbar-thumb:active {
+    background-color: #8f4700;
+}
+
+
+@media (max-width: 1440px), (max-height: 950px) {
+    .narvar {
+        margin: 20px 10px 10px;
+    }  
+    .narvar h1 {
+        font-size: 4rem;
+    }
+    .logo {
+        max-width: 170px;
+    }
+    .top-buttons {
+        margin: 2.5% auto auto auto;
+    }
+    .top-buttons button {
+        padding: 0.3% 6%;
+        margin-left: 7%;
+        margin-right: 7%;
+    }
+    .centro {
+        margin-top: 0%;
+    }
+    
+    .centro img {
+        max-width: 290px;
+    }
+    .centro h1{
+        font-size: 4.5rem;
+    }    
+    .bottom-buttons button {
+        margin-top: 5%;
+        font-size: 2.8rem;
+        padding: 1% 7%;
+    }
+    .marginBaja {
+        height: 6vh;
+    }
+    
+    .marginBaja .contacto {
+        margin-left: 20px;
+        font-size: 2rem;
+    }
+    
+    .marginBaja .miusic {
+        max-width: 50px;
+    }
+}
+
+
+@media (max-width: 1440px) {
+    .narvar {
+        margin: 10px 10px 10px;
+        padding: 0.8%;
+    }  
+    .narvar h1 {
+        font-size: 3.5rem;
+    }
+    .logo {
+        max-width: 150px;
+    }
+    .top-buttons {
+        margin: 3% auto auto auto;
+    }
+    .top-buttons button {
+        font-size: 2rem;
+        padding: 0.3% 5.5%;
+        margin-left: 9%;
+        margin-right: 9%;
+    }
+    .centro {
+        margin-top: 0%;
+    }
+    .centro img {
+        max-width: 260px;
+    }
+    .centro h1{
+        font-size: 3.5rem;
+    }    
+    .bottom-buttons button {
+        margin-top: 4%;
+        width: 30%;
+        font-size: 2.5rem;
+        padding: 0.2% ;
+        margin-bottom: 8%;
+    }
+    .marginBaja {
+        height: 6vh;
+    }
+    
+    .marginBaja .contacto {
+        margin-left: 20px;
+        font-size: 1.7rem;
+    }
+    
+    .marginBaja .miusic {
+        max-width: 40px;
+    }
+}
+
+
+@media (max-width: 720px) and (max-height: 1280px) {
+    .narvar {
+        margin: 20px 10px 10px;
+        padding: 0.8%;
+    }  
+    .narvar h1 {
+        font-size: 4rem;
+    }
+    .logo {
+        max-width: 150px;
+    }
+    .top-buttons {
+        margin: 10% auto auto auto;
+    }
+    .top-buttons button {
+        font-size: 2.5rem;
+        padding: 0.5% 9%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    .centro {
+        margin-top: 15%;
+    }
+    .centro img {
+        max-width: 350px;
+    }
+    .centro h1{
+        font-size: 6rem;
+    }    
+    .bottom-buttons {
+        max-width: 90%;
+    }
+    .bottom-buttons button {
+        margin-top: 18%;
+        width: 45%;
+        font-size: 3rem;
+        padding: 1% ;
+    }
+    .marginBaja {
+        height: 6vh;
+    }
+    .marginBaja .contacto {
+        margin-left: 20px;
+        font-size: 2rem;
+    }
+    
+    .marginBaja .miusic {
+        max-width: 60px;
+    }
+}
+@media (max-width: 500px){
+    .narvar {
+        margin: 5px 5px 5px;
+        padding: 0.2%;
+    }  
+    .narvar h1 {
+        font-size: 3.6rem;
+    }
+    .logo {
+        display: none;
+    }
+    .top-buttons {
+        margin: 7% auto auto auto;
+    }
+    .top-buttons button {
+        font-size: 2.5rem;
+        padding: 0.2% 4%;
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+    .centro {
+        margin-top: 2%;
+    }
+    .centro img {
+        max-width: 200px;
+    }
+    .centro h1{
+        font-size: 4rem;
+    }    
+    .bottom-buttons {
+        margin-top: 18%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;  
+        width: 100%;
+        max-width: 80%;      
+        margin: 25px auto; 
+    }
+    .bottom-buttons button {
+        font-size: 3rem;  
+        width: 100%;            
+        margin: 10px 0;  
+    }
+    .marginBaja {
+        height: 38px;
+    }
+    .marginBaja .contacto {
+        margin-left: 20px;
+        font-size: 2rem;
+    }
+    
+    .marginBaja .miusic {
+        max-width: 50px;
+    }
+}
+@media (max-width: 400px){
+    .bottom-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;  
+        width: 100%;
+        max-width: 80%;
+        margin-top: 0px;
+        margin-bottom: 1px; 
+    }
+    .bottom-buttons button {
+        margin-top: 0px; 
+        padding: 0%;
+        font-size: 2.5rem;  
+        width: 100%;
     }
 }

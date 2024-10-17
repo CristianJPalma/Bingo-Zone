@@ -1,4 +1,3 @@
-
 <?php
 include 'conexion.php';
 session_start();
@@ -11,7 +10,7 @@ if ($usuario) {
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        echo $row["nombre_pantalla"];
+        echo trim($row["nombre_pantalla"]); // Limpiar posibles espacios en blanco
     } else {
         echo "No se encontraron resultados";
     }
