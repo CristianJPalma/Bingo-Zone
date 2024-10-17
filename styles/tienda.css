@@ -1,0 +1,44 @@
+body {
+    background-image: url("../imgs/background.jpg");
+    background-color: black;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    background-position: center center;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #FFF;
+    font-family: "Bubblegum Sans", sans-serif;
+    cursor: url('../imgs/cursores//puntero-normal.cur'), auto;
+    overflow: hidden;
+}
+
+a {
+    cursor: url('../imgs/cursores/puntero-click.cur'), pointer;
+    text-decoration: none;
+}
+
+bubblegum-sans-regular {
+    font-family: "Bubblegum Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.marco{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 85vh;
+    border: solid 4px #ffffff;
+    border-radius: 50px;
+    text-align: center;
+}
+.punto{
+    border: solid 2px #FFF;
+    border-radius: 50px;
+    height: 50px;
+    width: 50px;
+}
