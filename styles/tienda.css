@@ -25,7 +25,8 @@ bubblegum-sans-regular {
     font-weight: 400;
     font-style: normal;
 }
-.marco{
+
+.marco {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -33,12 +34,92 @@ bubblegum-sans-regular {
     width: 70%;
     height: 85vh;
     border: solid 4px #ffffff;
+    background-color: #ffffff74;
     border-radius: 50px;
     text-align: center;
 }
-.punto{
-    border: solid 2px #FFF;
+
+.punto {
+    border: solid 2px #fff;
+    background-color: #FF8000;
     border-radius: 50px;
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
+    float: left;
+    margin-top: 20px;
+    margin-left: 2.5%;
+}
+
+.punto2 {
+    border: solid 2px #fff;
+    background-color: #FF8000;
+    border-radius: 50px;
+    height: 40px;
+    width: 40px;
+    float: right;
+    margin-right: 2.5%;
+    margin-top: 20px;
+}
+
+.punto3 {
+    border: solid 2px #fff;
+    background-color: #FF8000;
+    border-radius: 50px;
+    height: 40px;
+    width: 40px;
+    float: left;
+    position: fixed;
+    bottom: 2.5%;
+    margin-left: 2.5%;
+}
+
+.punto4 {
+    border: solid 2px #fff;
+    background-color: #FF8000;
+    border-radius: 50px;
+    height: 40px;
+    width: 40px;
+    float: right;
+    position: fixed;
+    bottom: 2.5%;
+    margin: right;
+    right: 2.5%;
+}
+
+.carton {
+
+    height: 300px;
+    width: 200px;
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+}
+
+.boton {
+    display: flex;
+    text-align: center;
+    height: 6vh;
+    width: 15%;
+    font-size: 5vh;
+    color: #FFF;
+    position: absolute;
+    top: 75%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: #ff8000;
+    transition: transform 0.3s ease-in-out;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.boton:hover {
+    background-color: #ff8000d2;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.boton:active {
+    transform: scale(0);
 }
