@@ -1,3 +1,27 @@
+// Función para obtener parámetros de la URL
+function obtenerParametroUrl(nombre) {
+    let url = new URL(window.location.href); // Obtener toda la URL
+    return url.searchParams.get(nombre); // Extraer el valor del parámetro
+}
+
+// Mostrar mensajes basados en los parámetros y limpiar la URL
+window.onload = function() {
+    const mensajeDiv = document.getElementById('mensaje'); // Contenedor del mensaje
+    const error = obtenerParametroUrl('error'); // Captura 'error' de la URL
+    const status = obtenerParametroUrl('status'); // Captura 'status' de la URL
+
+    // Mostrar mensajes
+    if (error === 'credenciales') {
+        mensajeDiv.innerHTML = "<p style='color: red; font-size:1.3rem; margin: 0px;'>Correo o contraseña incorrectos.</p>";
+    }
+    // Eliminar los parámetros de la URL después de mostrar el mensaje
+    if (error || status) {
+        window.history.replaceState(null, "", window.location.pathname);
+    }
+};
+
+
+
 const contraseña = document.getElementById('contraseña'),
 icono = document.querySelector('.bx');
 icono.addEventListener("click", evento => {

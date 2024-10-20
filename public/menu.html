@@ -12,35 +12,49 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../imgs/faviconos/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../imgs/faviconos/favicon-32x32.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=headphones" />
-    <script src="../scripts/musica.js"></script></head>
+    <script src="../scripts/musica.js"></script>
+    <script src="../scripts/datos.js"></script>
+    <!-- <script src="../scripts/sesion.js"></script> -->
+    <title>Menú</title>
+</head>
 <body id="music">
-    <img class="logo" src="../imgs/logos/BingoZone.png" alt="Bingo Zone">
+    
     <div class="narvar">
+        <img class="logo" src="../imgs/logos/BingoZone.png" alt="Bingo Zone">
         <h1 class="titulo">Bingo Zone</h1>
     </div>
-    <img class="imagenPerfil" src="../imgs/capi/capi-furia.png" alt="capiEnojado">
-    <img class="regalo" src="../imgs/iconos/icono-regalo.png" alt="icono-regalo">
-    <button class="bttCuenta">Cuenta</button>
-    <button class="bttTienda">Tienda</button>
-    <button class="crearSala">Crear sala</button>
-    <button class="unirse">Unirse</button>
-    <div class="marginBaja"></div>
-    <img class="miusic" src="../imgs/iconos/icono-musica.png" alt="icono-musica">
-    <div class="contacto">Contacto</div>
-
-
+    <div class="top-buttons">
+        <button class="bttCuenta">Cuenta</button>
+        <button class="bttTienda">Tienda</button>
+    </div>
+    <div class="centro">
+        <img class="imagenPerfil" id="imgPerfil" src="../imgs/capi/capi-furia.png" alt="capiEnojado">
+        <h1 id="nombrePantall">Anonimo123</h1>
+        <button id="cambiar" >Cambiar</button>
+    </div>
+    <div class="bottom-buttons">
+        <button class="crearSala">Crear sala</button>
+        <button class="unirse">Ingresar</button>
+    </div>
+    <div class="marginBaja">
+        <a href="../php/cerrar_sesion.php">Cerrar Sesión</a>
+        <div class="contacto">Contacto</div>
+        <img class="miusic" src="../imgs/iconos/icono-musica.png" alt="icono-musica">
+    </div>
+    
 
 
     <audio id="background-music"  autoplay loop>
         <source src="../audios/musica2.mp3" type="audio/mpeg">
         Tu navegador no soporta el elemento de audio.
     </audio>
-    <input style="display: none;" type="range" id="volume" min="0" max="1" step="0.01" value="0.5">
+    <input type="range" style="display: none;" id="volume" min="0" max="1" step="0.01" value="0.5">
     <script>
         document.getElementById('music').addEventListener('mouseover','click', function() {
         var audio = document.getElementById('background-music');
         audio.play();
     });
     </script>
+<script src="../scripts/menu.js"></script>
 </body>
 </html>

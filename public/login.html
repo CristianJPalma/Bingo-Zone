@@ -12,11 +12,13 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../imgs/faviconos/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../imgs/faviconos/favicon-32x32.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="../scripts/musica.js"></script>
     <title>Inicio de sesión</title>
 </head>
 <body>
-    <form class="register marco">
+    <form class="register marco" action="../php/login_usuario.php" method="post">
         <h1>Inicia sesión</h1>
+        <div id="mensaje"></div> 
         <input class="espacio" type="email" name="correo" placeholder="Correo electrónico *" required>
         <div class="container">
             <input class="espacio" id="contraseña" type="password" name="contraseña" placeholder="Contraseña *" required>
@@ -38,6 +40,12 @@
     <div class="imagen 2">
         <img class="imagen2" rel="icon" type="image/png" sizes="120x120" src="../imgs/capi/lupa.png">
     </div>
+    <audio id="background-music"  autoplay loop>
+        <source src="../audios/musica2.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+    <input type="range" style="display: none;" id="volume" min="0" max="1" step="0.01" value="0.5">
+   
     <script src="../scripts/login.js"></script>
 </body>
 </html>
