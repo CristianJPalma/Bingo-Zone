@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="../imgs/faviconos/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./imgs/faviconos/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./imgs/faviconos/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./imgs/faviconos/favicon-32x32.png">
+    <title>Error404</title>
+</head>
+<body>
+    <div class="error_container">
+        <div class="error_code">
+            <p>4</p>
+            <p>0</p>
+            <p>4</p>
+        </div>
+        <divv class="error_title">Página no encontrada</divv>
+        <div class="error_description">Parece que no podemos encontrar esa página. Puede que se haya eliminado.</div>
+    </div>
+    <style>
+:root{
+    margin: 0;
+    padding: 0;
+
+    --white: #f2f5f5;
+    --black: black;
+    --blue: #FF8000;
+    --gray: #959695;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Bubblegum Sans", sans-serif;
+    margin: 0 auto;
+    color: var(--white);
+    background-color: var(--black);
+}
+
+.error_container{
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 0 10px;
+}
+
+.error_code{
+    width: 100%;
+    margin: 0 auto;
+    font-size: 6rem;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+p:first-of-type{
+    animation: fall 1s linear;
+    transform: rotateZ(-20deg);
+}
+
+P:last-of-type{
+    animation: fall 1.8s linear;
+    transform: rotateZ(8deg);
+}
+
+p:nth-of-type(2){
+    color: var(--blue);
+    animation: bounce 1.2s 1.8s linear forwards;
+    opacity: 0;
+}
+
+.error_title{
+    font-size: 1.5rem;
+    font-weight: 700;
+    pad: 0 3%;
+}
+
+.error_description{
+    font-size: 0.9rem;
+    text-align: justify;
+    line-height: 1.6;
+    padding: 0 10%;
+    color: var(--gray);
+}
+
+.action{
+    font: inherit;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.action:hover{
+    opacity: 0.8;
+}
+
+@media screen and (min-width: 48rem) {
+    .error_description{
+        padding: 0;
+    }
+    
+}
+@keyframes fall{
+    0%{
+        transform: translateY(-100vh);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce{
+    0%,40%,75%,95%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+    15%{
+        transform: translateY(-25px);
+    }
+    65%{
+        transform: translateY(-15px);
+    }
+    85%{
+        transform: translateY(-5px);
+    }
+    100%{
+        transform: rotateZ(45deg);
+        opacity: 1;
+    }
+}
+    </style>
+</body>
+</html>

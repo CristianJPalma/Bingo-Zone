@@ -1,29 +1,5 @@
-body {
-    background-image: url("../imgs/background.jpg");
-    background-color: black;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    min-height: 100vh;
-    background-position: center center;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    color: #FFF;
-    font-family: "Bubblegum Sans", sans-serif;
-    cursor: url('../imgs/cursores/puntero-normal.cur'),auto;
-    overflow: hidden;
-}
-a, input, button{
-    cursor: url('../imgs/cursores/puntero-click.cur'),pointer;  
-}
-bubblegum-sans-regular {
-    font-family: "Bubblegum Sans", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
 
-  .logo-carga{
+.logo-carga{
     position: absolute;
     height: 200px;
     top: 0%;
@@ -82,30 +58,58 @@ bubblegum-sans-regular {
     min-width: 150px; 
     height: auto;             
 }
+@media (max-width: 750px) {
+    .logo-carga{
+        position: absolute;
+        max-height: 300px;
+        min-height: 90px; 
+        top: 0%;
+        right: 30px;
+    }
+    .bottom-image {
+        position: fixed;
+        bottom: 5%; 
+        left: 50%;
+        transform: translateX(-50%);
+        width: 30%;  
+        max-width: 500px;
+        min-width: 230px; 
+        height: auto;             
+    }
+}
+@media (max-width: 400px) {
+    .logo-carga{
+        position: absolute;
+        max-height: 150px;
+        min-height: 70px; 
+        top: 0%;
+        right: 30px;
+    }
+    .bottom-image {
+        position: fixed;
+        bottom: 5%; 
+        left: 50%;
+        transform: translateX(-50%);
+        width: 30%;  
+        max-width: 500px;
+        min-width: 230px; 
+        height: auto;             
+    }
+}
+@media (max-width: 350px), (max-height: 650px) {
+    .logo-carga{
+        display: none;
+    }
+    .bottom-image {  
+        display: none;           
+    }
+}
 .content {
     text-align: center;
     margin-top: 20px;
 }
-.logo{
-    position: absolute;
-    height: 130px;
-    top: 0%;
-    left: 30px;
-}
-.narvar {
-    background-color: #ff8000;
-    color: #FFF;
-    border: solid 2px ;
-    border-radius: 20px;
-    margin: 20px 7px;
-    text-align: center;
-}
-.titulo{
-    font-family: "Bubblegum Sans", sans-serif;
-    margin: 0px;
-    border: 0px;
-    font-size: 4.3rem;
-}
+
+
 
 .globo-texto{
     position: fixed;
@@ -261,17 +265,17 @@ input{
     color: white;
 }
 
-
 /* contenido 3 */
 .iniciar {
     position: absolute;
-    top: 55%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 380px;
     height: 420px;
     background-color: #ffffff5e;
     border-radius: 30px;
+    margin:none;
 }
 
 .iniciar-sesion,
