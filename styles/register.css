@@ -12,9 +12,34 @@ body {
     color: #FFF;
     font-family: "Bubblegum Sans", sans-serif;
     cursor: url('../imgs/cursores/puntero-normal.cur'), auto;
-    overflow: hidden;
+}
+::-webkit-scrollbar {
+    width: 15px;
+    height: 12px;
 }
 
+/* Estilo de la pista (background) de la barra */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color de la pista */
+    border-radius: 10px;
+}
+
+/* Estilo del "dedo" o "thumb" que se desplaza */
+::-webkit-scrollbar-thumb {
+    background-color: #ff8000;
+    border-radius: 10px;
+    border: 3px solid #f1f1f1;
+}
+
+/* Cambiar el color del thumb al pasar el cursor sobre él */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #c76401;
+}
+
+/* Opcional: Cambiar el estilo del thumb cuando está activo */
+::-webkit-scrollbar-thumb:active {
+    background-color: #8f4700;
+}
 .register {
     float: right;
     margin-top: 50px;
@@ -86,18 +111,17 @@ input::placeholder {
     margin-left: 130px;
 }
 .imagen1 {
-    margin-top: 50px;
+    position: absolute;
+    top: 3%;
+    right: 80%;
     width: 200px;
-    height: 200px;
-    margin-left: 100px;
 }
 
 .imagen2 {
-    position: fixed;
+    position: absolute;
     top: 10%;
-    width: 500px;
-    height: 500px;
-    margin-left: 300px;
+    right: 45%;
+    max-width: 500px;
     transform: scaleX(-1);
 }
 .bx{
@@ -106,4 +130,61 @@ input::placeholder {
     color:  rgb(114, 113, 113);
     transform: translateY(-37px) translate(-20px);
     cursor: url('../imgs/cursores/puntero-click.cur'),pointer; 
+}
+@media (max-width: 1060px){
+    .imagen1 {
+        position: absolute;
+        top: 3%;
+        right: 80%;
+        width: 160px;
+    }
+    .imagen2 {
+        position: absolute;
+        top: 15%;
+        right: 55%;
+        max-width: 450px;
+        transform: scaleX(-1);
+    }  
+}
+@media (max-width: 900px){
+    .imagen1 {
+        position: absolute;
+        top: 2%;
+        right: 80%;
+        width: 130px;
+    }
+    .imagen2 {
+        position: absolute;
+        top: 15%;
+        right: 50%;
+        max-width: 400px;
+    }  
+    .register {
+        margin-right: 50px;
+    }
+}
+@media (max-width: 850px){
+    .imagen2 {
+    display: none;
+    } 
+}
+@media (max-width: 750px){
+    .imagen1 {
+       display: none;
+    }
+    .register{
+        margin: 0px 0% 10%;
+        margin-bottom: 20%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    h1{
+        font-size: 3rem;
+    }
+    .cuenta{
+        font-size: 1.5rem;
+        margin-left: 115px;
+    }
 }

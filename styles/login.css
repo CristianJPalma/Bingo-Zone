@@ -12,7 +12,7 @@ body {
     color: #FFF;
     font-family: "Bubblegum Sans", sans-serif;
     cursor: url('../imgs/cursores/puntero-normal.cur'), auto;
-    overflow: hidden;
+
 }
 ::-webkit-scrollbar {
     width: 15px;
@@ -177,7 +177,7 @@ input::placeholder {
 }
 @media (max-width: 750px){
     .login {
-        max-width: 399px;
+        max-width: 400px;
         margin: 0px;
         padding: 8px;
         position: absolute;
@@ -193,5 +193,13 @@ input::placeholder {
     }
     .imagen2 {
         display: none;
+    }
+    .cuenta{
+        font-size: 1.5rem;
+        margin-left: 115px;
+    }
+    .cuenta2{
+        font-size: 1.5rem;
+        margin-left: 150px;
     }
 }
