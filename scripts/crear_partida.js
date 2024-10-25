@@ -1,10 +1,18 @@
+// Obtiene parámetros de la URL y los guarda en localStorage
 function getParams() {
     const urlParams = new URLSearchParams(window.location.search);
-    return {
+    const params = {
         numBalls: parseInt(urlParams.get('numBalls')),
         numCards: parseInt(urlParams.get('numCards')),
         mode: urlParams.get('mode')
     };
+
+    // Guardar en localStorage
+    localStorage.setItem('numBalls', params.numBalls);
+    localStorage.setItem('numCards', params.numCards);
+    localStorage.setItem('mode', params.mode);
+
+    return params;
 }
 
 const gridContainer = document.getElementById('gridContainer');
@@ -13,10 +21,8 @@ const rows = 5;
 const cols = 5;
 
 function createGrid() {
-    // Limpiar cualquier contenido previo
-    gridContainer.innerHTML = '';
+    gridContainer.innerHTML = ''; // Limpiar cualquier contenido previo
 
-    // Crear la tabla base
     const grid = document.createElement('table');
     for (let r = 0; r < rows; r++) {
         const row = grid.insertRow();
@@ -41,12 +47,9 @@ function createGrid() {
     gridContainer.appendChild(grid);
 }
 
-// Crea la selección en forma de X y bloquea la interacción
 function createXPattern() {
-    // Limpiar cualquier contenido previo
-    gridX.innerHTML = '';
+    gridX.innerHTML = ''; // Limpiar cualquier contenido previo
 
-    // Crear la tabla base para el patrón en X
     const grid = document.createElement('table');
     for (let r = 0; r < rows; r++) {
         const row = grid.insertRow();
@@ -68,7 +71,6 @@ function createXPattern() {
     gridX.appendChild(grid);
 }
 
-// Limpia cualquier selección previa
 function clearGridSelection() {
     for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
@@ -103,3 +105,5 @@ function showCustomGrid() {
 
 // Inicializa el modo de selección
 createGrid();
+// Llama a getParams al cargar la página para guardar los datos
+getParams();

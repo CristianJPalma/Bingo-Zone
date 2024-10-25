@@ -15,14 +15,13 @@
     <script src="../scripts/musica.js"></script>
     <script src="../scripts/crear_partida.js"></script>
     <link rel="stylesheet" href="../styles/carton.css">
-    <title>juego - Bingo Zone</title>
+    <title>Juego - Bingo Zone</title>
 </head>
 <body>
     <h1>Juego de Bingo</h1>
-    <p id="gameMode">Modo: </p>
-    <table id="cardsContainer"></table>
-
-<script src="../scripts/juego.js"></script>
+    <table id="gameMode">Modo: </table>
+    <div id="cardsContainer"></div>
+    <script src="../scripts/juego.js"></script>
 <script>
     document.getElementById('music').addEventListener('mouseover','click', function() {
     var audio = document.getElementById('background-music');
