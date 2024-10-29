@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=headphones" />
     <script src="../scripts/musica.js"></script>
     <script src="../scripts/datos.js"></script>
-    <!-- <script src="../scripts/sesion.js"></script> -->
+    <script src="../scripts/verificar_sesion.js"></script>
     <title>Menú - Bingo Zone</title>
 </head>
 <body id="music">
@@ -24,13 +24,13 @@
         <h1 class="titulo">Bingo Zone</h1>
     </div>
     <div class="top-buttons">
-        <button class="bttCuenta">Cuenta</button>
+        <button class="bttCuenta" onclick="window.location.href='cuenta.html';">Cuenta</button>
         <button class="bttTienda">Tienda</button>
     </div>
     <div class="centro">
-        <img class="imagenPerfil" id="imgPerfil" src="../imgs/capi/capi-furia.png" alt="capiEnojado">
-        <h1 id="nombrePantall">Anonimo123</h1>
-        <button id="cambiar" >Cambiar</button>
+        <img class="imagenPerfil" id="imgPerfil" id="cambiar" src="../imgs/capi/capi-furia.png" alt="capiEnojado">
+        <h1 id="nombre_pantalla"></h1>
+
     </div>
     <div class="bottom-buttons">
         <button onclick="window.location.href='anfitrion.html';" class="crearSala">Crear sala</button>

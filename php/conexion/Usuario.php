@@ -3,16 +3,16 @@ require_once 'Conexion.php';
 
 
 class Usuario {
-    private $conn;
+    private $conxpdo;
 
     public function __construct() {
         $database = new  Conexion();
-        $this->conn = $database->connect();
+        $this->conxpdo = $database->connect();
     }
 
     public function obtenerUsuarios() {
         $query = "SELECT * FROM usuario";
-        $stmt = $this->conn->prepare($query);
+        $stmt = $this->conxpdo->prepare($query);
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -21,7 +21,7 @@ class Usuario {
     public function insertarUsuario($nombre, $apellido, $nombre_pantalla, $correo, $contrasena){
         // Verificar si el correo ya existe
         $queryVerificar = "SELECT * FROM usuario WHERE correo = :correo";
-        $stmtVerificar = $this->conn->prepare($queryVerificar);
+        $stmtVerificar = $this->conxpdo->prepare($queryVerificar);
         $stmtVerificar->bindParam(':correo', $correo);
         $stmtVerificar->execute();
 
@@ -30,7 +30,7 @@ class Usuario {
     }
         $contrasena = password_hash($contrasena, PASSWORD_BCRYPT);
         $query = "INSERT INTO usuario (nombre, apellido, nombre_pantalla, correo, contrasena) VALUES (:nombre, :apellido, :nombre_pantalla, :correo, :contrasena)";
-        $stmt = $this->conn->prepare($query);
+        $stmt = $this->conxpdo->prepare($query);
         $stmt->bindParam(':nombre', $nombre);
         $stmt->bindParam(':apellido', $apellido);
         $stmt->bindParam(':nombre_pantalla', $nombre_pantalla);
@@ -47,19 +47,44 @@ class Usuario {
     
         return false;
     }
-    public function logearUsuario($correo, $password){
+    public function logearUsuario($correo, $contrasena) {
         $query = "SELECT * FROM usuario WHERE correo = :correo";
-        $stmt = $this->conn->prepare($query);
+        $stmt = $this->conxpdo->prepare($query);
         $stmt->bindParam(':correo', $correo);
         $stmt->execute();
-    
+
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
-        
-        if ($usuario && password_verify($password, $usuario['password'])) {
-            return $usuario; // Contraseña correcta, retorna los datos del usuario
+
+        if ($usuario && password_verify($contrasena, $usuario['contrasena'])) {
+            return $usuario; // Contraseña correcta, devuelve los datos del usuario
         } else {
-            return false; // Contraseña incorrecta
+            return false; // Contraseña incorrecta o usuario no encontrado
         }
     }
+    public function obtenerDatosUsuario($usuario_id) {
+        $query = "SELECT * FROM usuario WHERE id = :id";
+        $stmt = $this->conxpdo->prepare($query);
+        $stmt->bindParam(':id', $usuario_id);
+        $stmt->execute();
+        
+        return $stmt->fetch(PDO::FETCH_ASSOC); // Retorna los datos del usuario como un arreglo asociativo
+    }
+    public function actualizarUsuario($id, $nombre, $apellido, $nombre_pantalla, $correo) {
+        try {
+            $sql = "UPDATE usuario SET nombre = :nombre, apellido = :apellido, nombre_pantalla = :nombre_pantalla, correo = :correo WHERE id = :id";
+            $stmt = $this->conxpdo->prepare($sql);
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':nombre', $nombre);
+            $stmt->bindParam(':apellido', $apellido);
+            $stmt->bindParam(':nombre_pantalla', $nombre_pantalla);
+            $stmt->bindParam(':correo', $correo);
+            
+            $stmt->execute();
+            return ["status" => "success", "message" => "Usuario actualizado correctamente"];
+        } catch (PDOException $e) {
+            return ["status" => "error", "message" => "Error al actualizar el usuario: " . $e->getMessage()];
+        }
+    }
+    
 }
 ?>

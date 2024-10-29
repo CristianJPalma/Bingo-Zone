@@ -5,7 +5,7 @@ const images = ['../imgs/capi/capi-furia.png', '../imgs/capi/capi-baño.png',
 let currentImageIndex = 0;
 
 // Al hacer clic en el botón, cambia la imagen de perfil
-document.getElementById('cambiar').addEventListener('click', () => {
+document.getElementById('imgPerfil').addEventListener('click', () => {
     // Obtén la imagen actual
     const profilePic = document.getElementById('imgPerfil');
     

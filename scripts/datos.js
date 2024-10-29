@@ -1,12 +1,12 @@
-document.addEventListener("DOMContentLoaded", function() {
-    fetch('../php/mostrar_datos.php')
-    .then(response => response.text())
-    .then(data => {
-        // Insertamos el dato en un elemento HTML
-        document.getElementById("nombrePantalla").innerText = data;
-    })
-    .catch(error => {
-        console.error('Error al obtener el dato:', error);
-        document.getElementById("nombrePantalla").innerText = "Error al cargar el nombre.";
-    });
-});
+fetch('../php/conexion/mostrar_datos.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    console.error(data.error);
+                    document.getElementById('nombre_pantalla').textContent = 'Invitado';
+                } else {
+                    // Mostrar el nombre del usuario en el HTML
+                    document.getElementById('nombre_pantalla').textContent = data.nombre_pantalla;
+                }
+            })
+            .catch(error => console.error('Error al obtener datos del usuario:', error));
