@@ -61,6 +61,7 @@ class Usuario {
             return false; // Contraseña incorrecta o usuario no encontrado
         }
     }
+    
     public function obtenerDatosUsuario($usuario_id) {
         $query = "SELECT * FROM usuario WHERE id = :id";
         $stmt = $this->conxpdo->prepare($query);
@@ -69,22 +70,18 @@ class Usuario {
         
         return $stmt->fetch(PDO::FETCH_ASSOC); // Retorna los datos del usuario como un arreglo asociativo
     }
-    public function actualizarUsuario($id, $nombre, $apellido, $nombre_pantalla, $correo) {
-        try {
-            $sql = "UPDATE usuario SET nombre = :nombre, apellido = :apellido, nombre_pantalla = :nombre_pantalla, correo = :correo WHERE id = :id";
-            $stmt = $this->conxpdo->prepare($sql);
-            $stmt->bindParam(':id', $id);
-            $stmt->bindParam(':nombre', $nombre);
-            $stmt->bindParam(':apellido', $apellido);
-            $stmt->bindParam(':nombre_pantalla', $nombre_pantalla);
-            $stmt->bindParam(':correo', $correo);
-            
-            $stmt->execute();
-            return ["status" => "success", "message" => "Usuario actualizado correctamente"];
-        } catch (PDOException $e) {
-            return ["status" => "error", "message" => "Error al actualizar el usuario: " . $e->getMessage()];
-        }
+    public function actualizarDatos($usuario_id, $nombre, $apellido, $nombre_pantalla, $correo, $imagen_perfil) {
+        $query = $this->conxpdo->prepare("UPDATE usuario SET nombre = :nombre, apellido = :apellido, nombre_pantalla = :nombre_pantalla, correo = :correo, imagen_perfil = :imagen_perfil WHERE id = :id");
+        $query->bindParam(":nombre", $nombre);
+        $query->bindParam(":apellido", $apellido);
+        $query->bindParam(":nombre_pantalla", $nombre_pantalla);
+        $query->bindParam(":correo", $correo);
+        $query->bindParam(":imagen_perfil", $imagen_perfil);
+        $query->bindParam(":id", $usuario_id);
+        return $query->execute();
     }
     
+    
+
 }
 ?>

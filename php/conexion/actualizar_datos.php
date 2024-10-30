@@ -1,23 +1,25 @@
 <?php
 session_start();
-require_once 'conexion.php';
+require_once 'Conexion.php';
 require_once 'Usuario.php';
 
-// Verificar si el usuario está autenticado
-if (!isset($_SESSION['usuario_id'])) {
-    echo json_encode(["status" => "error", "message" => "No tiene sesión iniciada"]);
-    exit();
+if (isset($_SESSION['usuario_id'])) {
+    $usuario_id = $_SESSION['usuario_id'];
+    $datos = json_decode(file_get_contents("php://input"), true);
+
+    if (isset($datos["nombre"], $datos["apellido"], $datos["nombre_pantalla"], $datos["correo"], $datos["imagen_perfil"])) {
+        $usuario = new Usuario();
+        $resultado = $usuario->actualizarDatos($usuario_id, $datos["nombre"], apellido: $datos["apellido"], nombre_pantalla: $datos["nombre_pantalla"], correo: $datos["correo"], imagen_perfil: $datos["imagen_perfil"]);
+
+        if ($resultado) {
+            echo json_encode(["status" => "success", "message" => "Datos actualizados."]);
+        } else {
+            echo json_encode(["status" => "error", "message" => "Error al actualizar datos."]);
+        }
+    } else {
+        echo json_encode(["status" => "error", "message" => "Datos incompletos."]);
+    }
+} else {
+    echo json_encode(["status" => "error", "message" => "No hay sesión iniciada."]);
 }
-
-$id = $_SESSION['usuario_id'];  // Obtener el ID del usuario desde la sesión
-$nombre = $_POST['nombre'] ?? '';
-$apellido = $_POST['apellido'] ?? '';
-$nombre_pantalla = $_POST['nombre_pantalla'] ?? '';
-$correo = $_POST['correo'] ?? '';
-
-$usuario = new Usuario();
-$resultado = $usuario->actualizarUsuario($id, $nombre, $apellido, $nombre_pantalla, correo: $correo);
-
-// Retornar el resultado en formato JSON
-echo json_encode($resultado);
 ?>

@@ -10,3 +10,15 @@ fetch('../php/conexion/mostrar_datos.php')
                 }
             })
             .catch(error => console.error('Error al obtener datos del usuario:', error));
+            document.addEventListener("DOMContentLoaded", function() {
+                fetch("../php/conexion/mostrar_datos.php")
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.error) {
+                            console.error(data.error);
+                        } else {
+                            document.getElementById("imagen_perfil").src = data.imagen_perfil;
+                        }
+                    })
+                    .catch(error => console.error("Error al obtener datos:", error));
+            });

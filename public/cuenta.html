@@ -14,69 +14,33 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=headphones" />
     <script src="../scripts/musica.js"></script>
     <script src="../scripts/verificar_sesion.js"></script>
+    <script src="../scripts/cuenta.js"></script>
     <title>Cuenta - Bingo Zone</title>
 </head>
 <body>
-<h2>Actualizar Perfil</h2>
-<form id="formActualizarUsuario">
-    <label>Nombre:</label>
-    <input type="text" name="nombre" required>
-    <br>
-    <label>Apellido:</label>
-    <input type="text" name="apellido" required>
-    <br>
-    <label>Nombre en pantalla:</label>
-    <input type="text" name="nombre_pantalla" required>
-    <br>
-    <label>Correo:</label>
-    <input type="email" name="correo" required>
-    <br>
-    <button type="submit">Actualizar</button>
-</form>
-<p id="mensaje"></p>
+    <h2>Actualizar Cuenta</h2>
+    <form onsubmit="actualizarDatos(event)">
+        <label>Imagen de Perfil:</label>
+        <img id="imagen_perfil" src="" alt="Imagen de Perfil" width="100" onclick="cambiarImagen()"><br>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br>
+        
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido" required><br>
+        <input type="text" id="nombre_pantalla" name="nombre_pantalla" required><br>
 
-<script>
-    // Función para cargar los datos existentes del usuario
-    document.addEventListener("DOMContentLoaded", function() {
-        fetch("obtener_datos_usuario.php")
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === "success") {
-                    // Rellenar los campos con los datos obtenidos
-                    document.getElementById("nombre").value = data.data.nombre;
-                    document.getElementById("apellido").value = data.data.apellido;
-                    document.getElementById("nombre_pantalla").value = data.data.nombre_pantalla;
-                    document.getElementById("correo").value = data.data.correo;
-                } else {
-                    document.getElementById("mensaje").innerText = "Error: " + data.message;
-                }
-            })
-            .catch(error => console.error("Error al cargar los datos del usuario:", error));
-    });
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" name="correo" required><br>
 
-    // Función para actualizar los datos del usuario
-    document.getElementById("formActualizarUsuario").addEventListener("submit", function(event) {
-        event.preventDefault();
-        const formData = new FormData(this);
-
-        fetch("actualizar_usuario.php", {
-            method: "POST",
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            const mensaje = document.getElementById("mensaje");
-            if (data.status === "success") {
-                mensaje.innerText = "Perfil actualizado con éxito";
-            } else {
-                mensaje.innerText = "Error: " + data.message;
-            }
-        })
-        .catch(error => {
-            console.error("Error en la actualización:", error);
-            document.getElementById("mensaje").innerText = "Error en la actualización.";
-        });
-    });
-</script>
+        
+        <button type="submit">Guardar cambios</button>
+        <div id="mensaje-resultado"></div>
+    </form>
+    <button onclick="window.location.href='menu.html';"">Atras</button>
+    <style>
+        img{
+            cursor: url('../imgs/cursores/puntero-click.cur'), pointer;
+        }
+    </style>
 </body>
 </html>
