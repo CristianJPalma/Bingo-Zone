@@ -1,5 +1,5 @@
 <?php
-require_once 'Conexion.php';
+require_once '../conexion/Conexion.php';
 
 
 class Usuario {

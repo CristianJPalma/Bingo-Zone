@@ -1,6 +1,6 @@
 //Mostrar datos
 document.addEventListener("DOMContentLoaded", function() {
-    fetch("../php/conexion/mostrar_datos.php")
+    fetch("../php/usuario/mostrar_datos.php")
         .then(response => response.json())
         .then(data => {
             if (data.nombre) {
@@ -41,7 +41,7 @@ function actualizarDatos(event) {
     const correo = document.getElementById("correo").value;
     const imagen_perfil = imagenes[indiceImagen];  // Tomamos la imagen actual sin cambiarla
 
-    fetch("../php/conexion/actualizar_datos.php", {
+    fetch("../php/usuario/actualizar_datos.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ nombre, apellido, nombre_pantalla, correo, imagen_perfil })
