@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles de la Partida</title>
+</head>
+<body>
+    <h1>Detalles de la Partida</h1>
+    <p><strong>Código de la partida:</strong> <span id="codigoPartida"></span></p>
+
+    <h2>Miembros de la partida</h2>
+    <ul id="listaMiembros">
+        <!-- Aquí se mostrarán los miembros de la partida -->
+    </ul>
+
+    <script>
+        // Obtener el código de la partida desde la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const codigoPartida = urlParams.get('codigo');
+
+        // Función para obtener los miembros de la partida y mostrarlos
+        async function cargarMiembros() {
+            try {
+                const response = await fetch(`partida.php?codigo=${codigoPartida}`);
+                const data = await response.json();
+
+                // Mostrar el código de la partida
+                document.getElementById('codigoPartida').textContent = data.codigo;
+
+                // Mostrar la lista de miembros
+                const listaMiembros = document.getElementById('listaMiembros');
+                listaMiembros.innerHTML = ''; // Limpiar la lista actual
+
+                if (data.miembros.length > 0) {
+                    data.miembros.forEach(nombre => {
+                        const li = document.createElement('li');
+                        li.textContent = nombre;
+                        listaMiembros.appendChild(li);
+                    });
+                } else {
+                    listaMiembros.innerHTML = '<p>No hay miembros en esta partida.</p>';
+                }
+            } catch (error) {
+                console.error('Error al cargar los miembros:', error);
+            }
+        }
+        function actualizarJugadores() {
+            fetch('partida.php?codigo=' + codigoPartida + '&accion=actualizar')
+                .then(response => response.json())
+                .then(data => {
+                    const listaJugadores = document.getElementById('listaMiembros');
+                    listaJugadores.innerHTML = '';  // Limpiar la lista
+
+                    data.forEach(jugador => {
+                        const li = document.createElement('li');
+                        li.textContent = jugador.nombre; // Asegúrate de que 'nombre' es el campo correcto
+                        listaJugadores.appendChild(li);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error al actualizar jugadores:', error);
+                });
+        }
+
+        // Actualizar la lista de jugadores cada 3 segundos
+        setInterval(actualizarJugadores, 3000);
+        // Cargar los miembros al cargar la página
+        cargarMiembros();
+    </script>
+</body>
+</html>

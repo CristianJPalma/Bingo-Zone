@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la Partida</title>
+    <link rel="stylesheet" href="ruta/al/archivo/estilos.css"> <!-- Ruta a tu archivo CSS -->
+</head>
+<body>
+    <div class="contenedor-detalle-partida">
+        <h1>Detalles de la Partida</h1>
+        
+        <p><strong>Código de la Partida:</strong> <span id="codigoPartida"></span></p>
+        <p><strong>Creador de la Partida:</strong> <span id="creadorPartida"></span></p>
+        
+        <h2>Jugadores en la Partida</h2>
+        <ul id="listaJugadores"></ul>
+    </div>
+
+    <script>
+        // Obtener los parámetros de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const codigoPartida = urlParams.get('codigo_partida');
+        const idCreador = urlParams.get('id_creador'); // ID del creador
+
+        // Mostrar el código de la partida
+        document.getElementById('codigoPartida').innerText = codigoPartida;
+
+        // Hacer una solicitud para obtener los detalles de la partida
+        fetch(`obtener_detalles_partida.php${encodeURIComponent(codigoPartida)}`)
+        .then(response => response.json())
+        .then(data => {
+            // Mostrar el creador de la partida
+            document.getElementById('creadorPartida').innerText = data.creador.nombre;
+
+            // Mostrar la lista de jugadores
+            const listaJugadores = document.getElementById('listaJugadores');
+            data.jugadores.forEach(jugador => {
+                const li = document.createElement('li');
+                li.innerText = jugador.nombre;
+                listaJugadores.appendChild(li);
+            });
+        })
+        .catch(error => {
+            console.error("Error al obtener detalles de la partida:", error);
+        });
+    </script>
+</body>
+</html>

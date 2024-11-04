@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unirse a Partida</title>
+    <link rel="stylesheet" href="ruta/al/archivo/estilos.css"> <!-- Ruta a tu archivo CSS -->
+</head>
+<body>
+    <div class="contenedor-unirse-partida">
+        <h1>Unirse a una Partida</h1>
+        
+        <form id="formUnirsePartida">
+            <label for="codigoPartida">Código de la Partida:</label>
+            <input type="text" id="codigoPartida" name="codigoPartida" required>
+            <button type="button" id="btnUnirsePartida">Unirse a la Partida</button>
+        </form>
+        
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        document.getElementById('btnUnirsePartida').addEventListener('click', function() {
+            const codigoPartida = document.getElementById('codigoPartida').value;
+
+            // Realizar solicitud AJAX para unirse a la partida
+            fetch('unirse_sala.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `codigo_partida=${encodeURIComponent(codigoPartida)}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    document.getElementById('resultado').innerText = "Error: " + data.error;
+                } else {
+                    document.getElementById('resultado').innerText = data.mensaje;
+                }
+            })
+            .catch(error => {
+                document.getElementById('resultado').innerText = "Error al unirse a la partida:" + error;
+                console.error("Error:", error);
+            });
+        });
+    </script>
+</body>
+</html>
