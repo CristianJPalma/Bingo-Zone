@@ -24,7 +24,7 @@ class Sala {
         try {
             // Insertar la nueva sala
             $sql = "INSERT INTO partida (codigo_partida, id_creador) VALUES (:codigo_partida, :id_creador)";
-            $stmt = $this->conxpdo->prepare($sql);
+            $stmt = $this->conxpdo->prepare(query: $sql);
             $stmt->execute(['codigo_partida' => $this->codigo_partida, 'id_creador' => $id_creador]);
             
             // Obtener el id de la nueva partida
@@ -44,18 +44,6 @@ class Sala {
             $this->conxpdo->rollBack();
             throw $e; // Lanzar la excepción para manejarla en el método llamador
         }
-    }
-
-    public function obtenerJugadores($codigoSala) {
-        // Obtenemos los nombres de los jugadores en una partida específica
-        $sql = "SELECT u.nombre 
-                FROM usuario u
-                JOIN Usuarios_Partidas up ON u.id_usuario = up.id_usuario
-                JOIN partida p ON up.id_partida = p.id_partida
-                WHERE p.codigo_partida = :codigoSala";
-        $stmt = $this->conxpdo->prepare($sql);
-        $stmt->execute(['codigoSala' => $codigoSala]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC); // Devuelve los nombres de los jugadores
     }
 }
 ?>

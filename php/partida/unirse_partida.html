@@ -36,7 +36,7 @@
                 if (data.error) {
                     document.getElementById('resultado').innerText = "Error: " + data.error;
                 } else {
-                    document.getElementById('resultado').innerText = data.mensaje;
+                    window.location.href = 'partida.html?codigo=' + encodeURIComponent(codigoPartida);
                 }
             })
             .catch(error => {
