@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../styles/narvar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="../imgs/faviconos/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../imgs/faviconos/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../imgs/faviconos/favicon-32x32.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="../scripts/musica.js"></script>
+    <script src="../scripts/crear_partida.js"></script>
+    <link rel="stylesheet" href="../styles/carton.css">
+    <title>Juego - Bingo Zone</title>
+</head>
+<body>
+    <h1>Juego de Bingo</h1>
+    <table id="gameMode">Modo: </table>
+    <div id="cardsContainer"></div>
+    <script src="../scripts/juego.js"></script>
+<script>
+    document.getElementById('music').addEventListener('mouseover','click', function() {
+    var audio = document.getElementById('background-music');
+    audio.play();
+});
+</script>
+</body>
+</html>

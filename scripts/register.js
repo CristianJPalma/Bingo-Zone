@@ -25,6 +25,9 @@ window.onload = function() {
         window.history.replaceState(null, "", window.location.pathname);
     }
 };
+
+
+// Boton para mostrar la contraseña
     const contraseña = document.getElementById('contraseña'),
     icono = document.querySelector('.bx');
     icono.addEventListener("click", evento => {

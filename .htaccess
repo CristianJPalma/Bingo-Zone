@@ -1,1 +1,1 @@
-ErrorDocument 404 /bingo-zone/error.html
+ErrorDocument 404 /bingo-zone/public/error.html
