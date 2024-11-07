@@ -27,8 +27,11 @@ body {
     text-align: center;
 }
 .contenido{
-    display: flex; /* Usa flexbox para alinear elementos */
+    display: flex;
     gap: 60px;
+}
+.coin{
+    width: 40px;
 }
 .punto {
     border: solid 2px #fff;
@@ -40,9 +43,6 @@ body {
     margin-top: 20px;
     margin-left: 2.5%;
 }
-.coin{
-    width: 40px;
-}
 .punto2 {
     border: solid 2px #fff;
     background-color: #FF8000;
@@ -53,7 +53,6 @@ body {
     margin-right: 2.5%;
     margin-top: 20px;
 }
-
 .punto3 {
     border: solid 2px #fff;
     background-color: #FF8000;
@@ -78,86 +77,33 @@ body {
     margin: right;
     right: 2.5%;
 }
+.btn{
+    border: solid 2px #fff;
+    background-color: #FF8000;
+    border-radius: 50px;
+    height: 7vh;
+    width: 20%;
+    float: left;
+    position: fixed;
+    bottom: 2.5%;
+    margin: left;
+}
 .barra{
-        width: 80%;
-        height: 70vh;
-        border: solid;
-        overflow-x: auto;
-        padding: 100px;
-        position: absolute;
-        transform: translate(-50%, -50%);
-        top: 50%;
-        left: 50%;
+    width: 70%;
+    height: 50vh;
+    border: solid;
+    overflow-x: auto;
+    padding: 100px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 55%;
+    left: 50%;
 }
 .carton {
-    max-width: 200px; /* Ajusta el tamaño de las imágenes */
-
-
-}
-.carton2 {
-    max-width: 200px; /* Ajusta el tamaño de las imágenes */
-
-
-}
-.carton3 {
-    max-width: 200px; /* Ajusta el tamaño de las imágenes */
-
-
-}
-.carton4 {
-    max-width: 200px;
-
-}
-.carton5 {
-    max-width: 200px;
-
-}
-.boton1{
-    height: 50px;
-    width: 200px;
-    color: #fff;
-    background-color: #FF8000;
-    border: solid 4px #fff;
-    border-radius: 60px;
-
-    
-}
-.boton2{
-    height: 50px;
-    width: 200px;
-    color: #fff;
-    background-color: #FF8000;
-    border: solid 4px #fff;
-    border-radius: 60px;
-
-    
+    max-width: 200px; 
 }
 
-.boton3{
-    height: 50px;
-    width: 200px;
-    color: #fff;
-    background-color: #FF8000;
-    border: solid 4px #fff;
-    border-radius: 60px;
-
-
-    
-}
-
-.boton4{
-    height: 50px;
-    width: 200px;
-    color: #fff;
-    background-color: #FF8000;
-    border: solid 4px #fff;
-    border-radius: 60px;
-
-
-    
-}
-
-.boton5{
+.boton{
     height: 50px;
     width: 200px;
     color: #fff;
@@ -165,6 +111,7 @@ body {
     border: solid 4px #fff;
     border-radius: 60px;
 }
+
 ::-webkit-scrollbar {
     width: 15px;
     height: 30px;
