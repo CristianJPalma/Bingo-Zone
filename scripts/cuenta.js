@@ -22,7 +22,8 @@ let imagenes = [
     '../imgs/capi/capi-furia.png',
     '../imgs/capi/capi-baño.png',
     '../imgs/capi/capi-fuerte.png',
-    '../imgs/capi/capi-idea.png'
+    '../imgs/capi/capi-idea.png',
+    '../imgs/capi/capi-pregunta.png'
 ];
 let indiceImagen = 0;
 

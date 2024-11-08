@@ -1,0 +1,37 @@
+.marco{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%, -50%);
+    width: 60%;
+    height: 85vh;
+    border: solid 4px #ffffff;
+    background-color: #ffffff74;
+    border-radius: 50px;
+    text-align: center;
+}
+.mi-cuenta{
+    font-size: 10vh;
+}
+.derecho{
+    border: solid 2px #fff;
+    height: 50vh;
+    width: 30%;
+    margin-left: 10%;
+    margin-top: 5%;
+
+}
+.img-perfil{
+    border: solid 4px #fff;
+    border-radius: 60px;
+}
+.gion{
+    border: solid 4px #fff;
+    border-radius: 10px;
+    margin-top: 4%;
+}
+.gion2{
+    border: solid 4px #fff;
+    border-radius: 10px;
+    width: 40%;
+}
