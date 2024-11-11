@@ -14,39 +14,245 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="../scripts/musica.js"></script>
     <link rel="stylesheet" href="../styles/carton.css">
+    <script src="../scripts/cargar_partida.js"></script>
     <title>Crear Partida - Bingo Zone</title>
 </head>
-<body id="music">
-  <form id="bingo-settings" action="generar_carton.html" method="GET">
-    <label for="num-balls">Números de balotas:</label>
-    <select id="num-balls" name="numBalls">
-        <option value="75">75</option>
-        <option value="90">90</option>
-    </select><br>
+<body id="music">    
+    <body>
+        <div id="miModal" class="modal">
+            <div class="modal-content">
+              <p>¿Estás seguro de que quieres salir de la partida?</p>
+              <button id="aceptar">Aceptar</button>
+              <button id="cancelar">Cancelar</button>
+            </div>
+          </div>
+          
+          
+        <h1>Detalles de la Partida</h1>
+        <p><strong>Código de la partida:</strong> <span id="codigoPartida"></span></p>
+    
+        <h2>Miembros de la partida</h2>
+        <ul id="listaMiembros">
+            <!-- Aquí se mostrarán los miembros de la partida -->
+        </ul>
+        <button id="salirPartida" onclick="mostrarModal();">Salir de partida</button>
+        <button class="solo-creador" onclick="copiarCodigo()" style="display: none;">Copiar</button>
+        <button class="solo-creador" onclick="iniciarPartida()" style="display: none;">Iniciar Partida</button>
+        <h2>Modo de Juego</h2>
+        <div class="solo-interactivo-creador" id="opcionesModo">
+            <div class="opcion" data-modo="completo" onclick="seleccionarModo(this)">
+                <img src="completo.jpg" alt="Modo Completo">
+                <p>Completo</p>
+            </div>
+            <div class="opcion" data-modo="linea" onclick="seleccionarModo(this)">
+                <img src="linea.jpg" alt="Modo Línea">
+                <p>Línea</p>
+            </div>
+            <div class="opcion" data-modo="cuatro" onclick="seleccionarModo(this)">
+                <img src="cuatro.jpg" alt="Modo Cuatro Esquinas">
+                <p>Cuatro Esquinas</p>
+            </div>
+        </div>
+    
+        <!-- Opciones de Número de Cartones -->
+        <h2>Número de Cartones</h2>
+        <div class="solo-interactivo-creador" id="opcionesCartones">
+            <div class="opcion" data-cartones="1" onclick="seleccionarCartones(this)">
+                <img src="carton1.jpg" alt="1 Cartón">
+                <p>1 Cartón</p>
+            </div>
+            <div class="opcion" data-cartones="2" onclick="seleccionarCartones(this)">
+                <img src="../imgs/cartones/capi1.png" alt="2 Cartones">
+                <p>2 Cartones</p>
+            </div>
+            <div class="opcion" data-cartones="3" onclick="seleccionarCartones(this)">
+                <img src="carton3.jpg" alt="3 Cartones">
+                <p>3 Cartones</p>
+            </div>
+        </div>
+        <h2>Cantidad de Números</h2>
+        <div class="solo-interactivo-creador" id="opcionesNumeros">
+            <label>
+                <input type="radio" name="cantidadNumeros" value="75" onclick="seleccionarNumeros(this)"> 75 Números
+            </label>
+            <label>
+                <input type="radio" name="cantidadNumeros" value="90" onclick="seleccionarNumeros(this)"> 90 Números
+            </label>
+        </div>
+    
+        <!-- Botón para guardar las selecciones -->
+        <button class="solo-interactivo-creador" onclick="guardarSeleccion()">Guardar Selección</button>
+        <p id="resultado"></p>
 
-    <label for="num-cards">Número de cartones:</label>
-    <select id="num-cards" name="numCards">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-    </select><br>
+        <script>    
+ let modoSeleccionado = ''; // Variable para almacenar el modo seleccionado
+        let cartonesSeleccionados = ''; // Variable para almacenar el número de cartones seleccionado
+        let numerosSeleccionados = ''; // Variable para almacenar la cantidad de números seleccionada
 
-    <label for="mode">Modo de casillas:</label>
-    <select id="mode" name="mode" onchange="showCustomGrid()">
-        <option value="normal">Normal</option>
-        <option value="X">X</option>
-        <option value="custom">Personalizado</option>
-    </select><br>
-<div id="x-grid" style="display: none;">
-    <table id="gridX"></table>
-</div>
-    <div id="custom-grid" style="display: none;">
-        <table id="gridContainer"></table>
-    </div>
+        // Función para seleccionar el modo de juego
+        function seleccionarModo(element) {
+            document.querySelectorAll('#opcionesModo .opcion').forEach(opcion => {
+                opcion.classList.remove('seleccionado');
+            });
+            element.classList.add('seleccionado');
+            modoSeleccionado = element.getAttribute('data-modo');
+        }
 
-    <button type="submit">Siguiente</button>
-</form>
+        // Función para seleccionar el número de cartones
+        function seleccionarCartones(element) {
+            document.querySelectorAll('#opcionesCartones .opcion').forEach(opcion => {
+                opcion.classList.remove('seleccionado');
+            });
+            element.classList.add('seleccionado');
+            cartonesSeleccionados = element.getAttribute('data-cartones');
+        }
 
+        // Función para seleccionar la cantidad de números
+        function seleccionarNumeros(radio) {
+            numerosSeleccionados = radio.value;
+        }
+
+        // Función para obtener el código de la partida desde la URL
+        function obtenerCodigoDeURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('codigo');
+        }
+
+        // Función para enviar las selecciones al servidor
+        function guardarSeleccion() {
+            if (!modoSeleccionado || !cartonesSeleccionados || !numerosSeleccionados) {
+                document.getElementById('resultado').innerText = 'Por favor, selecciona el modo, el número de cartones y la cantidad de números.';
+                return;
+            }
+
+            const codigoPartida = obtenerCodigoDeURL();
+
+            fetch('../php/partida/guardar_configuracion.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ 
+                    codigoPartida: codigoPartida, 
+                    modo: modoSeleccionado, 
+                    cartones: cartonesSeleccionados, 
+                    numeros: numerosSeleccionados
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.mensaje) {
+                    window.location.href ="carton.html";
+                    document.getElementById('resultado').innerText = data.mensaje;
+                } else if (data.error) {
+                    document.getElementById('resultado').innerText = data.error;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('resultado').innerText = 'Error al actualizar la partida.';
+            });
+        }
+
+
+            function mostrarModal() {
+              document.getElementById('miModal').style.display = "block";
+            }
+            
+            // Ocultar el modal
+            function ocultarModal() {
+              document.getElementById('miModal').style.display = "none";
+            }
+            
+            // Acción de Aceptar
+            document.getElementById('aceptar').onclick = function() {
+                salirPartida();
+              ocultarModal();
+            }
+            
+            // Acción de Cancelar
+            document.getElementById('cancelar').onclick = function() {
+              ocultarModal();
+            }
+            
+            </script> 
+<style>
+
+        .opcion {
+            display: inline-block;
+            margin: 10px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            transition: border-color 0.3s;
+            text-align: center;
+        }
+        .opcion img {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+        }
+        .opcion.seleccionado {
+            border-color: #4CAF50;
+        }
+/* El fondo del modal */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+/* El contenido del modal */
+.modal-content {
+    color: black;
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; 
+  max-width: 400px;
+}
+
+/* Botones */
+button {
+  margin: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+    #listaMiembros {
+        list-style-type: none;
+        padding: 0;
+    }
+    
+    .miembro-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    
+    /* Imagen de perfil redondeada */
+    .imagen-perfil {
+        width: 40px; /* Ajusta el tamaño según sea necesario */
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    
+    /* Estilos para el nombre de pantalla */
+    .nombre-pantalla {
+        font-size: 16px;
+        font-weight: bold;
+    }
+        </style>
+        
 </body>
 <script src="../scripts/crear_partida.js"></script>
 <audio id="background-music"  autoplay loop>

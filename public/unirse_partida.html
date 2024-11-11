@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../styles/narvar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="../imgs/faviconos/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../imgs/faviconos/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../imgs/faviconos/favicon-32x32.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="../scripts/musica.js"></script>
+    <link rel="stylesheet" href="../styles/carton.css">
+    <title>Unirse Partida - Bingo Zone</title>
+</head>
+<body>
+    <form id="formUnirsePartida">
+        <h1>Ingresa el codigo</h1>
+        <div class="code-inputs">
+            <input type="number" maxlength="1" class="code-input" oninput="moveInput(event)" onpaste="handlePaste(event)" />
+            <input type="number" maxlength="1" class="code-input" oninput="moveInput(event)" onpaste="handlePaste(event)" />
+            <input type="number" maxlength="1" class="code-input" oninput="moveInput(event)" onpaste="handlePaste(event)" />
+            <input type="number" maxlength="1" class="code-input" oninput="moveInput(event)" onpaste="handlePaste(event)" />
+            <input type="number" maxlength="1" class="code-input" oninput="moveInput(event)" onpaste="handlePaste(event)" />
+            <input type="number" maxlength="1" class="code-input" oninput="moveInput(event)" onpaste="handlePaste(event)" />
+        </div>
+    <button type="button" id="btnUnirsePartida">Unirse a la Partida</button>
+</form>
+<button onclick="window.location.href='menu.html';">atras</button>
+<p id="resultado"></p>
+        
+
+<style>
+        /* Para Chrome, Safari, Edge y Opera */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+    .code-inputs {
+        display: flex;
+        gap: 5px;
+    }
+    .code-input {
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        font-size: 3rem;
+    }
+</style>
+<script>
+    function moveInput(event) {
+        const input = event.target;
+        const value = input.value;
+
+        if (value.length === 1) {
+            const nextInput = input.nextElementSibling;
+            if (nextInput && nextInput.classList.contains("code-input")) {
+                nextInput.focus();
+            }
+        } else if (value.length === 0 && event.inputType === 'deleteContentBackward') {
+            const previousInput = input.previousElementSibling;
+            if (previousInput && previousInput.classList.contains("code-input")) {
+                previousInput.focus();
+            }
+        }
+    }
+
+    function handlePaste(event) {
+        const pasteData = event.clipboardData.getData('text');
+        
+        // Verifica si el texto pegado tiene 6 dígitos
+        if (pasteData.length === 6 && /^\d+$/.test(pasteData)) {
+            event.preventDefault(); // Evita el comportamiento de pegado predeterminado
+            const inputs = document.querySelectorAll('.code-input');
+
+            // Distribuye cada dígito en un input
+            inputs.forEach((input, index) => {
+                input.value = pasteData[index] || '';
+            });
+
+            // Mueve el foco al final del último input
+            inputs[5].focus();
+        }
+    }
+
+    function getCode() {
+        const inputs = document.querySelectorAll('.code-input');
+        let code = '';
+
+        inputs.forEach(input => {
+            code += input.value;
+        });
+
+        return code;
+    }
+
+        document.getElementById('btnUnirsePartida').addEventListener('click', function() {
+            const codigoPartida = getCode();
+
+            // Realizar solicitud AJAX para unirse a la partida
+            fetch('../php/partida/unirse_sala.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `codigo_partida=${encodeURIComponent(codigoPartida)}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    document.getElementById('resultado').innerText = "Error: " + data.error;
+                } else {
+                    window.location.href = 'crear_partida.html?codigo=' + encodeURIComponent(codigoPartida);
+                }
+            })
+            .catch(error => {
+                document.getElementById('resultado').innerText = "Error al unirse a la partida:" + error;
+                console.error("Error:", error);
+            });
+        });
+    </script>
+    
+</body>
+</html>
