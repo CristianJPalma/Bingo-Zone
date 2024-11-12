@@ -12,7 +12,7 @@ $accion = $_GET['accion'] ?? '';
 
 // Inicializar un arreglo de respuesta
 $response = ['codigo' => $codigoPartida, 'miembros' => [], 'esCreador' => false];
-
+// Accion para salir de la partida
 if ($accion === 'salir' && isset($_SESSION['usuario_id'])) {
     $id_usuario = $_SESSION['usuario_id'];
 

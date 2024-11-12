@@ -26,8 +26,6 @@
               <button id="cancelar">Cancelar</button>
             </div>
           </div>
-          
-          
         <h1>Detalles de la Partida</h1>
         <p><strong>Código de la partida:</strong> <span id="codigoPartida"></span></p>
     
@@ -35,9 +33,6 @@
         <ul id="listaMiembros">
             <!-- Aquí se mostrarán los miembros de la partida -->
         </ul>
-        <button id="salirPartida" onclick="mostrarModal();">Salir de partida</button>
-        <button class="solo-creador" onclick="copiarCodigo()" style="display: none;">Copiar</button>
-        <button class="solo-creador" onclick="iniciarPartida()" style="display: none;">Iniciar Partida</button>
         <h2>Modo de Juego</h2>
         <div class="solo-interactivo-creador" id="opcionesModo">
             <div class="opcion" data-modo="completo" onclick="seleccionarModo(this)">
@@ -81,7 +76,9 @@
         </div>
     
         <!-- Botón para guardar las selecciones -->
-        <button class="solo-interactivo-creador" onclick="guardarSeleccion()">Guardar Selección</button>
+        <button id="salirPartida" onclick="mostrarModal();">Salir de partida</button>
+        <button class="solo-creador" onclick="copiarCodigo()" style="display: none;">Copiar</button>
+        <button class="solo-creador" style="display: none;" onclick="guardarSeleccion()">Guardar Selección</button>
         <p id="resultado"></p>
 
         <script>    
@@ -142,7 +139,6 @@
             .then(response => response.json())
             .then(data => {
                 if (data.mensaje) {
-                    window.location.href ="carton.html";
                     document.getElementById('resultado').innerText = data.mensaje;
                 } else if (data.error) {
                     document.getElementById('resultado').innerText = data.error;
@@ -153,6 +149,21 @@
                 document.getElementById('resultado').innerText = 'Error al actualizar la partida.';
             });
         }
+        
+      function verificarRedireccion() {
+     fetch(`../php/partida/verificar_estado.php?codigoPartida=${codigoPartida}`)
+         .then(response => response.json())
+        .then(data => {
+            if (data.redirigir === 1) {
+               // Redirige a la nueva página de la partida
+                 window.location.href = 'carton.html?codigo='+ codigoPartida ;
+             }
+      })
+      .catch(error => console.error('Error al verificar redirección:', error));
+ }
+
+// Llamada periódica a la función cada 3 segundos
+setInterval(verificarRedireccion, 2000);
 
 
             function mostrarModal() {
