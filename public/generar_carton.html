@@ -28,10 +28,13 @@
 
 <h1>Cartones de Bingo</h1>
 <div id="tiempo"></div>
-<div id="cartonesContainer"></div>
+<div id="carton">
+  <div id="cartonesContainer"></div>
+</div>
 <button id="cambiarNumeros">Cambiar Números</button>
 
 <button id="salirPartida" onclick="mostrarModal();">Salir de partida</button>
+
 <script src="../scripts/generar_carton.js"></script>
 <style>
     .modal {
@@ -58,24 +61,45 @@
     max-width: 400px;
   }
   table {
-            border-collapse: collapse;
-            margin: 10px;
+          width: 350px;
+
         }
         th, td {
-            border: 1px solid #333;
-            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid black;
+            margin: 10px;
+            padding: 15px;
             text-align: center;
         }
         img {
             width: 20px; /* Tamaño de la imagen */
             height: 20px;
         }
-  .normal{
-    background-color: aqua;
-  }
-  .rojo{
-    background-color: red;
-  }
+        #carton.normal{
+          background-color: #FF8800;
+          padding: 10px;
+          width: 370px;
+          
+        }
+        #carton.red{
+          background-color: #ff1e00;
+        }
+        #cartonesContainer.normal th {
+          background-color: #A9A5A0;
+          color: black;
+          border-radius: 10px;
+        }
+        #cartonesContainer.normal tr {
+          background-color: #FFFFFF;
+          color: black;
+          border-radius: 10px;
+        }
+        /* Cuando la clase del div es 'rojo' */
+        #cartonesContainer.rojo th {
+          background-color: red;
+          color: white;
+        }     
+
   </style>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -83,8 +107,10 @@ fetch("../php/usuario/mostrar_datos.php")
     .then(response => response.json())
     .then(data => {
         if (data.nombre) {
+            const carton = document.getElementById("carton");
             const cartonElement = document.getElementById("cartonesContainer");
             cartonElement.classList.add(data.estilo_carton);
+            carton.classList.add(data.estilo_carton);
         } else {
             console.error("No se encontraron datos del usuario.");
         }

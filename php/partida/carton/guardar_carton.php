@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-include '../conexion/Conexion.php';
+include '../../conexion/Conexion.php';
 session_start();
 
 // Verifica si el usuario está autenticado

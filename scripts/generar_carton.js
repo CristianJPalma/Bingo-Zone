@@ -4,7 +4,7 @@ const codigoPartida = urlParams.get('codigo');
 
 
 function cargarCartones() {
-    fetch(`../php/partida/generar_carton.php?codigo=${codigoPartida}`)
+    fetch(`../php/partida/carton/generar_carton.php?codigo=${codigoPartida}`)
         .then(response => response.json())
         .then(data => {
             if (data.error) {
@@ -64,6 +64,7 @@ function cargarCartones() {
         .catch(error => {
             console.error('Error al cargar los cartones:', error);
         });
+        guardarCartones()
 }
 
 function guardarCartones() {
@@ -72,7 +73,7 @@ function guardarCartones() {
         cartones: window.cartonesGenerados
     };
 
-    fetch('../php/partida/guardar_carton.php', {
+    fetch('../php/partida/carton/guardar_carton.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -93,6 +94,7 @@ function guardarCartones() {
 
 // Ejecuta esta función automáticamente después de 1 minuto
 setTimeout(guardarCartones, 3000);
+setTimeout(guardarCartones, 58000);
 
 
 document.getElementById('cambiarNumeros').addEventListener('click', cargarCartones);
@@ -120,7 +122,7 @@ fetch(`../php/partida/tiempo_partida.php?codigo=${codigoPartida}`)
 
             if (tiempoRestante <= 0) {
                 clearInterval(intervalo);
-                window.location.href = 'juego.html';
+                window.location.href = 'juego.html?codigo='+ codigoPartida 
             }
         }, 1000);
     })

@@ -1,50 +1,73 @@
-// Función para obtener los parámetros del juego desde localStorage
-function getGameSettings() {
-    return {
-        numBalls: parseInt(localStorage.getItem('numBalls')),
-        numCards: parseInt(localStorage.getItem('numCards')),
-        mode: localStorage.getItem('mode'),  // Verificamos que se obtenga el modo de juego
-        cards: JSON.parse(localStorage.getItem('bingoCards'))
-    };
-}
+const urlParams = new URLSearchParams(window.location.search);
+const codigoPartida = urlParams.get('codigo');
 
-function displayGameSettings() {
-    const settings = getGameSettings();
+function listarCartones() {
+    fetch(`../php/partida/carton/consultar_carton.php?codigo=${codigoPartida}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                document.getElementById('cartonesContainer').innerText = data.error;
+                return;
+            }
 
-    // Verificar que se obtenga el modo de juego antes de mostrarlo
-    let mode = localStorage.getItem('mode')
-    document.getElementById('gameMode').textContent = mode;
+            const cartonesContainer = document.getElementById('cartonesContainer');
+            cartonesContainer.innerHTML = ''; // Limpiar el contenido anterior
 
-    // Mostrar cada cartón
-    const cardsContainer = document.getElementById('cardsContainer');
-    settings.cards.forEach((card, index) => {
-        const cardElement = document.createElement('div');
-        cardElement.classList.add('bingo-card');
-        cardElement.innerHTML = `<h3>Cartón ${index + 1}</h3>`;
-        
-        // Crear la tabla del cartón
-        const table = document.createElement('table');
-        table.classList.add('card-table');
-        ['B', 'I', 'N', 'G', 'O'].forEach(letter => {
-            const th = document.createElement('th');
-            th.innerText = letter;
-            table.appendChild(th);
-        });
+            data.cartones.forEach((carton, index) => {
+                const numerosCarton = JSON.parse(carton.numeros); // Asegúrate de guardar en JSON
+                const table = document.createElement('table');
+                const headerRow = document.createElement('tr');
+                
+                ['B', 'I', 'N', 'G', 'O'].forEach(letra => {
+                    const th = document.createElement('th');
+                    th.innerText = letra;
+                    headerRow.appendChild(th);
+                });
+                table.appendChild(headerRow);
 
-        for (let i = 0; i < 5; i++) {
-            const row = document.createElement('tr');
-            ['B', 'I', 'N', 'G', 'O'].forEach(letter => {
-                const cell = document.createElement('td');
-                cell.innerText = card[letter][i];
-                row.appendChild(cell);
+                for (let fila = 0; fila < 5; fila++) {
+                    const row = document.createElement('tr');
+                    ['B', 'I', 'N', 'G', 'O'].forEach((columna) => {
+                        const cell = document.createElement('td');
+                        const numero = numerosCarton[columna][fila];
+                        cell.innerText = numero || '';
+                        if (columna === 'N' && fila === 2) {
+                            const img = document.createElement('img');
+                            img.src = '../imgs/logos/bingozone.png'; // Ruta de tu imagen
+                            img.alt = 'Estrella';
+                            cell.appendChild(img);
+                        } else {
+                            cell.innerText = numero || '';
+                        }
+                        row.appendChild(cell);
+                    });
+                    
+                    table.appendChild(row);
+                }
+
+                cartonesContainer.appendChild(table);
             });
-            table.appendChild(row);
-        }
-
-        cardElement.appendChild(table);
-        cardsContainer.appendChild(cardElement);
-    });
+        })
+        .catch(error => {
+            console.error('Error al listar los cartones:', error);
+        });
 }
 
-// Ejecutar la función al cargar la página
-window.onload = displayGameSettings;
+document.addEventListener('DOMContentLoaded', listarCartones);
+
+async function salirPartida() {
+    try {
+        const response = await fetch(`../php/partida/partida.php?codigo=${codigoPartida}&accion=salir`);
+        const data = await response.json();
+
+        if (data.mensaje) {
+
+            window.location.href = 'menu.html'; // Redirigir a la sala
+        } else if (data.error) {
+            alert(data.error);
+            window.location.href = 'menu.html';
+        }
+    } catch (error) {
+        console.error('Error al salir de la partida:', error);
+    }
+}
