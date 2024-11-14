@@ -64,14 +64,15 @@
     border: solid 4px #fff;
     border-radius: 10px;
     width: 50%;
-    margin-top: 2%;
+    margin-top: 4%;
+    background-color: #ffffffbb;
   }
   .cerrar:hover {
     background-color: #ff0000bb;
     color: #fff;
   }
   .cerrar:active {
-    background-color: #ff0000bb;
+    background-color: #ffffffbb;
     color: #fff;
     transform: scale(0.9);
   }
@@ -103,8 +104,8 @@
   }
 
   /*segunda linea*/
-/*
-.marco {
+
+/*.marco {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -258,9 +259,10 @@
         justify-content: center;
     }
 }*/
-/*segunda linea*/
-/*
-.marco {
+
+/*tercera linea*/
+
+/*.marco {
     position: relative;
     width: 90%;
     max-width: 1200px;
