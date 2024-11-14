@@ -1,127 +1,146 @@
-function getParams() {
-    const urlParams = new URLSearchParams(window.location.search);
-    return {
-        numBalls: parseInt(urlParams.get('numBalls')),
-        numCards: parseInt(urlParams.get('numCards')),
-        mode: urlParams.get('mode')
-    };
-}
 
-function generateBingoCard(numBalls) {
-    let ranges;
-
-    if (numBalls === 75) {
-        ranges = [
-            { letter: 'B', min: 1, max: 15 },
-            { letter: 'I', min: 16, max: 30 },
-            { letter: 'N', min: 31, max: 45 },
-            { letter: 'G', min: 46, max: 60 },
-            { letter: 'O', min: 61, max: 75 }
-        ];
-    } else if (numBalls === 90) {
-        ranges = [
-            { letter: 'B', min: 1, max: 18 },
-            { letter: 'I', min: 19, max: 36 },
-            { letter: 'N', min: 37, max: 54 },
-            { letter: 'G', min: 55, max: 72 },
-            { letter: 'O', min: 73, max: 90 }
-        ];
-    }
-
-    const card = {};
-    ranges.forEach(range => {
-        card[range.letter] = generateColumn(range.min, range.max);
-    });
-
-    return card;
-}
-
-function generateColumn(min, max) {
-    let column = [];
-    while (column.length < 5) {
-        let num = Math.floor(Math.random() * (max - min + 1)) + min;
-        if (!column.includes(num)) {
-            column.push(num);
-        }
-    }
-    return column;
-}
-
-function displayBingoCard(card, cardNumber) {
-    const gridContainer = document.getElementById('gridContainer');
-    const table = document.createElement('table');
-    table.classList.add('bingo-card');
-
-    const headerRow = document.createElement('tr');
-    ['B', 'I', 'N', 'G', 'O'].forEach(letter => {
-        const th = document.createElement('th');
-        th.innerText = letter;
-        headerRow.appendChild(th);
-    });
-    table.appendChild(headerRow);
-
-    for (let rowIndex = 0; rowIndex < 5; rowIndex++) {
-        const row = document.createElement('tr');
-        ['B', 'I', 'N', 'G', 'O'].forEach(column => {
-            const cell = document.createElement('td');
-            cell.innerText = card[column][rowIndex];
-            row.appendChild(cell);
-        });
-        table.appendChild(row);
-    }
-
-    const cardTitle = document.createElement('h3');
-    cardTitle.innerText = `Cartón ${cardNumber}`;
-    gridContainer.appendChild(cardTitle);
-    gridContainer.appendChild(table);
-}
-
-function generateAndDisplayCards() {
-    const params = getParams();
-    const gridContainer = document.getElementById('gridContainer');
-    gridContainer.innerHTML = ''; // Limpiar cartones anteriores
-
-    const cardsData = [];
-
-    for (let i = 0; i < params.numCards; i++) {
-        const bingoCard = generateBingoCard(params.numBalls);
-        cardsData.push(bingoCard); // Guardar los cartones generados
-        displayBingoCard(bingoCard, i + 1); // Mostrar los cartones
-    }
-
-    // Guardar los cartones en localStorage
-    localStorage.setItem('bingoCards', JSON.stringify(cardsData));
-
-    // Mostrar el botón de continuar
-    document.getElementById('continue-btn').style.display = 'block';
-}
-
-document.getElementById('continue-btn').addEventListener('click', function() {
-    window.location.href = 'juego.html';
-});
-document.getElementById('regenerate-btn').addEventListener('click', generateAndDisplayCards);
-
-window.onload = generateAndDisplayCards;
+const urlParams = new URLSearchParams(window.location.search);
+const codigoPartida = urlParams.get('codigo');
 
 
-const gridContainer = document.getElementById('gridContainer');
-
-function createGrid(rows, cols) {
-    const grid = document.createElement('table');
-    for (let r = 0; r < rows; r++) {
-        const row = grid.insertRow();
-        for (let c = 0; c < cols; c++) {
-            const cell = row.insertCell();
-            const cellId = `${r}-${c}`;
-
-            if (localStorage.getItem(cellId)) {
-                cell.classList.add('selected');
-                cell.style.pointerEvents = 'none'; // Desactivar interacciones
+function cargarCartones() {
+    fetch(`../php/partida/generar_carton.php?codigo=${codigoPartida}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                document.getElementById('cartonesContainer').innerText = data.error;
+                return;
             }
+
+            const cartonesContainer = document.getElementById('cartonesContainer');
+            cartonesContainer.innerHTML = ''; // Limpiar el contenido anterior
+
+            // Guardamos los cartones generados para enviarlos más tarde
+            let cartonesGenerados = [];
+
+            data.cartones.forEach((carton, index) => {
+                const table = document.createElement('table');
+                const headerRow = document.createElement('tr');
+                ['B', 'I', 'N', 'G', 'O'].forEach(letra => {
+                    const th = document.createElement('th');
+                    th.innerText = letra;
+                    headerRow.appendChild(th);
+                });
+                table.appendChild(headerRow);
+
+                let cartonNumeros = { B: [], I: [], N: [], G: [], O: [] };
+
+                for (let fila = 0; fila < 5; fila++) {
+                    const row = document.createElement('tr');
+                    ['B', 'I', 'N', 'G', 'O'].forEach((columna, colIndex) => {
+                        const cell = document.createElement('td');
+                        const numero = carton[columna][fila];
+
+                        // Guardamos los números en el objeto para enviarlos
+                        cartonNumeros[columna].push(numero);
+
+                        // Si la celda está vacía (posición central de 'N'), coloca una imagen
+                        if (columna === 'N' && fila === 2) {
+                            const img = document.createElement('img');
+                            img.src = '../imgs/logos/bingozone.png'; // Ruta de tu imagen
+                            img.alt = 'Estrella';
+                            cell.appendChild(img);
+                        } else {
+                            cell.innerText = numero || '';
+                        }
+                        row.appendChild(cell);
+                    });
+                    table.appendChild(row);
+                }
+                cartonesContainer.appendChild(table);
+
+                // Añadimos el carton generado al array
+                cartonesGenerados.push(cartonNumeros);
+            });
+
+            // Almacenar los cartones generados en una variable global
+            window.cartonesGenerados = cartonesGenerados;
+        })
+        .catch(error => {
+            console.error('Error al cargar los cartones:', error);
+        });
+}
+
+function guardarCartones() {
+    const data = {
+        codigoPartida: codigoPartida,
+        cartones: window.cartonesGenerados
+    };
+
+    fetch('../php/partida/guardar_carton.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(responseData => {
+        if (responseData.success) {
+            console.log("Cartones guardados exitosamente");
+        } else {
+            console.error("Error al guardar cartones:", responseData.error);
         }
-    }
-    gridContainer.appendChild(grid);
+    })
+    .catch(error => console.error('Error en la solicitud:', error));
 }
 
 
-createGrid(5, 5);
+// Ejecuta esta función automáticamente después de 1 minuto
+setTimeout(guardarCartones, 3000);
+
+
+document.getElementById('cambiarNumeros').addEventListener('click', cargarCartones);
+
+cargarCartones();  // Generar los cartones automáticamente cuando se carga la página.
+
+fetch(`../php/partida/tiempo_partida.php?codigo=${codigoPartida}`)
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            console.error('Error:', data.error);
+            return;
+        }
+
+        // Verificar y convertir a número para evitar NaN
+        let tiempoRestante = parseInt(data.tiempoRestante, 10);
+        if (isNaN(tiempoRestante)) {
+            console.error('El tiempo restante no es un número válido');
+            return;
+        }
+
+        const intervalo = setInterval(() => {
+            tiempoRestante -= 1;
+            document.getElementById('tiempo').innerText = tiempoRestante;
+
+            if (tiempoRestante <= 0) {
+                clearInterval(intervalo);
+                window.location.href = 'juego.html';
+            }
+        }, 1000);
+    })
+    .catch(error => console.error('Error en la solicitud:', error));
+
+
+
+async function salirPartida() {
+    try {
+        const response = await fetch(`../php/partida/partida.php?codigo=${codigoPartida}&accion=salir`);
+        const data = await response.json();
+
+        if (data.mensaje) {
+
+            window.location.href = 'menu.html'; // Redirigir a la sala
+        } else if (data.error) {
+            alert(data.error);
+            window.location.href = 'menu.html';
+        }
+    } catch (error) {
+        console.error('Error al salir de la partida:', error);
+    }
+}

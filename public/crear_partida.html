@@ -75,16 +75,15 @@
             </label>
         </div>
     
-        <!-- Botón para guardar las selecciones -->
         <button id="salirPartida" onclick="mostrarModal();">Salir de partida</button>
         <button class="solo-creador" onclick="copiarCodigo()" style="display: none;">Copiar</button>
         <button class="solo-creador" style="display: none;" onclick="guardarSeleccion()">Guardar Selección</button>
         <p id="resultado"></p>
 
         <script>    
- let modoSeleccionado = ''; // Variable para almacenar el modo seleccionado
-        let cartonesSeleccionados = ''; // Variable para almacenar el número de cartones seleccionado
-        let numerosSeleccionados = ''; // Variable para almacenar la cantidad de números seleccionada
+        let modoSeleccionado = ''; 
+        let cartonesSeleccionados = ''; 
+        let numerosSeleccionados = ''; 
 
         // Función para seleccionar el modo de juego
         function seleccionarModo(element) {
@@ -156,7 +155,7 @@
         .then(data => {
             if (data.redirigir === 1) {
                // Redirige a la nueva página de la partida
-                 window.location.href = 'carton.html?codigo='+ codigoPartida ;
+                 window.location.href = 'generar_carton.html?codigo='+ codigoPartida ;
              }
       })
       .catch(error => console.error('Error al verificar redirección:', error));
