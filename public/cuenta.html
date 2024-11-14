@@ -20,26 +20,30 @@
 </head>
 <body>
     <div class="marco">
-    <h2 class="mi-cuenta">Mi Cuenta</h2>
-    <div class="derecho"><h1>Datos Personales</h1>
-        <form onsubmit="actualizarDatos(event)">
-            <img class="img-perfil" id="imagen_perfil" src="../imgs/capi/capi-furia.png" alt="Imagen de Perfil" width="100" onclick="cambiarImagen()"><br>
-            <input class="gion" type="text" id="nombre_pantalla" name="nombre_pantalla" required><br>
-                <input class="gion gion2" type="text" id="nombre" name="nombre" required> <input class="gion2" type="text" id="apellido" name="apellido" required><br><br>    
-            <input class="gion" type="email" id="correo" name="correo" required><br>
-    
-            
-            <button type="submit">Guardar cambios</button>
-            <div id="mensaje-resultado"></div>
-        </form>
-        <button onclick="window.location.href='menu.html';"">Atras</button>
+    <h1 class="mi-cuenta">Mi Cuenta</h1>
         <style>
             img{
                 cursor: url('../imgs/cursores/puntero-click.cur'), pointer;
             }
         </style>
-        </div>
-    </div></div>
+            <div class="izquierda"><h1>Datos Personales</h1>
+                <form onsubmit="actualizarDatos(event)">
+                    <img class="img-perfil" id="imagen_perfil" src="../imgs/capi/capi-furia.png" alt="Imagen de Perfil" width="100" onclick="cambiarImagen()"><br>
+                    <input class="gion" type="text" id="nombre_pantalla" name="nombre_pantalla" required><br>
+                    <input class="gion2" type="text" id="nombre" name="nombre" required> <input class="gion2" type="text" id="apellido" name="apellido" required><br><br>
+                    <input class="gion" type="email" id="correo" name="correo" required><br>
+                    <button class="guardar" type="submit">Guardar Cambios</button>
+                    <button class="cerrar" href="../php/cerrar_sesion.php">Cerrar Sesión</button>
+                    <div id="mensaje-resultado"></div>
+                </form>
+            </div>
+            <div class="derecha contenido"><h1>Mis Cartones</h1>
+                <img class="cartones" src="../imgs/cartones/capi1.png" alt="carton">
+                <img class="cartones" src="../imgs/cartones/capi1.png" alt="carton">
+                <img class="cartones" src="../imgs/cartones/capi1.png" alt="carton">
+                <img class="cartones" src="../imgs/cartones/capi1.png" alt="carton">
+            </div>
+            <button class="salir" onclick="window.location.href='menu.html';">Salir</button>
     </div>
 </body>
 </html>

@@ -96,7 +96,6 @@ body {
 .barra{
     width: 80%;
     height: 60vh;
-    border: solid;
     overflow-x: auto;
     padding: 0px;
     position: absolute;
