@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,23 +17,94 @@
     <link rel="stylesheet" href="../styles/carton.css">
     <title>Generar Carton - Bingo Zone</title>
 </head>
-<body id="music">
-    <h1>Cartones Generados</h1>
-    <table id="gridContainer"></table>
-    <button id="regenerate-btn">Cambiar números</button>
-    <button id="continue-btn" style="display: none;">Continuar al juego</button>
+<body>
+    <div id="miModal" class="modal">
+        <div class="modal-content">
+          <p>¿Estás seguro de que quieres salir de la partida?</p>
+          <button id="aceptar">Aceptar</button>
+          <button id="cancelar">Cancelar</button>
+        </div>
+    </div>
 
-</body>
+<h1>Cartones de Bingo</h1>
+<div id="tiempo"></div>
+<div id="cartonesContainer"></div>
+<button id="cambiarNumeros">Cambiar Números</button>
+
+<button id="salirPartida" onclick="mostrarModal();">Salir de partida</button>
 <script src="../scripts/generar_carton.js"></script>
-<audio id="background-music"  autoplay loop>
-    <source src="../audios/musica2.mp3" type="audio/mpeg">
-    Tu navegador no soporta el elemento de audio.
-</audio>
-<input type="range" style="display: none;" id="volume" min="0" max="1" step="0.01" value="0.5">
+<style>
+    .modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+  }
+  
+  /* El contenido del modal */
+  .modal-content {
+      color: black;
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+    max-width: 400px;
+  }
+  table {
+            border-collapse: collapse;
+            margin: 10px;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 10px;
+            text-align: center;
+        }
+        img {
+            width: 20px; /* Tamaño de la imagen */
+            height: 20px;
+        }
+  .normal{
+    background-color: aqua;
+  }
+  .rojo{
+    background-color: red;
+  }
+  </style>
 <script>
-    document.getElementById('music').addEventListener('mouseover','click', function() {
-    var audio = document.getElementById('background-music');
-    audio.play();
+    document.addEventListener("DOMContentLoaded", function() {
+fetch("../php/usuario/mostrar_datos.php")
+    .then(response => response.json())
+    .then(data => {
+        if (data.nombre) {
+            const cartonElement = document.getElementById("cartonesContainer");
+            cartonElement.classList.add(data.estilo_carton);
+        } else {
+            console.error("No se encontraron datos del usuario.");
+        }
+    })
+    .catch(error => console.error("Error al obtener datos:", error));
 });
+
+function mostrarModal() {
+          document.getElementById('miModal').style.display = "block";
+        }
+function ocultarModal() {
+          document.getElementById('miModal').style.display = "none";
+        }
+        document.getElementById('aceptar').onclick = function() {
+            salirPartida();
+            ocultarModal();
+          }
+        document.getElementById('cancelar').onclick = function() {
+          ocultarModal();
+        }
 </script>
+</body>
 </html>

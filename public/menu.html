@@ -29,13 +29,13 @@
         <button class="bttCuenta" onclick="window.location.href='cuenta.html';">Cuenta</button>
     </div>
     <div class="centro">
-        <img class="imagenPerfil" id="imagen_perfil" src="" alt="capiEnojado">
+        <img class="imagenPerfil" id="imagen_perfil" src="../imgs/capi/signo-de-pregunta.png" alt="capiEnojado">
         <h1 id="nombre_pantalla"></h1>
 
     </div>
     <div class="bottom-buttons">
-        <button onclick="window.location.href='anfitrion.html';" class="crearSala">Crear sala</button>
-        <button class="unirse">Ingresar</button>
+            <button type="button" id="btnCrearPartida" class="crearSala">Crear sala</button>
+        <button class="unirse" onclick="window.location.href='unirse_partida.html';">Ingresar</button>
     </div>
     <div class="marginBaja">
         <div class="contacto">Contacto</div>
@@ -43,7 +43,31 @@
     </div>
     
 
+    <script>
 
+        document.getElementById('btnCrearPartida').addEventListener('click', function() {
+            fetch('../php/partida/crear_sala.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    document.getElementById('resultado').innerText = data.error; // Muestra mensaje de error si existe
+                } else {
+                    // Redirige a la página de la partida pasando el código de la sala en la URL
+                    window.location.href = 'crear_partida.html?codigo=' + encodeURIComponent(data.codigo_sala);
+                }
+            })
+            .catch(error => {
+                document.getElementById('resultado').innerText = "Error al crear la partida.";
+                console.error("Error:", error);
+            });
+        });
+        
+            </script>
     <audio id="background-music"  autoplay loop>
         <source src="../audios/musica2.mp3" type="audio/mpeg">
         Tu navegador no soporta el elemento de audio.
