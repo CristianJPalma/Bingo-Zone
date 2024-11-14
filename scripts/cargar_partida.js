@@ -1,3 +1,4 @@
+
 function copiarCodigo() {
     const codigo = document.getElementById('codigoPartida').textContent; // Obtener el texto del código de la partida
     navigator.clipboard.writeText(codigo).then(() => {

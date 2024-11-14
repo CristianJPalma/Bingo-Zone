@@ -64,5 +64,3 @@ function actualizarDatos(event) {
     })
     .catch(error => console.error("Error al actualizar datos:", error));
 }
-
-
