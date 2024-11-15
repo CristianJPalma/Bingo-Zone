@@ -124,7 +124,7 @@ li {
 }
 
 .opcion {
-    background: white;
+    background: rgba(255, 255, 255, 0);
     border-radius: 15px;
     padding: 10px;
     text-align: center;
@@ -168,6 +168,11 @@ li {
     right: 20px;
     color: white;
     font-size: 0.9rem;
+}.mod{
+    border: solid 4px #fff;
+    border-radius: 60px;
+    text-align: center;
+    background-color: #ff8000;
 }
 
 @media (max-width: 1024px) {

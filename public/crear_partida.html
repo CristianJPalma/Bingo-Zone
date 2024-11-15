@@ -31,11 +31,7 @@
           </div>
         <h1>Detalles de la Partida</h1>
         <p><strong>Código de la partida:</strong> <span id="codigoPartida"></span></p>
-    
 
-        <div class="header">
-    <img src="logo-bingo.png" alt="Bingo Zone Logo" class="logo">
-    <h1>Bingo Zone</h1>
 </div>
 
 <div class="contenedor-juego">
@@ -50,39 +46,39 @@
 
     <!-- Sección de modos de juego -->
     <div class="contenedor-modos">
-        <h2>Modo de Juego</h2>
+        <h2 class="mod">Modo de Juego</h2>
         <div class="solo-interactivo-creador" id="opcionesModo">
             <div class="opcion" data-modo="completo" onclick="seleccionarModo(this)">
-                <img src="completo.jpg" alt="Modo Completo">
+                <img src="../imgs/cartones/carton-lleno.png" alt="Modo Completo">
                 <p>Completo</p>
             </div>
             <div class="opcion" data-modo="linea" onclick="seleccionarModo(this)">
-                <img src="linea.jpg" alt="Modo Línea">
+                <img src="../imgs/cartones/carton-linea.png" alt="Modo Línea">
                 <p>Línea</p>
             </div>
             <div class="opcion" data-modo="cuatro" onclick="seleccionarModo(this)">
-                <img src="cuatro.jpg" alt="Modo Cuatro Esquinas">
-                <p>Cuatro Esquinas</p>
+                <img src="../imgs/cartones/carton-equis.png" alt="Modo Equis">
+                <p>Equis</p>
             </div>
         </div>
     
         <!-- Opciones de Número de Cartones -->
-        <h2>Número de Cartones</h2>
+        <h2 class="mod">Número de Cartones</h2>
         <div class="solo-interactivo-creador" id="opcionesCartones">
             <div class="opcion" data-cartones="1" onclick="seleccionarCartones(this)">
-                <img src="../imgs/cartones/capi1.png" alt="1 Cartón">
+                <img src="../imgs/cartones/un-carton.png" alt="1 Cartón">
                 <p>1 Cartón</p>
             </div>
             <div class="opcion" data-cartones="2" onclick="seleccionarCartones(this)">
-                <img src="../imgs/cartones/capi1.png" alt="2 Cartones">
+                <img src="../imgs/cartones/dos-cartones.png" alt="2 Cartones">
                 <p>2 Cartones</p>
             </div>
             <div class="opcion" data-cartones="3" onclick="seleccionarCartones(this)">
-                <img src="../imgs/cartones/capi1.png" alt="3 Cartones">
+                <img src="../imgs/cartones/tres-cartones.png" alt="3 Cartones">
                 <p>3 Cartones</p>
             </div>
         </div>
-        <h2>Cantidad de Números</h2>
+        <h2 class="mod">Cantidad de Números</h2>
         <div class="solo-interactivo-creador" id="opcionesNumeros">
             <label>
                 <input type="radio" name="cantidadNumeros" value="75" onclick="seleccionarNumeros(this)"> 75 Números
