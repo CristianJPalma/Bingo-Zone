@@ -94,7 +94,7 @@ function guardarCartones() {
 
 // Ejecuta esta función automáticamente después de 1 minuto
 setTimeout(guardarCartones, 3000);
-setTimeout(guardarCartones, 58000);
+setTimeout(guardarCartones, 35000);
 
 
 document.getElementById('cambiarNumeros').addEventListener('click', cargarCartones);

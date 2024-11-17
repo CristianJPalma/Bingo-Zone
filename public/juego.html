@@ -24,7 +24,10 @@
           <button id="cancelar">Cancelar</button>
         </div>
     </div>
-    <div id="cartonesContainer"></div>
+    <div id="carton" class="cartones">
+
+      <div id="cartonesContainer"></div>
+    </div>
     <button id="salirPartida" onclick="mostrarModal();">Salir de partida</button>
     <style>
         .modal {
@@ -65,11 +68,14 @@
                 width: 20px; /* Tamaño de la imagen */
                 height: 20px;
             }
-            #carton.normal{
-              background-color: #FF8800;
-              padding: 10px;
-              width: 370px;
-              
+
+            #cartonesContainer {
+              position: absolute;
+              top: 40%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              display: flex;
+              gap: 50px; /* Espacio entre los cartones */
             }
             #carton.red{
               background-color: #ff1e00;
@@ -83,12 +89,7 @@
               background-color: #FFFFFF;
               color: black;
               border-radius: 10px;
-            }
-            /* Cuando la clase del div es 'rojo' */
-            #cartonesContainer.rojo th {
-              background-color: red;
-              color: white;
-            }     
+            }  
     
       </style>
       <script>

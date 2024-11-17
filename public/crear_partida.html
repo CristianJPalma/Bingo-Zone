@@ -29,15 +29,14 @@
               <button id="cancelar">Cancelar</button>
             </div>
           </div>
-        <h1>Detalles de la Partida</h1>
-        <p><strong>Código de la partida:</strong> <span id="codigoPartida"></span></p>
+<span style="display: none;" id="codigoPartida"></span></p>
 
 </div>
 
 <div class="contenedor-juego">
     <!-- Panel de jugadores -->
     <div class="marco">
-        <h2>JUGADORES: 1/___</h2>
+        <h2>JUGADORES:</h2>
         <ul class="lista" id="listaMiembros">
 
             <!-- Repetir para los demás espacios vacíos -->
@@ -79,7 +78,7 @@
             </div>
         </div>
         <h2 class="mod">Cantidad de Números</h2>
-        <div class="solo-interactivo-creador" id="opcionesNumeros">
+        <div class="solo-interactivo-creador letra" id="opcionesNumeros">
             <label>
                 <input type="radio" name="cantidadNumeros" value="75" onclick="seleccionarNumeros(this)"> 75 Números
             </label>
@@ -87,9 +86,9 @@
                 <input type="radio" name="cantidadNumeros" value="90" onclick="seleccionarNumeros(this)"> 90 Números
             </label>
         </div>
-        <button id="salirPartida" onclick="mostrarModal();">Salir de partida</button>
-        <button class="solo-creador" onclick="copiarCodigo()" style="display: none;">Copiar</button>
-        <button class="solo-creador" style="display: none;" onclick="guardarSeleccion()">Guardar Selección</button>
+        <button id="salirPartida" class="btn btn-light" onclick="mostrarModal();">Salir de partida</button>
+        <button class="solo-creador btn btn-light" onclick="copiarCodigo()" style="display: none;">Copiar</button>
+        <button class="solo-creador btn btn-light" style="display: none;" onclick="guardarSeleccion()">Iniciar Partida</button>
         <p id="resultado"></p>
         
     </div>

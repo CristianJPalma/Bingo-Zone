@@ -28,7 +28,7 @@
 
 <h1>Cartones de Bingo</h1>
 <div id="tiempo"></div>
-<div id="carton">
+<div id="carton" class="cartones">
   <div id="cartonesContainer"></div>
 </div>
 <button id="cambiarNumeros">Cambiar Números</button>
@@ -61,44 +61,43 @@
     max-width: 400px;
   }
   table {
-          width: 350px;
+              width: 350px;
+    
+            }
+            th, td {
+                border-radius: 10px;
+                border: 1px solid black;
+                margin: 10px;
+                padding: 15px;
+                text-align: center;
+            }
+            img {
+                width: 20px; /* Tamaño de la imagen */
+                height: 20px;
+            }
 
-        }
-        th, td {
-            border-radius: 10px;
-            border: 1px solid black;
-            margin: 10px;
-            padding: 15px;
-            text-align: center;
-        }
-        img {
-            width: 20px; /* Tamaño de la imagen */
-            height: 20px;
-        }
-        #carton.normal{
-          background-color: #FF8800;
-          padding: 10px;
-          width: 370px;
-          
-        }
-        #carton.red{
-          background-color: #ff1e00;
-        }
-        #cartonesContainer.normal th {
-          background-color: #A9A5A0;
-          color: black;
-          border-radius: 10px;
-        }
-        #cartonesContainer.normal tr {
-          background-color: #FFFFFF;
-          color: black;
-          border-radius: 10px;
-        }
-        /* Cuando la clase del div es 'rojo' */
-        #cartonesContainer.rojo th {
-          background-color: red;
-          color: white;
-        }     
+            #cartonesContainer {
+              position: absolute;
+              top: 40%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              display: flex;
+              gap: 50px; /* Espacio entre los cartones */
+            }
+            #carton.red{
+              background-color: #ff1e00;
+            }
+            #cartonesContainer.normal th {
+              background-color: #A9A5A0;
+              color: black;
+              border-radius: 10px;
+            }
+            #cartonesContainer.normal tr {
+              background-color: #FFFFFF;
+              color: black;
+              border-radius: 10px;
+            } 
+  
 
   </style>
 <script>

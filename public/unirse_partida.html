@@ -17,9 +17,13 @@
     <title>Unirse Partida - Bingo Zone</title>
 </head>
 <body>
+    <div class="narvar">
+        <img class="logo" src="../imgs/logos/BingoZone.png" alt="Bingo Zone">
+        <h1 class="titulo">Bingo Zone</h1>
+    </div>
     <form id="formUnirsePartida">
-        <h1>Ingresa el codigo</h1>
-        <div class="code-inputs">
+        <h1 class="algo-title">Ingresa el codigo</h1>
+        <div class="codigo code-inputs">
             <input type="number" maxlength="1" class="code-input" oninput="moveInput(event)" onpaste="handlePaste(event)" />
             <input type="number" maxlength="1" class="code-input" oninput="moveInput(event)" onpaste="handlePaste(event)" />
             <input type="number" maxlength="1" class="code-input" oninput="moveInput(event)" onpaste="handlePaste(event)" />
@@ -27,10 +31,10 @@
             <input type="number" maxlength="1" class="code-input" oninput="moveInput(event)" onpaste="handlePaste(event)" />
             <input type="number" maxlength="1" class="code-input" oninput="moveInput(event)" onpaste="handlePaste(event)" />
         </div>
-    <button type="button" id="btnUnirsePartida">Unirse a la Partida</button>
+    <button class="unirse" type="button" id="btnUnirsePartida">Unirse a la Partida</button>
 </form>
-<button onclick="window.location.href='menu.html';">atras</button>
-<p id="resultado"></p>
+<button class="atras1" onclick="window.location.href='menu.html';">Atrás</button>
+<p class="erre" id="resultado"></p>
         
 
 <style>
@@ -41,17 +45,204 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0;
 }
 
-
     .code-inputs {
         display: flex;
-        gap: 5px;
+        gap: 30px;
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
     .code-input {
+        background-color: #ffffff7a;
+        border: solid 4px #fff;
+        border-radius: 10px;
         width: 100px;
         height: 100px;
         text-align: center;
         font-size: 3rem;
     }
+    .algo-title{
+        font-size: 4rem;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .unirse{
+        border: solid 4px #fff;
+        border-radius: 20px;
+        position: absolute;
+        left: 65%;
+        transform: translate(-50%, -50%);
+        bottom: 8%;
+        background-color: #ff8000;
+        color: #fff;
+        height: 10vh;
+        font-size: 3vh;
+        width: 18%;
+    }
+    .atras1{
+        border: solid 4px #ffffffba;
+        border-radius: 20px;
+        position: absolute;
+        left: 35%;
+        transform: translate(-50%, -50%);
+        bottom: 8%;
+        background-color: #ff0000d6;
+        color: #fff;
+        height: 10vh;
+        font-size: 3vh;
+        width: 18%;
+    }
+  .erre{
+    text-align: center;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    bottom: 18%;
+    left: 50%;
+    color: #ff0000;
+    font-size: 4vh;
+  }
+  @media(max-width: 810px){
+    .algo-title{
+        font-size: 3.5rem;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+  }
+  @media(max-width: 800px){
+    .unirse{
+        border: solid 4px #fff;
+        border-radius: 20px;
+        position: absolute;
+        left: 65%;
+        transform: translate(-50%, -50%);
+        bottom: 8%;
+        background-color: #ff8000;
+        color: #fff;
+        height: 10vh;
+        font-size: 2.5vh;
+        width: 18%;
+    }
+  }
+
+
+   @media(max-width: 750px){
+    .algo-title{
+        font-size: 3.5rem;
+        text-align: center;
+
+    }
+    .code-inputs {
+        display: flex;
+        gap: 30px;
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .code-input {
+        background-color: #ffffff7a;
+        border: solid 4px #fff;
+        border-radius: 5px;
+        width: 60px;
+        height: 60px;
+        text-align: center;
+        font-size: 3rem;
+    }
+    .unirse{
+        border: solid 4px #fff;
+        border-radius: 20px;
+        position: absolute;
+        left: 65%;
+        transform: translate(-50%, -50%);
+        bottom: 10%;
+        background-color: #ff8000;
+        color: #fff;
+        height: 10vh;
+        font-size: 2.5vh;
+        width: 20%;
+    }
+    .atras1{
+        border: solid 4px #ffffffba;
+        border-radius: 20px;
+        position: absolute;
+        left: 35%;
+        transform: translate(-50%, -50%);
+        bottom: 10%;
+        background-color: #ff0000d6;
+        color: #fff;
+        height: 10vh;
+        font-size: 3vh;
+        width: 20%;
+    }
+}
+@media(max-width: 710px){
+    .algo-title{
+        font-size: 2.5rem;
+        text-align: center;
+
+    }
+}
+    @media(max-width: 510px)
+    {
+        .algo-title{
+        text-align: center;
+        font-size: 3rem;
+        height: 8vh;
+        width: 80%;
+        top: 30%;
+        left: 55%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+    }
+        .code-inputs {
+        display: flex;
+        gap: 10px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .code-input {
+        background-color: #ffffff7a;
+        border: solid 4px #fff;
+        border-radius: 5px;
+        width: 60px;
+        height: 60px;
+        text-align: center;
+        font-size: 3rem;
+    }
+    .unirse{
+        border: solid 4px #fff;
+        border-radius: 20px;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        bottom: 20%;
+        background-color: #ff8000;
+        color: #fff;
+        height: 8vh;
+        font-size: 3vh;
+        width: 70%;
+    }
+    .atras1{
+        border: solid 4px #ffffffba;
+        border-radius: 20px;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        bottom: 10%;
+        background-color: #ff0000d6;
+        color: #fff;
+        height: 8vh;
+        font-size: 3vh;
+        width: 70%;
+    }
+   }
 </style>
 <script>
     function moveInput(event) {
