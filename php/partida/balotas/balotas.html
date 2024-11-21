@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .ultimo-numero {
+            font-size: 3em;
+            color: #ff5733;
+            margin-bottom: 20px;
+        }
+        .lista-numeros {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        .numero {
+            display: flex;
+            flex-direction: column; /* Organiza los elementos verticalmente */
+            align-items: center;    /* Centra la letra y el número */
+            padding: 10px;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            font-size: 1.2em;
+            width: 60px;            /* Ancho fijo para todos los números */
+            height: 80px;           /* Alto fijo */
+        }
+        .numero-letra {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #007bff;
+        }
+        .numero-valor {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 5px;
+            color: #333;
+        }
+    </style>
+    <h1>Números Generados</h1>
+    <div class="ultimo-numero" id="ultimoNumero">Esperando...</div>
+    <div class="lista-numeros" id="listaNumeros"></div>
+    <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const codigoPartida = urlParams.get('codigo');
+    function obtenerNumeros() {
+    fetch(`generar_balotas.php?codigo=${codigoPartida}`)
+    .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        console.error(data.error);
+                        return;
+                    }
+
+                    const ultimoNumero = data.nuevo_numero;
+                    const numerosPrevios = data.numeros_generados;
+
+                    // Actualizar el último número
+                    const ultimoNumeroDiv = document.getElementById('ultimoNumero');
+                    ultimoNumeroDiv.textContent = `${ultimoNumero.letra}${ultimoNumero.numero}`;
+
+                    // Actualizar la lista de números
+                    const listaNumerosDiv = document.getElementById('listaNumeros');
+                    listaNumerosDiv.innerHTML = ''; // Limpiar la lista
+                    numerosPrevios.forEach(num => {
+                        const numeroDiv = document.createElement('div');
+                        numeroDiv.className = 'numero';
+
+                        // Letra
+                        const letraDiv = document.createElement('div');
+                        letraDiv.className = 'numero-letra';
+                        letraDiv.textContent = num.letra;
+
+                        // Número
+                        const valorDiv = document.createElement('div');
+                        valorDiv.className = 'numero-valor';
+                        valorDiv.textContent = num.numero;
+
+                        // Añadir la letra y el número al contenedor
+
+                        numeroDiv.appendChild(valorDiv);
+
+                        // Añadir el contenedor a la lista
+                        listaNumerosDiv.appendChild(numeroDiv);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error al obtener los números:', error);
+                });
+        }
+
+        // Llamar a la función cada 20 segundos
+        setInterval(obtenerNumeros, 1000);
+
+        // Llamar por primera vez al cargar la página
+        obtenerNumeros();
+
+    </script>
+    
+</body>
+</html>
