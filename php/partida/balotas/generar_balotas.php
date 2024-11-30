@@ -25,23 +25,50 @@ $tiempoInicio = $partida['tiempo_inicio'];
 // Calcular el tiempo transcurrido desde el inicio de la partida
 $tiempoTranscurrido = time() - strtotime($tiempoInicio);
 
-// Intervalo en segundos (cada cuánto se genera un nuevo número)
-$intervalo = 5; // 5 segundos
+$tiempoEspera = 22; 
 
-// ¿Cuántos números deben haberse generado hasta ahora?
-$numeroGeneraciones = floor($tiempoTranscurrido / $intervalo);
-
-// Verificar si ya se generaron todos los números
-if (count($numerosGenerados) >= $numeroBalotas) {
+if ($tiempoTranscurrido < $tiempoEspera) {
     echo json_encode([
-        'mensaje' => 'Todos los números han sido generados.',
-        'numeros_generados' => $numerosGenerados,
-        'nuevo_numero' => null
+        'mensaje' => 'Esperando....',
+        'numeros_generados' => array_map(function ($num) {
+            $letra = '';
+            if ($num <= 15) $letra = 'B';
+            elseif ($num <= 30) $letra = 'I';
+            elseif ($num <= 45) $letra = 'N';
+            elseif ($num <= 60) $letra = 'G';
+            else $letra = 'O';
+
+            return ['numero' => $num, 'letra' => $letra];
+        }, $numerosGenerados)
     ]);
     exit;
 }
 
-// Si aún no se han generado todos los números, generar uno más:
+$intervalo = 3;
+
+// ¿Cuántos números deben haberse generado hasta ahora?
+$numeroGeneraciones = floor(($tiempoTranscurrido - $tiempoEspera) / $intervalo);
+
+// Verificar si ya se generaron todos los números
+if (count($numerosGenerados) >= $numeroBalotas) {
+    // Si ya se generaron todos los números, no generamos más y mostramos todos los números generados
+    echo json_encode([
+        'mensaje' => 'Todos los números han sido generados.',
+        'numeros_generados' => array_map(function ($num) {
+            $letra = '';
+            if ($num <= 15) $letra = 'B';
+            elseif ($num <= 30) $letra = 'I';
+            elseif ($num <= 45) $letra = 'N';
+            elseif ($num <= 60) $letra = 'G';
+            else $letra = 'O';
+
+            return ['numero' => $num, 'letra' => $letra];
+        }, $numerosGenerados)
+    ]);
+    exit;
+}
+
+// Si aún no se generaron todos los números, generarlos hasta alcanzar el número correspondiente
 if (count($numerosGenerados) < $numeroGeneraciones) {
     do {
         // Generar un nuevo número aleatorio
@@ -49,7 +76,6 @@ if (count($numerosGenerados) < $numeroGeneraciones) {
     } while (in_array($nuevoNumero, $numerosGenerados)); // Evitar duplicados
 
     // Determinar la letra según el número
-    $letra = '';
     if ($nuevoNumero <= 15) $letra = 'B';
     elseif ($nuevoNumero <= 30) $letra = 'I';
     elseif ($nuevoNumero <= 45) $letra = 'N';
@@ -59,17 +85,33 @@ if (count($numerosGenerados) < $numeroGeneraciones) {
     // Agregar el nuevo número a la lista de números generados
     $numerosGenerados[] = $nuevoNumero;
 
-    // Actualizar el campo `numeros_generados` en la base de datos
+    // Actualizar los números generados en la base de datos
     $stmt = $pdo->prepare("UPDATE partida SET numeros_generados = :numeros_generados WHERE codigo_partida = :codigo_partida");
     $stmt->execute([
         'numeros_generados' => json_encode($numerosGenerados),
         'codigo_partida' => $codigoPartida
     ]);
+
+    // Devolver el último número generado
+    echo json_encode([
+        'nuevo_numero' => ['letra' => $letra, 'numero' => $nuevoNumero],
+        'numeros_generados' => array_map(function ($num) {
+            $letra = '';
+            if ($num <= 15) $letra = 'B';
+            elseif ($num <= 30) $letra = 'I';
+            elseif ($num <= 45) $letra = 'N';
+            elseif ($num <= 60) $letra = 'G';
+            else $letra = 'O';
+
+            return ['numero' => $num, 'letra' => $letra];
+        }, $numerosGenerados)
+    ]);
+    exit;
 }
 
-// Responder con los números generados y el último número generado
+// Si aún no se generaron suficientes números, simplemente responda con el estado actual
 echo json_encode([
-    'nuevo_numero' => isset($nuevoNumero) ? ['letra' => $letra, 'numero' => $nuevoNumero] : null,
+    'mensaje' => 'Esperando a generar más números...',
     'numeros_generados' => array_map(function ($num) {
         $letra = '';
         if ($num <= 15) $letra = 'B';
@@ -77,7 +119,7 @@ echo json_encode([
         elseif ($num <= 45) $letra = 'N';
         elseif ($num <= 60) $letra = 'G';
         else $letra = 'O';
-        
+
         return ['numero' => $num, 'letra' => $letra];
     }, $numerosGenerados)
 ]);

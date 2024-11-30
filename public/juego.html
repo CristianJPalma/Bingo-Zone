@@ -30,11 +30,46 @@
       <div id="cartonesContainer"></div>
     </div>
     <h1>Juego de Bingo</h1>
-    <div id="nuevoNumero">Esperando nuevo número...</div>
-    <h2>Números Generados:</h2>
-    <div id="numerosGenerados">Cargando...</div>
+    <div id="numerosGeneradosContainer">
+      <div id="numerosGenerados">
+        <!-- Aquí se insertarán los números generados -->
+      </div>
+    </div>
+    <div style="display: none;" id="nuevoNumero"></div>
     <button id="salirPartida" onclick="mostrarModal();">Salir de partida</button>
     <style>
+      #numerosGeneradosContainer {
+        overflow: auto;
+        width: 30%;
+        margin: 0 auto;
+        border: 2px solid #ccc; 
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+
+      }
+      
+      #numerosGenerados {
+        width: auto;
+        overflow: auto;
+        display: flex;
+
+      }
+    
+      
+      #numerosGenerados div {
+        margin-right: 10px;
+        background-color: #f58383;
+        font-size: 1rem;
+        text-align: center;
+        border-radius: 50%;
+        max-width: 300px;
+      }
+      
+
+
+
+
         .modal {
         display: none; 
         position: fixed; 
@@ -130,3 +165,4 @@
     </script>
 
 </body>
+</html> 
