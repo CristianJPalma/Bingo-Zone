@@ -1,0 +1,43 @@
+#numerosGeneradosContainer {
+    overflow: hidden;
+    width: 400px;
+    margin: 0 auto;
+    border: 2px solid #e0e0e0;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+#numerosGenerados {
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    transition: transform 0.5s ease;
+}
+
+#numerosGenerados div {
+    background-color: #f87171; /* Un rojo suave con más profundidad */
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    line-height: 50px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    transform: scale(1);
+}
+
+#numerosGenerados div:hover {
+    transform: scale(1.1);
+    background-color: #ef4444; /* Un tono de rojo ligeramente más oscuro al hacer hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
