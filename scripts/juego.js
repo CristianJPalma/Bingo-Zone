@@ -71,3 +71,78 @@ async function salirPartida() {
         console.error('Error al salir de la partida:', error);
     }
 }
+document.addEventListener('DOMContentLoaded', function() {
+    const cartonesContainer = document.getElementById('cartonesContainer');
+    const cartones = cartonesContainer.querySelectorAll('table');
+    
+    // Si hay 2 o 3 cartones, aplicamos lógica de carrusel
+    if (cartones.length >= 2 && cartones.length <= 3) {
+        // Estilos base para todos los cartones
+        cartones.forEach(carton => {
+            carton.style.transition = 'all 0.5s ease';
+            carton.style.opacity = '0.6';
+            carton.style.transform = 'scale(0.8)';
+            carton.style.cursor = 'pointer';
+        });
+
+        // Si son 2 cartones
+        if (cartones.length === 2) {
+            cartones[0].style.transform = 'translateX(-50%) scale(0.7)';
+            cartones[1].style.transform = 'translateX(50%) scale(0.7)';
+        }
+
+        // Si son 3 cartones
+        if (cartones.length === 3) {
+            cartones[0].style.transform = 'translateX(-150%) scale(0.7)';
+            cartones[1].style.transform = 'scale(1)';
+            cartones[1].style.opacity = '1';
+            cartones[2].style.transform = 'translateX(150%) scale(0.7)';
+        }
+
+        // Añadir eventos de click
+        cartones.forEach((carton, index) => {
+            carton.addEventListener('click', () => {
+                // Resetear todos
+                cartones.forEach((c, i) => {
+                    if (cartones.length === 2) {
+                        c.style.transform = i === 0 
+                            ? 'translateX(-50%) scale(0.7)' 
+                            : 'translateX(50%) scale(0.7)';
+                        c.style.opacity = '0.6';
+                    }
+                    
+                    if (cartones.length === 3) {
+                        if (i === 0) {
+                            c.style.transform = 'translateX(-150%) scale(0.7)';
+                        } else if (i === 1) {
+                            c.style.transform = 'translateX(0%) scale(1)';
+                            c.style.opacity = '1';
+                        } else {
+                            c.style.transform = 'translateX(150%) scale(0.7)';
+                        }
+                    }
+                });
+
+                // Cambiar el carton clickeado al centro
+                if (cartones.length === 2) {
+                    carton.style.transform = 'translateX(0) scale(1)';
+                    carton.style.opacity = '1';
+                }
+
+                if (cartones.length === 3) {
+                    if (index === 0) {
+                        cartones[0].style.transform = 'translateX(0%) scale(1)';
+                        cartones[0].style.opacity = '1';
+                        cartones[1].style.transform = 'translateX(150%) scale(0.7)';
+                        cartones[2].style.transform = 'translateX(150%) scale(0.7)';
+                    } else if (index === 2) {
+                        cartones[2].style.transform = 'translateX(0%) scale(1)';
+                        cartones[2].style.opacity = '1';
+                        cartones[0].style.transform = 'translateX(-150%) scale(0.7)';
+                        cartones[1].style.transform = 'translateX(-150%) scale(0.7)';
+                    }
+                }
+            });
+        });
+    }
+});

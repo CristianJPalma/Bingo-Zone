@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../styles/narvar.css">
+    <link rel="stylesheet" href="../styles/juego.css">
+    <link rel="stylesheet" href="../styles/carton.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
@@ -38,38 +40,6 @@
     <div style="display: none;" id="nuevoNumero"></div>
     <button id="salirPartida" onclick="mostrarModal();">Salir de partida</button>
     <style>
-      #numerosGeneradosContainer {
-        overflow: auto;
-        width: 30%;
-        margin: 0 auto;
-        border: 2px solid #ccc; 
-        padding: 10px;
-        border-radius: 5px;
-        background-color: #f9f9f9;
-
-      }
-      
-      #numerosGenerados {
-        width: auto;
-        overflow: auto;
-        display: flex;
-
-      }
-    
-      
-      #numerosGenerados div {
-        margin-right: 10px;
-        background-color: #f58383;
-        font-size: 1rem;
-        text-align: center;
-        border-radius: 50%;
-        max-width: 300px;
-      }
-      
-
-
-
-
         .modal {
         display: none; 
         position: fixed; 
@@ -93,44 +63,7 @@
         width: 80%; 
         max-width: 400px;
       }
-      table {
-              width: 350px;
-    
-            }
-            th, td {
-                border-radius: 10px;
-                border: 1px solid black;
-                margin: 10px;
-                padding: 15px;
-                text-align: center;
-            }
-            img {
-                width: 20px; /* Tamaño de la imagen */
-                height: 20px;
-            }
-
-            #cartonesContainer {
-              position: absolute;
-              top: 40%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              display: flex;
-              gap: 50px; /* Espacio entre los cartones */
-            }
-            #carton.red{
-              background-color: #ff1e00;
-            }
-            #cartonesContainer.normal th {
-              background-color: #A9A5A0;
-              color: black;
-              border-radius: 10px;
-            }
-            #cartonesContainer.normal tr {
-              background-color: #FFFFFF;
-              color: black;
-              border-radius: 10px;
-            }  
-    
+      
       </style>
       <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -163,6 +96,6 @@
               ocultarModal();
             }
     </script>
-
+    <script src="../scripts/juego.js"></script>
 </body>
 </html> 
