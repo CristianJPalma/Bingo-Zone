@@ -30,19 +30,32 @@ function listarCartones() {
 
                 for (let fila = 0; fila < 5; fila++) {
                     const row = document.createElement('tr');
-                    ['B', 'I', 'N', 'G', 'O'].forEach(columna => {
+                    ['B', 'I', 'N', 'G', 'O'].forEach((columna, colIndex) => {
                         const cell = document.createElement('td');
                         const numero = numerosCarton[columna][fila];
+                        
+                        if (fila === 2 && colIndex === 2) {
+                            const img = document.createElement('img');
+                            img.src = '../imgs/logos/bingozone.png';
+                            img.alt = 'Bingo-Zone';
+                            cell.appendChild(img);
+                            cell.classList.add('celda-central');
+                            row.appendChild(cell);
+                            return;
+                        }
+                
                         cell.innerText = numero || '';
                         cell.setAttribute('data-numero', numero);
                         cell.classList.add('celda');
-
+                
+                        // Agregar evento para seleccionar/deseleccionar
                         cell.addEventListener('click', () => toggleNumero(cell, carton.numero_carton, numero));
                         row.appendChild(cell);
                     });
-
+                
                     table.appendChild(row);
                 }
+                
 
                 cartonesContainer.appendChild(table);
             });

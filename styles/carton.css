@@ -63,7 +63,6 @@ img {
 
 #cartonesContainer.normal td {
   color: black;
-
   border: 1px solid #dee2e6;
   border-radius: 10px;
   font-size: 1.5rem;
@@ -80,6 +79,12 @@ img {
 }
 
 .celda.seleccionado {
-    background-color: #ffc107; /* Fondo amarillo */
-    color: #000; /* Texto negro */
-}
+    background-color: red; 
+  }
+  #cartonesContainer.normal td.seleccionado{
+    color: transparent;
+  }
+  #cartonesContainer.normal td.seleccionado:hover {
+    background-color: rgb(197, 2, 2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
