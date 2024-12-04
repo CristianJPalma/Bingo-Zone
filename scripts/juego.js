@@ -1,8 +1,8 @@
-const urlParams = new URLSearchParams(window.location.search);
-const codigoPartida = urlParams.get('codigo');
 
 function listarCartones() {
-    fetch(`../php/partida/carton/consultar_carton.php?codigo=${codigoPartida}`)
+    fetch(`../php/partida/carton/consultar_carton.php?codigo=${codigoPartida}`, {
+        credentials: 'include', // Asegura que las cookies de sesión se envíen
+    })
         .then(response => response.json())
         .then(data => {
             if (data.error) {
@@ -11,17 +11,15 @@ function listarCartones() {
             }
 
             const cartonesContainer = document.getElementById('cartonesContainer');
-            cartonesContainer.innerHTML = ''; // Limpiar el contenido anterior
+            cartonesContainer.innerHTML = '';
 
-            data.cartones.forEach((carton) => {
-                const numerosCarton = JSON.parse(carton.numeros); // Asegúrate de guardar en JSON
+            data.cartones.forEach(carton => {
+                const numerosCarton = JSON.parse(carton.numeros);
                 const table = document.createElement('table');
-            
-                // Asignar clase o ID al cartón
-                table.setAttribute('data-carton-id', carton.numero_carton); // O usa carton.id_carton si prefieres
+
+                table.setAttribute('data-carton-id', carton.numero_carton);
                 table.classList.add('carton');
-            
-                // Crear encabezado
+
                 const headerRow = document.createElement('tr');
                 ['B', 'I', 'N', 'G', 'O'].forEach(letra => {
                     const th = document.createElement('th');
@@ -29,38 +27,30 @@ function listarCartones() {
                     headerRow.appendChild(th);
                 });
                 table.appendChild(headerRow);
-            
-                // Crear las filas de números
+
                 for (let fila = 0; fila < 5; fila++) {
                     const row = document.createElement('tr');
-                    ['B', 'I', 'N', 'G', 'O'].forEach((columna) => {
+                    ['B', 'I', 'N', 'G', 'O'].forEach(columna => {
                         const cell = document.createElement('td');
                         const numero = numerosCarton[columna][fila];
                         cell.innerText = numero || '';
-            
-                        // Atributos únicos para la celda
-                        cell.setAttribute('data-numero', numero); // Número de la celda
-                        cell.classList.add('celda'); // Clase común para todas las celdas
-            
-                        // Agregar evento de clic
-                        cell.addEventListener('click', () => toggleNumero(cell, carton.numero_carton, numero)); // Usar numero_carton
-            
+                        cell.setAttribute('data-numero', numero);
+                        cell.classList.add('celda');
+
+                        cell.addEventListener('click', () => toggleNumero(cell, carton.numero_carton, numero));
                         row.appendChild(cell);
                     });
-            
+
                     table.appendChild(row);
                 }
-            
+
                 cartonesContainer.appendChild(table);
             });
-            
         })
         .catch(error => {
             console.error('Error al listar los cartones:', error);
         });
 }
-
-document.addEventListener('DOMContentLoaded', listarCartones);
 
 async function salirPartida() {
     try {
@@ -77,44 +67,38 @@ async function salirPartida() {
         console.error('Error al salir de la partida:', error);
     }
 }
-
-function toggleNumero(celda, idCarton, numero) {
+function toggleNumero(celda, numeroCarton, numero) {
     const seleccionado = celda.classList.contains('seleccionado');
-
-    // Alterna la clase visual
     celda.classList.toggle('seleccionado');
 
     const accion = seleccionado ? 'eliminar' : 'agregar';
 
     const datos = {
         codigoPartida: codigoPartida,
-        idCarton: idCarton,
+        numeroCarton: numeroCarton,
         numero: numero,
         accion: accion,
     };
 
-    console.log("Enviando datos:", datos);
+    console.log('Enviando datos:', datos);
 
     fetch('../php/partida/balotas/numeros_seleccionados.php', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(datos),
+        credentials: 'include',
     })
-        .then(async (response) => {
-            const text = await response.text();
-            try {
-                const data = JSON.parse(text);
-                console.log('Respuesta del servidor:', data);
-                if (data.error) {
-                    console.error('Error al actualizar el número:', data.error);
-                } else {
-                    console.log('Número actualizado correctamente:', data.numerosSeleccionados);
-                }
-            } catch (error) {
-                console.error('Error en la solicitud: No se recibió JSON válido', text);
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                console.error('Error al actualizar el número:', data.error);
+            } else {
+                console.log('Número actualizado correctamente:', data.mensaje);
             }
         })
-        .catch((error) => console.error('Error en la solicitud:', error));
+        .catch(error => {
+            console.error('Error en la solicitud:', error);
+        });
 }
+
+document.addEventListener('DOMContentLoaded', listarCartones);

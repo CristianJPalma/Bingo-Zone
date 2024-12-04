@@ -1,3 +1,6 @@
+const urlParams = new URLSearchParams(window.location.search);
+const codigoPartida = urlParams.get('codigo');
+
 function obtenerNumerosGenerados() {
     fetch(`../php/partida/balotas/generar_balotas.php?codigo=${codigoPartida}`)
     .then(response => response.json())
