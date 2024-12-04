@@ -1,4 +1,3 @@
-
 function listarCartones() {
     fetch(`../php/partida/carton/consultar_carton.php?codigo=${codigoPartida}`, {
         credentials: 'include', // Asegura que las cookies de sesión se envíen
@@ -15,6 +14,7 @@ function listarCartones() {
 
             data.cartones.forEach(carton => {
                 const numerosCarton = JSON.parse(carton.numeros);
+                const numerosSeleccionados = JSON.parse(carton.numeros_seleccionados || '[]'); // Números seleccionados previamente
                 const table = document.createElement('table');
 
                 table.setAttribute('data-carton-id', carton.numero_carton);
@@ -43,19 +43,23 @@ function listarCartones() {
                             row.appendChild(cell);
                             return;
                         }
-                
+
                         cell.innerText = numero || '';
                         cell.setAttribute('data-numero', numero);
                         cell.classList.add('celda');
-                
+
+                        // Resaltar números seleccionados
+                        if (numerosSeleccionados.includes(numero)) {
+                            cell.classList.add('seleccionado');
+                        }
+
                         // Agregar evento para seleccionar/deseleccionar
                         cell.addEventListener('click', () => toggleNumero(cell, carton.numero_carton, numero));
                         row.appendChild(cell);
                     });
-                
+
                     table.appendChild(row);
                 }
-                
 
                 cartonesContainer.appendChild(table);
             });
