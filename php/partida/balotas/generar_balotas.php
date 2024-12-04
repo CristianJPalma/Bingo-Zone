@@ -44,7 +44,7 @@ if ($tiempoTranscurrido < $tiempoEspera) {
     exit;
 }
 
-$intervalo = 3;
+$intervalo = 5;
 
 // ¿Cuántos números deben haberse generado hasta ahora?
 $numeroGeneraciones = floor(($tiempoTranscurrido - $tiempoEspera) / $intervalo);

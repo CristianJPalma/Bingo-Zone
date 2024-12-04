@@ -16,7 +16,7 @@ $idUsuario = $_SESSION['usuario_id'];
 
 // Obtener el id de la partida y el número de cartones
 $stmtPartida = $pdo->prepare("
-    SELECT id_partida, numero_cartones 
+    SELECT id_partida, numero_cartones, modo_juego
     FROM partida 
     WHERE codigo_partida = :codigo_partida
 ");
@@ -30,6 +30,8 @@ if (!$partida) {
 
 $idPartida = $partida['id_partida'];
 $numeroCartones = $partida['numero_cartones'];
+$modo = $partida['modo_juego']; // Obtener el modo
+
 
 // Obtener los números de los cartones y los números seleccionados
 $stmtNumeros = $pdo->prepare("
@@ -50,7 +52,9 @@ if (empty($cartones)) {
 } else {
     echo json_encode([
         'numero_cartones' => $numeroCartones,
-        'cartones' => $cartones // Incluye 'numero_carton', 'numeros' y 'numeros_seleccionados'
+        'cartones' => $cartones,
+        'modo' => $modo // Incluir el modo de la partida
     ]);
+    
 }
 ?>

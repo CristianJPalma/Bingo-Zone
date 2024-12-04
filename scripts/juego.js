@@ -1,6 +1,6 @@
 function listarCartones() {
     fetch(`../php/partida/carton/consultar_carton.php?codigo=${codigoPartida}`, {
-        credentials: 'include', // Asegura que las cookies de sesión se envíen
+        credentials: 'include',
     })
         .then(response => response.json())
         .then(data => {
@@ -12,9 +12,11 @@ function listarCartones() {
             const cartonesContainer = document.getElementById('cartonesContainer');
             cartonesContainer.innerHTML = '';
 
+            const modoPartida = data.modo; // Recibir el modo desde el servidor
+
             data.cartones.forEach(carton => {
                 const numerosCarton = JSON.parse(carton.numeros);
-                const numerosSeleccionados = JSON.parse(carton.numeros_seleccionados || '[]'); // Números seleccionados previamente
+                const numerosSeleccionados = JSON.parse(carton.numeros_seleccionados || '[]');
                 const table = document.createElement('table');
 
                 table.setAttribute('data-carton-id', carton.numero_carton);
@@ -33,7 +35,7 @@ function listarCartones() {
                     ['B', 'I', 'N', 'G', 'O'].forEach((columna, colIndex) => {
                         const cell = document.createElement('td');
                         const numero = numerosCarton[columna][fila];
-                        
+
                         if (fila === 2 && colIndex === 2) {
                             const img = document.createElement('img');
                             img.src = '../imgs/logos/bingozone.png';
@@ -53,8 +55,17 @@ function listarCartones() {
                             cell.classList.add('seleccionado');
                         }
 
-                        // Agregar evento para seleccionar/deseleccionar
-                        cell.addEventListener('click', () => toggleNumero(cell, carton.numero_carton, numero));
+                        // Validar según el modo
+                        if (
+                            (modoPartida === 'equis' && !esParteDeX(fila, colIndex)) ||
+                            (modoPartida === 'diagonal' && !esParteDeDiagonal(fila, colIndex))
+                        ) {
+                            cell.classList.add('no-seleccionable');
+                        } else {
+                            // Agregar evento para seleccionar/deseleccionar
+                            cell.addEventListener('click', () => toggleNumero(cell, carton.numero_carton, numero));
+                        }
+
                         row.appendChild(cell);
                     });
 
@@ -67,6 +78,15 @@ function listarCartones() {
         .catch(error => {
             console.error('Error al listar los cartones:', error);
         });
+}
+
+function esParteDeX(fila, colIndex) {
+    // Validar las posiciones que forman la X (diagonales principales)
+    return fila === colIndex || fila + colIndex === 4;
+}
+function esParteDeDiagonal(fila, colIndex) {
+    // Validar la diagonal principal \
+    return fila === colIndex;
 }
 
 async function salirPartida() {
