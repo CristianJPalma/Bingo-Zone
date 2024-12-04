@@ -1,17 +1,14 @@
 #numerosGeneradosContainer {
-    overflow: hidden;
-    width: 400px;
+    overflow: hidden; /* Esto asegura que solo los elementos visibles permanezcan */
+    width: 380px;
     margin: 0 auto;
     border: 2px solid #e0e0e0;
     padding: 10px;
     border-radius: 15px;
     background-color: #f9f9f9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 80px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    position: relative;
 }
 
 #numerosGenerados {
@@ -19,7 +16,9 @@
     gap: 10px;
     flex-direction: row;
     transition: transform 0.5s ease;
+    will-change: transform;
 }
+
 
 #numerosGenerados div {
     background-color: #f87171; /* Un rojo suave con más profundidad */
