@@ -253,7 +253,7 @@ function mostrarModalGanador(ganador) {
 
     mensaje.innerText = `¡El jugador ${ganador} ha ganado!`; // Personaliza el mensaje
     setTimeout(() => {
-        window.location.href = 'resultados.html'; // Redirigir
+        window.location.href = 'resultados.html?codigo='+ codigoPartida; // Redirigir
     }, 3000);
 
     modal.style.display = 'block';
