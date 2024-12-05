@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tutorial cartón</title>
+    <link rel="stylesheet" href="../styles/tutorial2.css">
+    <link rel="stylesheet" href="../styles/narvar.css">
+</head>
+<div class="narvar">
+    <img class="logo" src="../imgs/logos/BingoZone.png" alt="Bingo Zone">
+    <h1 class="titulo">Bingo Zone</h1>
+</div>
+<body class="bod">
+    <div class="contenedor-bingo">
+        <div class="texte" id="contadorDisponible">Números disponibles: 3</div>
+        <div class="tarjeta-bingo" id="tarjetaBingo">
+
+            <!-- Bingo-->
+            <div class="text-arriba" data-numero="5">B</div>
+            <div class="text-arriba" data-numero="10">I</div>
+            <div class="text-arriba" data-numero="15">N</div>
+            <div class="text-arriba" data-numero="20">G</div>
+            <div class="text-arriba" data-numero="25">O</div>
+
+            <!-- Fila 1 -->
+            <div class="casilla-bingo casilla-estatica" data-numero="5"><div class="circulo"></div></div>
+            <div class="casilla-bingo casilla-estatica" data-numero="10"><div class="circulo"></div></div>
+            <div class="casilla-bingo casilla-estatica" data-numero="15"><div class="circulo"></div></div>
+            <div class="casilla-bingo casilla-estatica" data-numero="20"><div class="circulo"></div></div>
+            <div class="casilla-bingo casilla-estatica" data-numero="25"><div class="circulo"></div></div>
+
+            <!-- Fila 2 -->
+            <div class="casilla-bingo casilla-estatica" data-numero="30"><div class="circulo"></div></div>
+            <div class="casilla-bingo casilla-estatica" data-numero="75"><div class="circulo"></div></div>
+            <div class="casilla-bingo casilla-estatica" data-numero="75"><div class="circulo"></div></div>
+            <div class="casilla-bingo casilla-estatica" data-numero="75"><div class="circulo"></div></div>
+            <div class="casilla-bingo casilla-estatica" data-numero="50"><div class="circulo"></div></div>
+
+            <!-- Fila 3 (con imagen en el centro) -->
+            <div class="casilla-bingo casilla-estatica" data-numero="55"><div class="circulo"></div></div>
+            <div class="casilla-bingo casilla-marcable" data-numero="60">16</div>
+            <div class="casilla-bingo imagen-central" data-imagen="true">
+                <img src="../imgs/faviconos/iccoon.png" class="ajustar" alt="Img">
+            </div>
+            <div class="casilla-bingo casilla-marcable" data-numero="65">49</div>
+            <div class="casilla-bingo casilla-estatica" data-numero="70"><div class="circulo"></div></div>
+
+            <!-- Fila 4 -->
+            <div class="casilla-bingo casilla-estatica" data-numero="75"><div class="circulo"></div></div>
+            <div class="casilla-bingo casilla-marcable" data-numero="80">24</div>
+            <div class="casilla-bingo casilla-estatica" data-numero="75"><div class="circulo"></div></div>
+            <div class="casilla-bingo casilla-estatica" data-numero="75"><div class="circulo"></div></div>
+            <div class="casilla-bingo casilla-estatica" data-numero="95"><div class="circulo"></div></div>
+
+            <!-- Fila 5 -->
+            <div class="casilla-bingo casilla-estatica" data-numero="100"><div class="circulo"></div></div>
+            <div class="casilla-bingo casilla-estatica" data-numero="105"><div class="circulo"></div></div>
+            <div class="casilla-bingo casilla-estatica" data-numero="110"><div class="circulo"></div></div>
+            <div class="casilla-bingo casilla-estatica" data-numero="115"><div class="circulo"></div></div>
+            <div class="casilla-bingo casilla-estatica" data-numero="120"><div class="circulo"></div></div>
+        </div>
+    </div>
+    <button id="botonVerificar" disabled>¡BINGO!</button>
+    <img class="siguiente" src="../imgs/tuto/capi6.png" alt="improvisto">
+
+    <div class="bolas">
+        <div class="bolitas naranja">
+            <div class="bolititas textos">
+                <h1 class="texto1">B</h1>
+                <h2 class="texto2">9</h2>
+            </div>
+        </div>
+        <div class="bolitas">
+            <div class="bolititas textos">
+                <h1 class="texto1">I</h1>
+                <h2 class="texto2">24</h2>
+            </div>
+        </div>
+        <div class="bolitas">
+            <div class="bolititas textos">
+                <h1 class="texto1">I</h1>
+                <h2 class="texto2">16</h2>
+            </div>
+        </div>
+        <div class="bolitas verde">
+            <div class="bolititas textos">
+                <h1 class="texto1">N</h1>
+                <h2 class="texto2">35</h2>
+            </div>
+        </div>
+        <div class="bolitas azul">
+            <div class="bolititas textos">
+                <h1 class="texto1">G</h1>
+                <h2 class="texto2">49</h2>
+            </div>
+        </div>
+    </div>
+    <div id="verificacion" class="verificacion-oculta">
+        <div class="contenido-verificacion">
+            <div class="spinner"></div>
+            <h2>Verificando Bingo</h2>
+            <p>Verificando código de tu cartón...</p>
+        </div>
+    </div>
+    <div id="imagen-verificacion" class="imagen-verificacion-oculta">
+        <img src="../imgs/tuto/celebrate.png" alt="Verificación Completada">
+    </div>
+<script src="../scripts/tutorial2.js"></script>
+</body>
+</html>
