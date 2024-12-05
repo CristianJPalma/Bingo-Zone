@@ -14,6 +14,16 @@ $pdo = $conexion->connect();
 $codigoPartida = $_GET['codigo'] ?? '';
 $idUsuario = $_SESSION['usuario_id'];
 
+
+$stmtGanador = $pdo->prepare("SELECT ganador FROM partida WHERE codigo_partida = :codigo");
+$stmtGanador->execute(['codigo' => $codigoPartida]);
+$ganador = $stmtGanador->fetchColumn();
+
+if ($ganador) {
+    echo json_encode(['mensaje' => 'Ya hay un ganador: ' . $ganador]);
+    exit;
+}
+
 // Obtener el modo y el cartón del jugador, así como los números generados de la partida
 $stmt = $pdo->prepare("
     SELECT modo_juego, numeros, numeros_seleccionados, numeros_generados
@@ -83,11 +93,11 @@ if ($modo === 'equis' || $modo === 'diagonal' || $modo === 'completo') {
 }
 
 // Si no se ha completado correctamente
-if (!$completo) {
-    echo json_encode(['error' => 'No has completado las celdas necesarias para el modo']);
+if ($completo) {
+    $stmtActualizarGanador = $pdo->prepare("UPDATE partida SET ganador = :id_usuario WHERE codigo_partida = :codigo");
+    $stmtActualizarGanador->execute(['id_usuario' => $idUsuario, 'codigo' => $codigoPartida]);
+    echo json_encode(['mensaje' => '¡Bingo correcto!', 'ganador' => $idUsuario]);
     exit;
 }
 
-// Si todo está bien
-echo json_encode(['mensaje' => '¡Bingo correcto!']);
-?>
+echo json_encode(['error' => 'No has completado las celdas necesarias para el modo']);

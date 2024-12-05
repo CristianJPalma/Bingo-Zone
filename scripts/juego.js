@@ -1,5 +1,18 @@
 const btnBingo = document.getElementById('btnBingo');
 const mensajeBingo = document.getElementById('mensajeBingo');
+const modalBingo = document.getElementById('modalBingo');
+const modalTitulo = document.getElementById('modalTitulo');
+const modalMensaje = document.getElementById('modalMensaje');
+
+function mostrarModal(titulo, mensaje) {
+    modalTitulo.innerText = titulo;
+    modalMensaje.innerText = mensaje;
+    modalBingo.style.display = 'block';
+}
+
+function ocultarModal() {
+    modalBingo.style.display = 'none';
+}
 
 function verificarBingo(modoPartida, cartones) {
     if (!Array.isArray(cartones)) {
@@ -184,6 +197,8 @@ function toggleNumero(celda, numeroCarton, numero, modoPartida) {
 
 
 btnBingo.addEventListener('click', () => {
+    mostrarModal('Verificando Bingo...', 'Espere un momento.');
+
     fetch(`../php/partida/bingo/verificar_bingo.php?codigo=${codigoPartida}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -193,15 +208,62 @@ btnBingo.addEventListener('click', () => {
         .then(response => response.json())
         .then(data => {
             if (data.error) {
-                alert(data.error); // Mostrar mensaje de error
+                mostrarModal('Bingo incorrecto', data.error);
+                setTimeout(ocultarModal, 3000); // Ocultar después de 3 segundos
             } else {
-                alert('¡Bingo correcto!'); // Mensaje de éxito
+                mostrarModal('¡Bingo correcto!', 'Redirigiendo...');
+                setTimeout(() => {
+                    window.location.href = 'resultados.html'; // Redirigir
+                }, 3000);
             }
         })
         .catch(error => {
             console.error('Error al verificar el bingo:', error);
+            mostrarModal('Error', 'Hubo un problema al verificar el Bingo.');
+            setTimeout(ocultarModal, 3000);
         });
 });
 
+function verificarGanador() {
+    fetch(`../php/partida/bingo/actualizar_estado.php?codigo=${codigoPartida}`, {
+        method: 'GET',
+        credentials: 'include',
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                console.error('Error:', data.error);
+                return;
+            }
 
+            if (data.ganador) {
+                clearInterval(intervaloGanador); // Detener la verificación
+                mostrarModalGanador(data.ganador); // Mostrar notificación
+            }
+        })
+        .catch(error => {
+            console.error('Error al verificar ganador:', error);
+        });
+}
+
+// Función para mostrar el modal
+function mostrarModalGanador(ganador) {
+    const modal = document.getElementById('modalGanador');
+    const mensaje = document.getElementById('mensajeGanador');
+
+    mensaje.innerText = `¡El jugador ${ganador} ha ganado!`; // Personaliza el mensaje
+    setTimeout(() => {
+        window.location.href = 'resultados.html'; // Redirigir
+    }, 3000);
+
+    modal.style.display = 'block';
+}
+
+// Ejecutar la función cada segundo
+const intervaloGanador = setInterval(verificarGanador, 1000);
+
+// Ocultar el modal al cerrarlo
+document.getElementById('cerrarModal').addEventListener('click', () => {
+    document.getElementById('modalGanador').style.display = 'none';
+});
 document.addEventListener('DOMContentLoaded', listarCartones); 
