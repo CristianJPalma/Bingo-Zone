@@ -19,6 +19,7 @@
     <title>Juego - Bingo Zone</title>
 </head>
 <body>
+  <!-- modal -->
     <div id="miModal" class="modal">
         <div class="modal-content">
           <p>¿Estás seguro de que quieres salir de la partida?</p>
@@ -26,16 +27,19 @@
           <button id="cancelar">Cancelar</button>
         </div>
     </div>
-    <div id="carton" class="cartones">
-
-      <div id="cartonesContainer"></div>
-    </div>
-    <h1>Juego de Bingo</h1>
     <div id="numerosGeneradosContainer">
       <div id="numerosGenerados">
         <!-- Aquí se insertarán los números generados -->
       </div>
     </div>
+    
+    <div id="carton" class="cartones">
+      <div id="cartonesContainer">
+        <!-- Cartones -->
+      </div>
+    </div>
+    <button id="btnBingo" disabled>Bingo</button>
+    <p id="mensajeBingo" style="color: red; display: none;">¡Debes completar todas las celdas requeridas para este modo!</p>
     <div style="display: none;" id="nuevoNumero"></div>
     <button id="salirPartida" onclick="mostrarModal();">Salir de partida</button>
     <style>
