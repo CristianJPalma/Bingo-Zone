@@ -99,10 +99,3 @@
     width: 60px;
     margin-left: 5%;
   }
-  .contenido{
-    display: auto;
-    gap: 60px;
-  }
-  @media(max-width: 1400px){
-
-  }

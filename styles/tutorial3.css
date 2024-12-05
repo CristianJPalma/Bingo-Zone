@@ -1,0 +1,55 @@
+.marco{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 100vh;
+    border: solid 4px #ffffff;
+    background-color: #ffffff80;
+    border-radius: 50px;
+    text-align: center;
+}
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+.image {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    width: 50%;
+    height: 70vh;
+    opacity: 0;
+    /*transition: opacity 5s;*/
+}
+.image:first-child {
+    opacity: 1;
+}
+.button {
+    margin-top: 25%;
+    display: flex;
+    float: right;
+    font-size: 8vh;
+    text-align: center;
+    background-color: #ffffff00;
+    color: #fff;
+    border: solid 4px #ffffff00;
+    margin-right: 10%;
+}
+.image {
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
