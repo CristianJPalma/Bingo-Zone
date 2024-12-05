@@ -14,8 +14,12 @@ $pdo = $conexion->connect();
 $codigoPartida = $_GET['codigo'];
 $idUsuario = $_SESSION['usuario_id'];
 
-// Primero obtenemos el id de la partida usando el código de partida
-$stmtPartida = $pdo->prepare("SELECT id_partida, numero_cartones FROM partida WHERE codigo_partida = :codigo_partida");
+// Obtener el id de la partida y el número de cartones
+$stmtPartida = $pdo->prepare("
+    SELECT id_partida, numero_cartones, modo_juego
+    FROM partida 
+    WHERE codigo_partida = :codigo_partida
+");
 $stmtPartida->execute(['codigo_partida' => $codigoPartida]);
 $partida = $stmtPartida->fetch();
 
@@ -26,10 +30,12 @@ if (!$partida) {
 
 $idPartida = $partida['id_partida'];
 $numeroCartones = $partida['numero_cartones'];
+$modo = $partida['modo_juego']; // Obtener el modo
 
-// Luego obtenemos los números de los cartones asociados a este usuario y partida
+
+// Obtener los números de los cartones y los números seleccionados
 $stmtNumeros = $pdo->prepare("
-    SELECT numero_carton, numeros 
+    SELECT numero_carton, numeros, COALESCE(numeros_seleccionados, '[]') AS numeros_seleccionados
     FROM cartones 
     WHERE id_partida = :id_partida AND id_usuario = :id_usuario
     ORDER BY numero_carton ASC
@@ -39,15 +45,16 @@ $stmtNumeros->execute([
     'id_usuario' => $idUsuario
 ]);
 
-// Obtenemos todos los cartones del usuario en la partida
 $cartones = $stmtNumeros->fetchAll(PDO::FETCH_ASSOC);
 
 if (empty($cartones)) {
-    echo json_encode(['error' => 'No se encontraron números para este usuario en esta partida']);
+    echo json_encode(['error' => 'No se encontraron cartones para este usuario en esta partida']);
 } else {
     echo json_encode([
         'numero_cartones' => $numeroCartones,
-        'cartones' => $cartones // Cada item tiene 'numero_carton' y 'numeros' en formato JSON
+        'cartones' => $cartones,
+        'modo' => $modo // Incluir el modo de la partida
     ]);
+    
 }
 ?>

@@ -43,7 +43,7 @@ function cargarCartones() {
                         if (columna === 'N' && fila === 2) {
                             const img = document.createElement('img');
                             img.src = '../imgs/logos/bingozone.png'; // Ruta de tu imagen
-                            img.alt = 'Estrella';
+                            img.alt = 'Bingo-Zone';
                             cell.appendChild(img);
                         } else {
                             cell.innerText = numero || '';

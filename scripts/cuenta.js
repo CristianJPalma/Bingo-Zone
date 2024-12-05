@@ -40,7 +40,7 @@ function actualizarDatos(event) {
     const apellido = document.getElementById("apellido").value;
     const nombre_pantalla = document.getElementById("nombre_pantalla").value;
     const correo = document.getElementById("correo").value;
-    const imagen_perfil = imagenes[indiceImagen];  // Tomamos la imagen actual sin cambiarla
+    const imagen_perfil = imagenes[indiceImagen];
 
     fetch("../php/usuario/actualizar_datos.php", {
         method: "POST",
@@ -55,7 +55,7 @@ function actualizarDatos(event) {
             mensajeDiv.style.color = "green";
             mensajeDiv.textContent = "Datos actualizados correctamente.";
             setTimeout(() => {
-                window.location.reload();  // Recargar la página después de 2 segundos
+                window.location.reload();  // recargar la página después de 2 segundos
             }, 2000);
         } else {
             mensajeDiv.style.color = "red";

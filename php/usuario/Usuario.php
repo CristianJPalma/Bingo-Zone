@@ -68,7 +68,7 @@ class Usuario {
         $stmt->bindParam(':id', $usuario_id);
         $stmt->execute();
         
-        return $stmt->fetch(PDO::FETCH_ASSOC); // Retorna los datos del usuario como un arreglo asociativo
+        return $stmt->fetch(PDO::FETCH_ASSOC); 
     }
     public function actualizarDatos($usuario_id, $nombre, $apellido, $nombre_pantalla, $correo, $imagen_perfil) {
         $query = $this->conxpdo->prepare("UPDATE usuario SET nombre = :nombre, apellido = :apellido, nombre_pantalla = :nombre_pantalla, correo = :correo, imagen_perfil = :imagen_perfil WHERE id = :id");
