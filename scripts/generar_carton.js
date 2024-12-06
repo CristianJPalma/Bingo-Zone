@@ -44,6 +44,7 @@ function cargarCartones() {
                             const img = document.createElement('img');
                             img.src = '../imgs/logos/bingozone.png'; // Ruta de tu imagen
                             img.alt = 'Bingo-Zone';
+                            img.classList.add('imagen-central')
                             cell.appendChild(img);
                         } else {
                             cell.innerText = numero || '';

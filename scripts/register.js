@@ -16,6 +16,7 @@ window.onload = function() {
     } else if (error === 'registro') {
         mensajeDiv.innerHTML = "<p style='color: red; font-size:1.5rem;'>Ocurrió un error en el registro. Inténtalo de nuevo.</p>";
     } else if (status === 'exito') {
+        window.location.href='login.html';
         mensajeDiv.innerHTML = "<p style='color: green; font-size:1.5rem;'>Usuario registrado exitosamente.</p>";
     }
 

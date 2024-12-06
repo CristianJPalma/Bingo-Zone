@@ -104,6 +104,7 @@ function listarCartones() {
                                 const img = document.createElement('img');
                                 img.src = '../imgs/logos/bingozone.png';
                                 img.alt = 'Bingo-Zone';
+                                img.classList.add('imagen-central'); // Agregamos la clase
                                 cell.appendChild(img);
                                 cell.classList.add('celda-central');
                             } else {
@@ -212,9 +213,7 @@ btnBingo.addEventListener('click', () => {
                 setTimeout(ocultarModal, 3000); // Ocultar después de 3 segundos
             } else {
                 mostrarModal('¡Bingo correcto!', 'Redirigiendo...');
-                setTimeout(() => {
-                    window.location.href = 'resultados.html'; // Redirigir
-                }, 3000);
+
             }
         })
         .catch(error => {
