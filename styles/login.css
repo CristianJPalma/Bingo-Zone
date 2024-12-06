@@ -70,6 +70,8 @@ input::placeholder {
 
   }
 .logo {
+    opacity: 0.9;
+    filter: grayscale(85%);
     margin-top: 20px;
     width: 60px;
     border: solid 1px ;

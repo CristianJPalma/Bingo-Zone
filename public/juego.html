@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="../styles/narvar.css">
-    <link rel="stylesheet" href="../styles/juego.css">
     <link rel="stylesheet" href="../styles/carton.css">
+    <link rel="stylesheet" href="../styles/juego.css">
+    <link rel="stylesheet" href="../styles/narvar.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
@@ -19,6 +19,10 @@
     <title>Juego - Bingo Zone</title>
 </head>
 <body>
+  <div class="narvar">
+    <img class="logo" src="../imgs/logos/BingoZone.png" alt="Bingo Zone">
+    <h1 class="titulo">Bingo Zone</h1>
+</div>
   <!-- modal salir partida -->
     <div id="miModal" class="modal">
         <div class="modal-content">
@@ -55,7 +59,7 @@
     <button id="btnBingo" disabled>Bingo</button>
     <p id="mensajeBingo" style="color: red; display: none;">¡Debes completar todas las celdas requeridas para este modo!</p>
     <div style="display: none;" id="nuevoNumero"></div>
-    <button id="salirPartida" onclick="mostrarModal();">Salir de partida</button>
+    <button id="salirPartida" onclick="mostrarModal1();">Salir de partida</button>
     <style>
         .modal {
         display: none; 
@@ -99,7 +103,7 @@
         .catch(error => console.error("Error al obtener datos:", error));
     });
     
-    function mostrarModal() {
+    function mostrarModal1() {
               document.getElementById('miModal').style.display = "block";
             }
     function ocultarModal() {

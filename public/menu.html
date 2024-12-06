@@ -39,7 +39,8 @@
     </div>
     <div class="marginBaja">
         <div class="contacto">Contacto</div>
-        <img class="miusic" src="../imgs/iconos/icono-musica.png" alt="icono-musica">
+        <input type="range"  id="volume" min="0" max="1" step="0.01" value="0.5">
+        </div>
     </div>
     
 
@@ -72,13 +73,6 @@
         <source src="../audios/musica2.mp3" type="audio/mpeg">
         Tu navegador no soporta el elemento de audio.
     </audio>
-    <input type="range" style="display: none;" id="volume" min="0" max="1" step="0.01" value="0.5">
-    <script>
-        document.getElementById('music').addEventListener('mouseover','click', function() {
-        var audio = document.getElementById('background-music');
-        audio.play();
-    });
-    </script>
 <!-- <script src="../scripts/menu.js"></script> -->
 </body>
 </html>

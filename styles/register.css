@@ -81,6 +81,8 @@ input::placeholder {
     font-size: 1.3rem;
 }
 .logo {
+    opacity: 0.9;
+    filter: grayscale(85%);
     margin-top: 20px;
     width: 60px;
     border: solid 1px ;
