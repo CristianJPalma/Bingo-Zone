@@ -19,7 +19,6 @@
     will-change: transform;
 }
 
-
 #numerosGenerados div {
     background-color: #f87171; /* Un rojo suave con más profundidad */
     color: white;
@@ -39,4 +38,28 @@
     transform: scale(1.1);
     background-color: #ef4444; /* Un tono de rojo ligeramente más oscuro al hacer hover */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.boton1{
+    margin-top: 25%;
+    margin-left: 6%;
+    border: solid 4px #fff;
+    border-radius: 25px;
+    background-color: #ef4444;
+    color: #fff;
+    font-size: 4vh;
+    height: 10vh;
+    width: 15%;
+}
+.boton2 { 
+    position: fixed;
+    bottom: 15%;
+    right: 5%;
+    border: solid 4px #fff;
+    border-radius: 100px;
+    background-color: #ff8000;
+    color: #fff;
+    font-size: 4vh;
+    height: 20vh;
+    width: 9%;
 }

@@ -35,9 +35,9 @@
 <div id="carton" class="cartones">
   <div id="cartonesContainer"></div>
 </div>
-<button id="cambiarNumeros">Cambiar Números</button>
+<button class="boton2" id="cambiarNumeros">Cambiar Números</button>
 
-<button id="salirPartida" onclick="mostrarModal();">Salir de partida</button>
+<button id="salirPartida" class="boton1" onclick="mostrarModal();">Salir de partida</button>
 
 <script src="../scripts/generar_carton.js"></script>
 <style>
@@ -64,6 +64,30 @@
     width: 80%; 
     max-width: 400px;
   }
+  .boton1{
+    margin-top: 25%;
+    margin-left: 6%;
+    border: solid 4px #fff;
+    border-radius: 25px;
+    background-color: #ef4444;
+    color: #fff;
+    font-size: 4vh;
+    height: 10vh;
+    width: 15%;
+}
+.boton2{
+    border: solid 2px #fff;
+    background-color: #FF8000;
+    color: #fff;
+    border-radius: 25px;
+    height: 10vh;
+    width: 20%;
+    position: fixed;
+    bottom: 15%;
+    right: 5%;
+    font-size: 4vh;
+
+}
 
   </style>
 <script>
